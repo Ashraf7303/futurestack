@@ -1,76 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FutureStack – Best Web Hosting, VPN & SaaS Tools for Creators</title>
-<meta name="description" content="Discover trusted tools for online creators—from web hosting and secure VPNs to SaaS platforms. Tested and recommended by real creators.">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureStack - Curated Digital Tools & Resources</title>
+    <meta name="description" content="Discover the best digital tools, SaaS platforms, and web services handpicked for productivity and creativity.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-<section class="hero">
-<div class="floating-shapes">
-<div class="shape"></div>
-<div class="shape"></div>
-<div class="shape"></div>
-</div>
-<div class="hero-content">
-<h1>FutureStack</h1>
-<h2>Tools That Actually Work for Creators</h2>
-<p class="intro">The tech stack I use to run my online business. No fluff. Just tools that deliver.</p>
-<a href="#tools" class="btn-primary">Explore Tools</a>
-</div>
-</section>
-<section class="stats-section">
-<div class="container">
-<h2 style="font-size: 2rem; margin-bottom: 1rem;">Trusted by Creators Worldwide</h2>
-<div class="stats-grid">
-<div class="stat-item">
-<span class="stat-number" id="tool-count">50+</span>
-<span class="stat-label">Curated Tools</span>
-</div>
-<div class="stat-item">
-<span class="stat-number">100%</span>
-<span class="stat-label">Actually Tested</span>
-</div>
-<div class="stat-item">
-<span class="stat-number">24/7</span>
-<span class="stat-label">Updated</span>
-</div>
-</div>
-</div>
-</section>
-<section id="tools" class="featured-categories">
-<div class="container">
-<h2 class="section-title">Browse All Categories</h2>
-<div class="categories-grid" id="categories-container">
-<!-- Categories will be loaded here -->
-<div class="loading">Loading tools...</div>
-</div>
-</div>
-</section>
-<section class="tools-section">
-<div class="container">
-<h2 class="section-title">Featured Tools</h2>
-<div class="tools-grid" id="tools-container">
-<!-- Tools will be loaded here -->
-<div class="loading">Loading tools...</div>
-</div>
-</div>
-</section>
-<section class="cta-section">
-<div class="container">
-<h2>Ready to Build Your Stack?</h2>
-<p>Start with these top-rated tools and level up your creator business.</p>
-<a href="#tools" class="btn-primary">Browse All Tools</a>
-</div>
-</section>
-<footer class="disclosure">
-<div class="container">
-<p><strong>Full Transparency:</strong> I earn commissions when you purchase through my links – at no extra cost to you. These commissions help me keep this site running and find even better tools to share.</p>
-<p style="margin-top: 1rem; color: #666;">Every tool here is one I actually use or have fully vetted. Real-world testing, not just specs.</p>
-</div>
-</footer>
-<script src="script.js"></script>
+    <!-- Hero Section -->
+    <header class="hero">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <span class="logo-icon">🚀</span>
+                        <span class="logo-text">FutureStack</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#tools" class="nav-link">Tools</a>
+                        <a href="#categories" class="nav-link">Categories</a>
+                        <a href="#featured" class="nav-link">Featured</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Discover the Best
+                    <span class="gradient-text">Digital Tools</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Curated collection of powerful SaaS platforms, productivity tools, and web services to supercharge your workflow
+                </p>
+                <div class="hero-buttons">
+                    <a href="#tools" class="btn btn-primary">Explore Tools</a>
+                    <a href="#featured" class="btn btn-secondary">Featured Picks</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number" id="toolCount">---</div>
+                        <div class="stat-label">Curated Tools</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="categoryCount">---</div>
+                        <div class="stat-label">Categories</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5★</div>
+                        <div class="stat-label">Top Rated</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Tools Section -->
+    <section id="featured" class="section featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">⭐ Featured Tools</h2>
+                <p class="section-subtitle">Hand-picked essentials for maximum productivity</p>
+            </div>
+            <div id="featuredTools" class="tools-grid">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Filter -->
+    <section id="categories" class="section categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Browse by Category</h2>
+            </div>
+            <div id="categoryFilter" class="category-filter">
+                <button class="category-btn active" data-category="all">All Tools</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Tools Section -->
+    <section id="tools" class="section tools-section">
+        <div class="container">
+            <div class="tools-header">
+                <h2 class="section-title">All Tools</h2>
+                <div class="tools-controls">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="name">Name (A-Z)</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="price-low">Price (Low to High)</option>
+                        <option value="price-high">Price (High to Low)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="allTools" class="tools-grid">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🚀</span>
+                        <span class="logo-text">FutureStack</span>
+                    </div>
+                    <p class="footer-tagline">Curating the future of digital tools</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#tools">All Tools</a>
+                        <a href="#featured">Featured</a>
+                        <a href="#categories">Categories</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#submit">Submit Tool</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FutureStack. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
