@@ -1,96 +1,68 @@
-// Paste the entire notion-proxy.js code here
+// Netlify Serverless Function to fetch data from Notion API
+const { Client } = require('@notionhq/client');
+
 exports.handler = async (event, context) => {
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' })
-    };
-  }
-
-  const NOTION_API_KEY = process.env.NOTION_API_KEY;
-  const DATABASE_ID = process.env.DATABASE_ID;
-
-  if (!NOTION_API_KEY || !DATABASE_ID) {
-    console.error('Missing environment variables');
-    return {
-      statusCode: 500,
-      headers: {
+    // Set CORS headers
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify({ 
-        error: 'Server configuration error. Please check environment variables.' 
-      })
     };
-  }
 
-  try {
-    const requestBody = event.body ? JSON.parse(event.body) : {};
-
-    const response = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${NOTION_API_KEY}`,
-        'Notion-Version': '2022-06-28',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        filter: {
-          property: 'Status',
-          select: {
-            equals: 'Active'
-          }
-        },
-        sorts: [
-          {
-            property: 'Rating',
-            direction: 'descending'
-          }
-        ],
-        ...requestBody
-      })
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Notion API error:', errorData);
-      return {
-        statusCode: response.status,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        },
-        body: JSON.stringify({ 
-          error: 'Failed to fetch from Notion',
-          details: errorData 
-        })
-      };
+    // Handle preflight OPTIONS request
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers,
+            body: '',
+        };
     }
 
-    const data = await response.json();
+    // Accept both GET and POST requests
+    if (event.httpMethod !== 'GET' && event.httpMethod !== 'POST') {
+        return {
+            statusCode: 405,
+            headers,
+            body: JSON.stringify({ error: 'Method not allowed' }),
+        };
+    }
 
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'public, max-age=300'
-      },
-      body: JSON.stringify(data)
-    };
+    try {
+        // Initialize Notion client with your API key from environment variables
+        const notion = new Client({
+            auth: process.env.NOTION_API_KEY,
+        });
 
-  } catch (error) {
-    console.error('Function error:', error);
-    return {
-      statusCode: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify({ 
-        error: 'Internal server error',
-        message: error.message 
-      })
-    };
-  }
+        // Query your database
+        const response = await notion.databases.query({
+            database_id: process.env.NOTION_DATABASE_ID,
+            sorts: [
+                {
+                    property: 'Rating',
+                    direction: 'descending',
+                },
+            ],
+        });
+
+        // Return the data
+        return {
+            statusCode: 200,
+            headers,
+            body: JSON.stringify(response),
+        };
+
+    } catch (error) {
+        console.error('Error fetching from Notion:', error);
+
+        return {
+            statusCode: 500,
+            headers,
+            body: JSON.stringify({
+                error: 'Failed to fetch data from Notion',
+                message: error.message,
+                details: error.code || 'Unknown error'
+            }),
+        };
+    }
 };
