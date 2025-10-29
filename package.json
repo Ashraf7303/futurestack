@@ -1,0 +1,35 @@
+{
+  "name": "futurestack",
+  "version": "1.0.0",
+  "description": "FutureStack - Curated Digital Tools",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14"
+  }
+}
+```
+
+5. Click **"Commit changes"**
+
+### Step 2: Verify Environment Variables
+
+Let's double-check your environment variables in Netlify:
+
+1. Go to Netlify → Your project → **Site configuration** → **Environment variables**
+2. Verify you have:
+   - `NOTION_API_KEY` = Your actual API key (starts with `secret_`)
+   - `NOTION_DATABASE_ID` = `29ae790e1da980dc9761e4c9fa6d891f`
+3. Make sure there are **NO extra spaces** before or after the values
+
+### Step 3: Check Your File Structure
+
+Make sure your files are organized exactly like this in GitHub:
+```
+futurestack/
+├── index.html
+├── styles.css
+├── script.js
+├── package.json          ← NEW FILE
+├── netlify.toml
+└── netlify/
+    └── functions/
+        └── notion.js
