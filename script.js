@@ -1,132 +1,287 @@
-const categoryIcons = {
-  'Web Hosting': '🚀',
-  'VPN & Security': '🔒',
-  'SaaS': '⚡',
-  'Digital Tools': '🛠️'
-};
+// Global state
+let allTools = [];
+let filteredTools = [];
+let currentCategory = 'all';
 
-async function loadTools() {
-  try {
-    const response = await fetch('/.netlify/functions/notion-proxy', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    
-    if (data.error) {
-      throw new Error(data.error);
-    }
-
-    displayTools(data.results);
-    displayCategories(data.results);
-    updateStats(data.results);
-    
-  } catch (error) {
-    console.error('Error loading tools:', error);
-    document.getElementById('tools-container').innerHTML = `
-      <div class="loading">
-        <p>⚠️ Unable to load tools: ${error.message}</p>
-      </div>
-    `;
-  }
-}
-
-function displayCategories(tools) {
-  const categories = {};
-  
-  tools.forEach(tool => {
-    const category = tool.properties.Category?.select?.name || 'Uncategorized';
-    categories[category] = (categories[category] || 0) + 1;
-  });
-
-  const container = document.getElementById('categories-container');
-  
-  container.innerHTML = Object.entries(categories).map(([name, count]) => `
-    <div class="category-card">
-      <span class="category-icon">${categoryIcons[name] || '📦'}</span>
-      <h3>${name}</h3>
-      <p>${getCategoryDescription(name)}</p>
-      <span class="tool-count">${count} tool${count !== 1 ? 's' : ''}</span>
-    </div>
-  `).join('');
-}
-
-function displayTools(tools) {
-  const container = document.getElementById('tools-container');
-  
-  const featuredTools = tools.filter(tool => 
-    tool.properties.Featured?.checkbox === true
-  ).slice(0, 6);
-
-  if (featuredTools.length === 0) {
-    container.innerHTML = '<p class="loading">No featured tools yet!</p>';
-    return;
-  }
-
-  container.innerHTML = featuredTools.map(tool => {
-    const props = tool.properties;
-    const name = props['Tool Name']?.title?.[0]?.plain_text || 'Unnamed Tool';
-    const description = props.Description?.rich_text?.[0]?.plain_text || '';
-    const category = props.Category?.select?.name || '';
-    const price = props.Price?.rich_text?.[0]?.plain_text || 'Check website';
-    const rating = props.Rating?.number || 0;
-    const affiliateLink = props['Affiliate Link']?.url || '#';
-    const logoUrl = props['Logo URL']?.url || '';
-
-    return `
-      <div class="tool-card">
-        ${logoUrl ? `
-          <div class="tool-header">
-            <img src="${logoUrl}" alt="${name}" class="tool-logo" onerror="this.style.display='none'">
-            <h3>${name}</h3>
-          </div>
-        ` : `<h3>${name}</h3>`}
-        <span class="tool-category">${category}</span>
-        <p class="tool-description">${description}</p>
-        <div class="tool-meta">
-          <span class="tool-price">${price}</span>
-          <span class="tool-rating">${'⭐'.repeat(Math.round(rating))}</span>
-        </div>
-        <a href="${affiliateLink}" class="tool-link" target="_blank" rel="noopener">
-          View ${name} →
-        </a>
-      </div>
-    `;
-  }).join('');
-}
-
-function updateStats(tools) {
-  const toolCount = tools.length;
-  document.getElementById('tool-count').textContent = `${toolCount}+`;
-}
-
-function getCategoryDescription(category) {
-  const descriptions = {
-    'Web Hosting': 'High-performance hosting to get your site live fast',
-    'VPN & Security': 'Protect your work and stay safe online',
-    'SaaS': 'Cloud-based tools to power your workflow',
-    'Digital Tools': 'Smart tools to simplify your creative process'
-  };
-  return descriptions[category] || 'Curated tools for creators';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadTools();
-  
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+// Initialize app
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('App initialized, fetching tools...');
+    await fetchTools();
+    setupEventListeners();
 });
+
+// Fetch tools from Netlify function
+async function fetchTools() {
+    try {
+        console.log('Fetching from Netlify function...');
+        const response = await fetch('/.netlify/functions/notion');
+        
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Response error:', errorText);
+            throw new Error(`Failed to fetch tools: ${response.status} ${errorText}`);
+        }
+        
+        const data = await response.json();
+        console.log('Data received:', data);
+        
+        allTools = parseNotionData(data.results);
+        console.log('Parsed tools:', allTools);
+        
+        filteredTools = [...allTools];
+        
+        renderTools();
+        updateStats();
+        generateCategories();
+        
+    } catch (error) {
+        console.error('Error fetching tools:', error);
+        showError(error.message);
+    }
+}
+
+// Parse Notion API response
+function parseNotionData(results) {
+    if (!results || !Array.isArray(results)) {
+        console.error('Invalid results:', results);
+        return [];
+    }
+    
+    return results.map(page => {
+        const props = page.properties;
+        
+        // Parse pros and cons - handle newlines
+        const prosText = getPlainText(props['Pros']?.rich_text);
+        const consText = getPlainText(props['Cons']?.rich_text);
+        
+        const pros = prosText.split(/\r?\n/).filter(p => p.trim()).map(p => {
+            // If lines are concatenated without newlines, try to split by capital letters
+            if (p.length > 100) {
+                return p.match(/[A-Z][a-z\s\-,]+/g) || [p];
+            }
+            return p;
+        }).flat().filter(p => p.trim());
+        
+        const cons = consText.split(/\r?\n/).filter(c => c.trim()).map(c => {
+            if (c.length > 100) {
+                return c.match(/[A-Z][a-z\s\-,]+/g) || [c];
+            }
+            return c;
+        }).flat().filter(c => c.trim());
+        
+        return {
+            id: page.id,
+            name: getPlainText(props['Tool Name']?.title),
+            title: getPlainText(props['Title']?.rich_text),
+            category: props['Category']?.select?.name || 'Uncategorized',
+            description: getPlainText(props['Description']?.rich_text),
+            affiliateLink: props['Affiliate Link']?.url || '#',
+            price: getPlainText(props['Price']?.rich_text) || 'Contact for pricing',
+            rating: props['Rating']?.number || 0,
+            pros: pros,
+            cons: cons,
+            featured: props['Featured']?.checkbox || false,
+            logoUrl: props['Logo URL']?.url || getDefaultLogo(),
+        };
+    });
+}
+
+// Helper to extract plain text from Notion rich text
+function getPlainText(richText) {
+    if (!richText || !Array.isArray(richText)) return '';
+    return richText.map(text => text.plain_text).join('');
+}
+
+// Get default logo based on tool name
+function getDefaultLogo() {
+    return 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23667eea" width="100" height="100"/><text x="50" y="50" font-size="40" fill="white" text-anchor="middle" dominant-baseline="central">🚀</text></svg>';
+}
+
+// Render all tools
+function renderTools() {
+    console.log('Rendering tools...');
+    renderFeaturedTools();
+    renderAllTools();
+}
+
+// Render featured tools
+function renderFeaturedTools() {
+    const featuredContainer = document.getElementById('featuredTools');
+    const featured = allTools.filter(tool => tool.featured);
+    
+    console.log('Featured tools:', featured.length);
+    
+    if (featured.length === 0) {
+        featuredContainer.innerHTML = '<p style="text-align: center; color: #4a5568; grid-column: 1/-1;">No featured tools yet. Mark some tools as featured in Notion!</p>';
+        return;
+    }
+    
+    featuredContainer.innerHTML = featured.map(tool => createToolCard(tool)).join('');
+}
+
+// Render all tools
+function renderAllTools() {
+    const allToolsContainer = document.getElementById('allTools');
+    
+    console.log('Rendering all tools:', filteredTools.length);
+    
+    if (filteredTools.length === 0) {
+        allToolsContainer.innerHTML = '<p style="text-align: center; color: #4a5568; grid-column: 1/-1;">No tools found matching your criteria.</p>';
+        return;
+    }
+    
+    allToolsContainer.innerHTML = filteredTools.map(tool => createToolCard(tool)).join('');
+}
+
+// Create tool card HTML
+function createToolCard(tool) {
+    const stars = '⭐'.repeat(Math.round(tool.rating));
+    const prosList = tool.pros.slice(0, 3).map(pro => `<li>${pro}</li>`).join('');
+    const consList = tool.cons.slice(0, 3).map(con => `<li>${con}</li>`).join('');
+    
+    return `
+        <div class="tool-card">
+            <div class="tool-header">
+                <img src="${tool.logoUrl}" alt="${tool.name} logo" class="tool-logo" onerror="this.src='data:image/svg+xml,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 100 100\\"><rect fill=\\"%23667eea\\" width=\\"100\\" height=\\"100\\"/><text x=\\"50\\" y=\\"50\\" font-size=\\"40\\" fill=\\"white\\" text-anchor=\\"middle\\" dominant-baseline=\\"central\\">🔧</text></svg>'">
+                <div class="tool-info">
+                    <h3 class="tool-name">${tool.name}</h3>
+                    <span class="tool-category">${tool.category}</span>
+                </div>
+            </div>
+            
+            <div class="tool-rating">
+                <span class="stars">${stars}</span>
+                <span class="rating-number">${tool.rating}/5</span>
+            </div>
+            
+            <p class="tool-description">${tool.description || tool.title}</p>
+            
+            ${prosList || consList ? `
+            <div class="tool-features">
+                ${prosList ? `
+                <div class="feature-section">
+                    <div class="feature-title">✨ Pros</div>
+                    <ul class="feature-list pros">${prosList}</ul>
+                </div>
+                ` : ''}
+                
+                ${consList ? `
+                <div class="feature-section">
+                    <div class="feature-title">⚠️ Cons</div>
+                    <ul class="feature-list cons">${consList}</ul>
+                </div>
+                ` : ''}
+            </div>
+            ` : ''}
+            
+            <div class="tool-footer">
+                <div class="tool-price">${tool.price}</div>
+                <a href="${tool.affiliateLink}" target="_blank" class="tool-link" rel="noopener noreferrer">
+                    Learn More →
+                </a>
+            </div>
+        </div>
+    `;
+}
+
+// Generate category buttons
+function generateCategories() {
+    const categoryFilter = document.getElementById('categoryFilter');
+    const categories = ['all', ...new Set(allTools.map(tool => tool.category))];
+    
+    categoryFilter.innerHTML = categories.map(cat => {
+        const displayName = cat === 'all' ? 'All Tools' : cat;
+        const activeClass = cat === 'all' ? 'active' : '';
+        return `<button class="category-btn ${activeClass}" data-category="${cat}">${displayName}</button>`;
+    }).join('');
+}
+
+// Update stats
+function updateStats() {
+    document.getElementById('toolCount').textContent = allTools.length;
+    
+    const uniqueCategories = new Set(allTools.map(tool => tool.category));
+    document.getElementById('categoryCount').textContent = uniqueCategories.size;
+}
+
+// Setup event listeners
+function setupEventListeners() {
+    // Category filter
+    document.getElementById('categoryFilter').addEventListener('click', (e) => {
+        if (e.target.classList.contains('category-btn')) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            currentCategory = e.target.dataset.category;
+            filterAndRenderTools();
+        }
+    });
+    
+    // Search
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        filterAndRenderTools();
+    });
+    
+    // Sort
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+        sortTools(e.target.value);
+        renderAllTools();
+    });
+}
+
+// Filter and render tools
+function filterAndRenderTools() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    filteredTools = allTools.filter(tool => {
+        const matchesCategory = currentCategory === 'all' || tool.category === currentCategory;
+        const matchesSearch = tool.name.toLowerCase().includes(searchTerm) || 
+                            tool.description.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+    });
+    
+    renderAllTools();
+}
+
+// Sort tools
+function sortTools(sortBy) {
+    switch(sortBy) {
+        case 'name':
+            filteredTools.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'rating':
+            filteredTools.sort((a, b) => b.rating - a.rating);
+            break;
+        case 'price-low':
+            filteredTools.sort((a, b) => extractPrice(a.price) - extractPrice(b.price));
+            break;
+        case 'price-high':
+            filteredTools.sort((a, b) => extractPrice(b.price) - extractPrice(a.price));
+            break;
+    }
+}
+
+// Extract numeric price from string
+function extractPrice(priceString) {
+    const match = priceString.match(/\d+(\.\d+)?/);
+    return match ? parseFloat(match[0]) : 0;
+}
+
+// Show error message
+function showError(message) {
+    const containers = [document.getElementById('featuredTools'), document.getElementById('allTools')];
+    containers.forEach(container => {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 60px 20px; grid-column: 1/-1;">
+                <h3 style="color: #f56565; margin-bottom: 15px;">⚠️ Error Loading Tools</h3>
+                <p style="color: #4a5568; margin-bottom: 10px;">${message}</p>
+                <p style="color: #718096; font-size: 14px;">Check the browser console for more details.</p>
+                <button onclick="location.reload()" style="margin-top: 20px; padding: 12px 24px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                    Retry
+                </button>
+            </div>
+        `;
+    });
+}
