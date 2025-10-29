@@ -52,24 +52,33 @@ function parseNotionData(results) {
     return results.map(page => {
         const props = page.properties;
         
-        // Parse pros and cons - handle newlines
+        // Parse pros and cons - handle both newlines and concatenated text
         const prosText = getPlainText(props['Pros']?.rich_text);
         const consText = getPlainText(props['Cons']?.rich_text);
         
-        const pros = prosText.split(/\r?\n/).filter(p => p.trim()).map(p => {
-            // If lines are concatenated without newlines, try to split by capital letters
-            if (p.length > 100) {
-                return p.match(/[A-Z][a-z\s\-,]+/g) || [p];
-            }
-            return p;
-        }).flat().filter(p => p.trim());
+        // Split by newlines first, then by patterns like "word word word WORD word"
+        const pros = prosText
+            .split(/\r?\n/)
+            .filter(p => p.trim())
+            .flatMap(p => {
+                // If no newlines and text is long, split on capital letters followed by lowercase
+                if (p.length > 80 && !p.includes('\n')) {
+                    return p.split(/(?=[A-Z][a-z])/).filter(x => x.trim());
+                }
+                return [p];
+            })
+            .filter(p => p.trim());
         
-        const cons = consText.split(/\r?\n/).filter(c => c.trim()).map(c => {
-            if (c.length > 100) {
-                return c.match(/[A-Z][a-z\s\-,]+/g) || [c];
-            }
-            return c;
-        }).flat().filter(c => c.trim());
+        const cons = consText
+            .split(/\r?\n/)
+            .filter(c => c.trim())
+            .flatMap(c => {
+                if (c.length > 80 && !c.includes('\n')) {
+                    return c.split(/(?=[A-Z][a-z])/).filter(x => x.trim());
+                }
+                return [c];
+            })
+            .filter(c => c.trim());
         
         return {
             id: page.id,
@@ -140,11 +149,12 @@ function createToolCard(tool) {
     const stars = '⭐'.repeat(Math.round(tool.rating));
     const prosList = tool.pros.slice(0, 3).map(pro => `<li>${pro}</li>`).join('');
     const consList = tool.cons.slice(0, 3).map(con => `<li>${con}</li>`).join('');
+    const fallbackLogo = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23667eea%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 font-size=%2240%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22central%22%3E🔧%3C/text%3E%3C/svg%3E';
     
     return `
         <div class="tool-card">
             <div class="tool-header">
-                <img src="${tool.logoUrl}" alt="${tool.name} logo" class="tool-logo" onerror="this.src='data:image/svg+xml,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 100 100\\"><rect fill=\\"%23667eea\\" width=\\"100\\" height=\\"100\\"/><text x=\\"50\\" y=\\"50\\" font-size=\\"40\\" fill=\\"white\\" text-anchor=\\"middle\\" dominant-baseline=\\"central\\">🔧</text></svg>'">
+                <img src="${tool.logoUrl}" alt="${tool.name} logo" class="tool-logo" onerror="this.onerror=null; this.src='${fallbackLogo}'">
                 <div class="tool-info">
                     <h3 class="tool-name">${tool.name}</h3>
                     <span class="tool-category">${tool.category}</span>
