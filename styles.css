@@ -83,6 +83,20 @@ body {
     color: var(--primary);
 }
 
+/* Navigation Special Link */
+.nav-link-special {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.nav-link-special:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -195,6 +209,97 @@ body {
 .stat-label {
     font-size: 14px;
     opacity: 0.8;
+}
+
+/* Promo Banner Styles */
+.promo-banner {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+}
+
+.promo-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--white);
+    border: 2px solid var(--gray-lighter);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.promo-card:hover::before {
+    left: 100%;
+}
+
+.promo-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+}
+
+.promo-icon {
+    font-size: 4rem;
+    flex-shrink: 0;
+}
+
+.promo-content {
+    flex: 1;
+}
+
+.promo-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.promo-description {
+    color: var(--gray);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.promo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.promo-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 /* Sections */
@@ -539,6 +644,7 @@ body {
     
     .hero-stats {
         gap: 30px;
+        flex-wrap: wrap;
     }
     
     .section-title {
@@ -564,5 +670,37 @@ body {
     
     .nav-links {
         display: none;
+    }
+
+    /* Promo Banner Mobile */
+    .promo-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .promo-icon {
+        font-size: 3rem;
+    }
+    
+    .promo-title {
+        font-size: 1.25rem;
+    }
+    
+    .promo-description {
+        font-size: 0.95rem;
+    }
+    
+    .promo-badge {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .nav-link-special {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 }
