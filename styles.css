@@ -28,6 +28,10 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -61,6 +65,8 @@ body {
     font-weight: 800;
     font-size: 24px;
     color: var(--dark);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .logo-icon {
@@ -70,6 +76,7 @@ body {
 .nav-links {
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
 .nav-link {
@@ -89,6 +96,7 @@ body {
     padding: 8px 16px;
     border-radius: 8px;
     border: 1px solid rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
 }
 
 .nav-link-special:hover {
@@ -322,6 +330,10 @@ body {
 .section-subtitle {
     font-size: 18px;
     color: var(--gray);
+}
+
+.featured-section {
+    background: var(--white);
 }
 
 /* Category Filter */
@@ -628,8 +640,13 @@ body {
     opacity: 0.5;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
+    /* Hero Section Mobile */
+    .hero {
+        padding: 100px 0 60px;
+    }
+
     .hero-title {
         font-size: 36px;
     }
@@ -640,17 +657,38 @@ body {
     
     .hero-buttons {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
     }
     
     .hero-stats {
         gap: 30px;
         flex-wrap: wrap;
     }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .stat-label {
+        font-size: 13px;
+    }
     
+    /* Section Headers Mobile */
     .section-title {
         font-size: 32px;
     }
+
+    .section-subtitle {
+        font-size: 16px;
+    }
     
+    /* Tools Section Mobile */
     .tools-header {
         flex-direction: column;
         align-items: flex-start;
@@ -668,11 +706,43 @@ body {
         grid-template-columns: 1fr;
     }
     
+    /* Navigation Mobile - FIXED VERSION */
+    .nav-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo-icon {
+        font-size: 24px;
+    }
+
     .nav-links {
-        display: none;
+        gap: 15px;
+        font-size: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-link {
+        padding: 5px;
+    }
+
+    .nav-link-special {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 
     /* Promo Banner Mobile */
+    .promo-banner {
+        padding: 2rem 0;
+    }
+
     .promo-card {
         flex-direction: column;
         text-align: center;
@@ -699,8 +769,97 @@ body {
         font-size: 0.75rem;
     }
 
-    .nav-link-special {
-        padding: 6px 12px;
-        font-size: 14px;
+    /* Tool Cards Mobile */
+    .tool-card {
+        padding: 20px;
+    }
+
+    .tool-name {
+        font-size: 20px;
+    }
+
+    .tool-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .tool-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Footer Mobile */
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .nav-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .nav-link {
+        font-size: 13px;
+    }
+
+    .promo-title {
+        font-size: 1.1rem;
+    }
+
+    .promo-icon {
+        font-size: 2.5rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .nav-links {
+        gap: 20px;
     }
 }
