@@ -28,7 +28,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ENHANCEMENT: Smooth scrolling for anchor links */
 html {
     scroll-behavior: smooth;
 }
@@ -66,7 +65,6 @@ html {
     font-weight: 800;
     font-size: 24px;
     color: var(--dark);
-    /* ENHANCEMENT: Make logo clickable */
     text-decoration: none;
     cursor: pointer;
 }
@@ -78,7 +76,6 @@ html {
 .nav-links {
     display: flex;
     gap: 30px;
-    /* ENHANCEMENT: Better vertical alignment */
     align-items: center;
 }
 
@@ -93,13 +90,11 @@ html {
     color: var(--primary);
 }
 
-/* Navigation Special Link */
 .nav-link-special {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
     padding: 8px 16px;
     border-radius: 8px;
     border: 1px solid rgba(102, 126, 234, 0.3);
-    /* ENHANCEMENT: Smoother transition */
     transition: all 0.3s ease;
 }
 
@@ -223,7 +218,7 @@ html {
     opacity: 0.8;
 }
 
-/* Promo Banner Styles */
+/* Promo Banner */
 .promo-banner {
     padding: 3rem 0;
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
@@ -336,7 +331,6 @@ html {
     color: var(--gray);
 }
 
-/* ENHANCEMENT: Featured section background */
 .featured-section {
     background: var(--white);
 }
@@ -456,7 +450,10 @@ html {
     width: 60px;
     height: 60px;
     border-radius: 12px;
-    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
     background: var(--gray-lighter);
 }
 
@@ -478,6 +475,7 @@ html {
     background: var(--gray-lighter);
     padding: 4px 10px;
     border-radius: 5px;
+    text-transform: capitalize;
 }
 
 .tool-rating {
@@ -495,6 +493,7 @@ html {
 .rating-number {
     font-weight: 600;
     color: var(--gray);
+    font-size: 14px;
 }
 
 .tool-description {
@@ -647,7 +646,6 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* ENHANCEMENT: Better hero mobile spacing */
     .hero {
         padding: 100px 0 60px;
     }
@@ -662,11 +660,9 @@ html {
     
     .hero-buttons {
         flex-direction: column;
-        /* ENHANCEMENT: Center buttons on mobile */
         align-items: center;
     }
 
-    /* ENHANCEMENT: Full-width buttons on mobile */
     .btn {
         width: 100%;
         max-width: 300px;
@@ -678,7 +674,6 @@ html {
         flex-wrap: wrap;
     }
 
-    /* ENHANCEMENT: Smaller stat numbers on mobile */
     .stat-number {
         font-size: 28px;
     }
@@ -691,7 +686,6 @@ html {
         font-size: 32px;
     }
 
-    /* ENHANCEMENT: Better section subtitle readability */
     .section-subtitle {
         font-size: 16px;
     }
@@ -713,7 +707,6 @@ html {
         grid-template-columns: 1fr;
     }
     
-    /* ENHANCEMENT: Better mobile navigation wrapping */
     .nav-content {
         flex-wrap: wrap;
         justify-content: center;
@@ -732,17 +725,14 @@ html {
     .nav-links {
         gap: 15px;
         font-size: 14px;
-        /* ENHANCEMENT: Allow wrapping if needed */
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .nav-link {
-        /* ENHANCEMENT: Better tap targets */
         padding: 5px;
     }
 
-    /* Promo Banner Mobile */
     .promo-banner {
         padding: 2rem 0;
     }
@@ -778,7 +768,6 @@ html {
         font-size: 14px;
     }
 
-    /* ENHANCEMENT: Better mobile tool cards */
     .tool-card {
         padding: 20px;
     }
@@ -798,7 +787,6 @@ html {
         text-align: center;
     }
 
-    /* ENHANCEMENT: Better footer mobile layout */
     .footer-content {
         flex-direction: column;
         gap: 30px;
@@ -814,7 +802,6 @@ html {
     }
 }
 
-/* ENHANCEMENT: Extra small devices optimization */
 @media (max-width: 480px) {
     .hero-title {
         font-size: 28px;
@@ -858,7 +845,6 @@ html {
     }
 }
 
-/* ENHANCEMENT: Tablet landscape optimization */
 @media (min-width: 769px) and (max-width: 1024px) {
     .tools-grid {
         grid-template-columns: repeat(2, 1fr);
