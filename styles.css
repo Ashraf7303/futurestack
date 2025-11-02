@@ -28,6 +28,7 @@ body {
     overflow-x: hidden;
 }
 
+/* ENHANCEMENT: Smooth scrolling for anchor links */
 html {
     scroll-behavior: smooth;
 }
@@ -65,6 +66,7 @@ html {
     font-weight: 800;
     font-size: 24px;
     color: var(--dark);
+    /* ENHANCEMENT: Make logo clickable */
     text-decoration: none;
     cursor: pointer;
 }
@@ -76,6 +78,7 @@ html {
 .nav-links {
     display: flex;
     gap: 30px;
+    /* ENHANCEMENT: Better vertical alignment */
     align-items: center;
 }
 
@@ -96,6 +99,7 @@ html {
     padding: 8px 16px;
     border-radius: 8px;
     border: 1px solid rgba(102, 126, 234, 0.3);
+    /* ENHANCEMENT: Smoother transition */
     transition: all 0.3s ease;
 }
 
@@ -332,6 +336,7 @@ html {
     color: var(--gray);
 }
 
+/* ENHANCEMENT: Featured section background */
 .featured-section {
     background: var(--white);
 }
@@ -642,7 +647,7 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* Hero Section Mobile */
+    /* ENHANCEMENT: Better hero mobile spacing */
     .hero {
         padding: 100px 0 60px;
     }
@@ -657,9 +662,11 @@ html {
     
     .hero-buttons {
         flex-direction: column;
+        /* ENHANCEMENT: Center buttons on mobile */
         align-items: center;
     }
 
+    /* ENHANCEMENT: Full-width buttons on mobile */
     .btn {
         width: 100%;
         max-width: 300px;
@@ -671,6 +678,7 @@ html {
         flex-wrap: wrap;
     }
 
+    /* ENHANCEMENT: Smaller stat numbers on mobile */
     .stat-number {
         font-size: 28px;
     }
@@ -679,16 +687,15 @@ html {
         font-size: 13px;
     }
     
-    /* Section Headers Mobile */
     .section-title {
         font-size: 32px;
     }
 
+    /* ENHANCEMENT: Better section subtitle readability */
     .section-subtitle {
         font-size: 16px;
     }
     
-    /* Tools Section Mobile */
     .tools-header {
         flex-direction: column;
         align-items: flex-start;
@@ -706,7 +713,7 @@ html {
         grid-template-columns: 1fr;
     }
     
-    /* Navigation Mobile - FIXED VERSION */
+    /* ENHANCEMENT: Better mobile navigation wrapping */
     .nav-content {
         flex-wrap: wrap;
         justify-content: center;
@@ -725,17 +732,14 @@ html {
     .nav-links {
         gap: 15px;
         font-size: 14px;
+        /* ENHANCEMENT: Allow wrapping if needed */
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .nav-link {
+        /* ENHANCEMENT: Better tap targets */
         padding: 5px;
-    }
-
-    .nav-link-special {
-        padding: 6px 12px;
-        font-size: 14px;
     }
 
     /* Promo Banner Mobile */
@@ -769,7 +773,12 @@ html {
         font-size: 0.75rem;
     }
 
-    /* Tool Cards Mobile */
+    .nav-link-special {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    /* ENHANCEMENT: Better mobile tool cards */
     .tool-card {
         padding: 20px;
     }
@@ -789,7 +798,7 @@ html {
         text-align: center;
     }
 
-    /* Footer Mobile */
+    /* ENHANCEMENT: Better footer mobile layout */
     .footer-content {
         flex-direction: column;
         gap: 30px;
@@ -805,7 +814,7 @@ html {
     }
 }
 
-/* Extra Small Devices */
+/* ENHANCEMENT: Extra small devices optimization */
 @media (max-width: 480px) {
     .hero-title {
         font-size: 28px;
@@ -849,7 +858,7 @@ html {
     }
 }
 
-/* Tablet Landscape */
+/* ENHANCEMENT: Tablet landscape optimization */
 @media (min-width: 769px) and (max-width: 1024px) {
     .tools-grid {
         grid-template-columns: repeat(2, 1fr);
