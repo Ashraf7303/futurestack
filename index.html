@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- Navigation -->
     <header class="hero">
         <nav class="nav">
             <div class="container">
@@ -24,7 +24,7 @@
                         <a href="#tools" class="nav-link">Tools</a>
                         <a href="#categories" class="nav-link">Categories</a>
                         <a href="#featured" class="nav-link">Featured</a>
-                        <a href="/hosting-calculator.html" class="nav-link nav-link-special">💰 Calculator</a>
+                        <a href="hosting-calculator.html" class="nav-link nav-link-special">💰 Calculator</a>
                     </div>
                 </div>
             </div>
@@ -41,17 +41,17 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#tools" class="btn btn-primary">Explore Tools</a>
-                    <a href="#featured" class="btn btn-secondary">Featured Picks</a>
+                    <a href="hosting-calculator.html" class="btn btn-secondary">Hosting Calculator</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-icon">🚀</div>
-                        <div class="stat-number" id="toolCount">---</div>
+                        <div class="stat-number">100+</div>
                         <div class="stat-label">Premium Tools</div>
                     </div>
                     <div class="stat">
                         <div class="stat-icon">📁</div>
-                        <div class="stat-number" id="categoryCount">---</div>
+                        <div class="stat-number">15+</div>
                         <div class="stat-label">Categories</div>
                     </div>
                     <div class="stat">
@@ -67,66 +67,134 @@
     <!-- Special Calculator Promo Banner -->
     <section class="promo-banner">
         <div class="container">
-            <a href="/hosting-calculator.html" class="promo-card">
+            <a href="hosting-calculator.html" class="promo-card">
                 <div class="promo-icon">🧮</div>
                 <div class="promo-content">
-                    <h3 class="promo-title">Hosting Price Calculator</h3>
-                    <p class="promo-description">Compare 10+ hosting providers and discover hidden renewal fees that could cost you $500+ over 5 years</p>
+                    <h3 class="promo-title">FREE Hosting Price Calculator</h3>
+                    <p class="promo-description">Compare 10+ hosting providers and discover hidden renewal fees that could cost you $500+ over 5 years. See your TRUE hosting cost in seconds.</p>
                     <span class="promo-cta">Calculate Your True Cost →</span>
                 </div>
                 <div class="promo-badge">
-                    <span>⚡ NEW</span>
+                    <span>⚡ FREE TOOL</span>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- Featured Tools Section -->
+    <!-- Featured Content Section -->
     <section id="featured" class="section featured-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">⭐ Featured Tools</h2>
-                <p class="section-subtitle">Hand-picked essentials for maximum productivity</p>
+                <h2 class="section-title">⭐ Featured Resources</h2>
+                <p class="section-subtitle">Essential tools and calculators for digital success</p>
             </div>
-            <div id="featuredTools" class="tools-grid">
-                <div class="loading-spinner"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Filter -->
-    <section id="categories" class="section categories-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Browse by Category</h2>
-            </div>
-            <div id="categoryFilter" class="category-filter">
-                <button class="category-btn active" data-category="all">All Tools</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- All Tools Section -->
-    <section id="tools" class="section tools-section">
-        <div class="container">
-            <div class="tools-header">
-                <h2 class="section-title">All Tools</h2>
-                <div class="tools-controls">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
-                        <span class="search-icon">🔍</span>
+            <div class="tools-grid">
+                <!-- Hosting Calculator Card -->
+                <div class="tool-card" onclick="window.location.href='hosting-calculator.html'">
+                    <div class="tool-header">
+                        <div class="tool-logo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 32px;">
+                            🧮
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Hosting Calculator</h3>
+                            <span class="tool-category">💰 Free Tool</span>
+                            <div class="tool-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-number">5.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <select id="sortSelect" class="sort-select">
-                        <option value="name">Name (A-Z)</option>
-                        <option value="rating">Highest Rated</option>
-                        <option value="price-low">Price (Low to High)</option>
-                        <option value="price-high">Price (High to Low)</option>
-                    </select>
+                    <p class="tool-description">
+                        Calculate the TRUE cost of web hosting over time. Compare 10+ providers and discover hidden renewal fees that most people miss.
+                    </p>
+                    <div class="tool-features">
+                        <div class="feature-section">
+                            <h4 class="feature-title">✨ Features</h4>
+                            <ul class="feature-list pros">
+                                <li>Compare 10+ major hosting providers</li>
+                                <li>Calculate 1-10 year costs instantly</li>
+                                <li>Expose hidden renewal price hikes</li>
+                                <li>100% free, no signup required</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <div class="tool-price">FREE</div>
+                        <a href="hosting-calculator.html" class="tool-link" onclick="event.stopPropagation()">Use Calculator →</a>
+                    </div>
+                </div>
+
+                <!-- More tools can be added here -->
+                <div class="tool-card" style="opacity: 0.6; cursor: default;">
+                    <div class="tool-header">
+                        <div class="tool-logo" style="background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 32px;">
+                            🔧
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Coming Soon</h3>
+                            <span class="tool-category">🚀 In Development</span>
+                        </div>
+                    </div>
+                    <p class="tool-description">
+                        More free calculators and comparison tools are on the way. Stay tuned!
+                    </p>
+                    <div class="tool-footer">
+                        <div class="tool-price">TBA</div>
+                        <span class="tool-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                    </div>
+                </div>
+
+                <div class="tool-card" style="opacity: 0.6; cursor: default;">
+                    <div class="tool-header">
+                        <div class="tool-logo" style="background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 32px;">
+                            📊
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Coming Soon</h3>
+                            <span class="tool-category">🚀 In Development</span>
+                        </div>
+                    </div>
+                    <p class="tool-description">
+                        More free calculators and comparison tools are on the way. Stay tuned!
+                    </p>
+                    <div class="tool-footer">
+                        <div class="tool-price">TBA</div>
+                        <span class="tool-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                    </div>
                 </div>
             </div>
-            <div id="allTools" class="tools-grid">
-                <div class="loading-spinner"></div>
+        </div>
+    </section>
+
+    <!-- About/Mission Section -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why FutureStack?</h2>
+                <p class="section-subtitle">Helping you make smarter decisions about digital tools</p>
             </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--gray); line-height: 1.8; font-size: 1.1rem;">
+                <p style="margin-bottom: 1.5rem;">
+                    We got tired of hidden fees, confusing pricing, and marketing tricks in the tech industry. So we're building free tools and resources that expose the truth and help you make informed decisions.
+                </p>
+                <p style="margin-bottom: 2rem;">
+                    Our <strong>Hosting Calculator</strong> is just the beginning. We're committed to creating more free calculators, comparison tools, and honest reviews that put YOUR interests first.
+                </p>
+                <a href="hosting-calculator.html" class="btn btn-primary" style="display: inline-block;">Try Our Free Calculator</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: var(--primary); color: white; text-align: center; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">Stop Overpaying for Hosting</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Most hosting companies hide renewal fees that triple your costs. Our free calculator exposes the truth.
+            </p>
+            <a href="hosting-calculator.html" class="btn" style="background: white; color: var(--primary); display: inline-block; padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px;">
+                Calculate Your True Cost (Free) →
+            </a>
         </div>
     </section>
 
@@ -139,21 +207,20 @@
                         <span class="logo-icon">🚀</span>
                         <span class="logo-text">FutureStack</span>
                     </div>
-                    <p class="footer-tagline">Curating the future of digital tools</p>
+                    <p class="footer-tagline">Free tools and honest reviews for the digital age</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Resources</h4>
-                        <a href="#tools">All Tools</a>
-                        <a href="#featured">Featured</a>
-                        <a href="#categories">Categories</a>
-                        <a href="/hosting-calculator.html">💰 Hosting Calculator</a>
+                        <a href="hosting-calculator.html">Hosting Calculator</a>
+                        <a href="#featured">Featured Tools</a>
+                        <a href="#about">About</a>
                     </div>
                     <div class="footer-column">
-                        <h4>Company</h4>
-                        <a href="#about">About</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#submit">Submit Tool</a>
+                        <h4>Legal</h4>
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#disclosure">Affiliate Disclosure</a>
                     </div>
                 </div>
             </div>
@@ -162,7 +229,5 @@
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
