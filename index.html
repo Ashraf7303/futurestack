@@ -3,135 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools Directory - Discover the Best AI Tools</title>
-    <meta name="description" content="Discover and compare the best AI tools for your business. Curated directory of productivity, design, writing, and development AI tools.">
-    <link rel="stylesheet" href="style.css">
+    <title>FutureStack - Curated Digital Tools & Resources</title>
+    <meta name="description" content="Discover the best digital tools, SaaS platforms, and web services handpicked for productivity and creativity.">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-content">
-                <a href="#" class="logo">
-                    <span class="logo-icon">🤖</span>
-                    <span>AI Tools Hub</span>
-                </a>
-                <div class="nav-links">
-                    <a href="#featured" class="nav-link">Featured</a>
-                    <a href="#tools" class="nav-link">All Tools</a>
-                    <a href="#categories" class="nav-link">Categories</a>
-                    <a href="#submit" class="nav-link nav-link-special">Submit Tool</a>
+    <!-- Hero Section -->
+    <header class="hero">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <span class="logo-icon">🚀</span>
+                        <span class="logo-text">FutureStack</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#tools" class="nav-link">Tools</a>
+                        <a href="#categories" class="nav-link">Categories</a>
+                        <a href="#featured" class="nav-link">Featured</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Discover the <span class="gradient-text">Best AI Tools</span> for Your Workflow
+                    Discover the Best
+                    <span class="gradient-text">Digital Tools</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Explore our curated collection of cutting-edge AI tools designed to boost your productivity, creativity, and efficiency.
+                    Curated collection of powerful SaaS platforms, productivity tools, and web services to supercharge your workflow
                 </p>
                 <div class="hero-buttons">
-                    <a href="#tools" class="btn btn-primary">Browse Tools</a>
-                    <a href="#submit" class="btn btn-secondary">Submit Your Tool</a>
+                    <a href="#tools" class="btn btn-primary">Explore Tools</a>
+                    <a href="#featured" class="btn btn-secondary">Featured Picks</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-icon">🚀</div>
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">AI Tools</div>
+                        <div class="stat-number" id="toolCount">---</div>
+                        <div class="stat-label">Premium Tools</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon">📁</div>
+                        <div class="stat-number" id="categoryCount">---</div>
+                        <div class="stat-label">Categories</div>
                     </div>
                     <div class="stat">
                         <div class="stat-icon">⭐</div>
-                        <div class="stat-number">50K+</div>
-                        <div class="stat-label">Reviews</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-icon">👥</div>
-                        <div class="stat-number">100K+</div>
-                        <div class="stat-label">Users</div>
+                        <div class="stat-number">5.0</div>
+                        <div class="stat-label">Average Rating</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Promo Banner -->
-    <section class="promo-banner">
-        <div class="container">
-            <a href="#newsletter" class="promo-card">
-                <div class="promo-badge">🔥 Trending</div>
-                <div class="promo-icon">📬</div>
-                <div class="promo-content">
-                    <h3 class="promo-title">Get Weekly AI Tool Updates</h3>
-                    <p class="promo-description">
-                        Join 10,000+ professionals receiving curated AI tool recommendations, tips, and exclusive deals every week.
-                    </p>
-                    <div class="promo-cta">
-                        Subscribe Now
-                        <span>→</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Featured Section -->
+    <!-- Featured Tools Section -->
     <section id="featured" class="section featured-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Featured AI Tools</h2>
-                <p class="section-subtitle">Hand-picked tools that are making waves in the AI community</p>
+                <h2 class="section-title">⭐ Featured Tools</h2>
+                <p class="section-subtitle">Hand-picked essentials for maximum productivity</p>
             </div>
-
-            <!-- Category Filter -->
-            <div class="category-filter">
-                <button class="category-btn active" data-category="all">All</button>
-                <button class="category-btn" data-category="productivity">Productivity</button>
-                <button class="category-btn" data-category="writing">Writing</button>
-                <button class="category-btn" data-category="design">Design</button>
-                <button class="category-btn" data-category="coding">Coding</button>
-                <button class="category-btn" data-category="marketing">Marketing</button>
-            </div>
-
-            <!-- Tools Grid -->
-            <div class="tools-grid" id="featured-tools">
+            <div id="featuredTools" class="tools-grid">
                 <div class="loading-spinner"></div>
             </div>
         </div>
     </section>
 
+    <!-- Categories Filter -->
+    <section id="categories" class="section categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Browse by Category</h2>
+            </div>
+            <div id="categoryFilter" class="category-filter">
+                <button class="category-btn active" data-category="all">All Tools</button>
+            </div>
+        </div>
+    </section>
+
     <!-- All Tools Section -->
-    <section id="tools" class="section">
+    <section id="tools" class="section tools-section">
         <div class="container">
             <div class="tools-header">
-                <div class="section-header">
-                    <h2 class="section-title">All AI Tools</h2>
-                </div>
+                <h2 class="section-title">All Tools</h2>
                 <div class="tools-controls">
                     <div class="search-box">
-                        <input type="text" class="search-input" placeholder="Search tools..." id="search-input">
+                        <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
                         <span class="search-icon">🔍</span>
                     </div>
-                    <select class="sort-select" id="sort-select">
-                        <option value="popular">Most Popular</option>
-                        <option value="recent">Recently Added</option>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="name">Name (A-Z)</option>
                         <option value="rating">Highest Rated</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
+                        <option value="price-low">Price (Low to High)</option>
+                        <option value="price-high">Price (High to Low)</option>
                     </select>
                 </div>
             </div>
-
-            <div class="tools-grid" id="all-tools">
+            <div id="allTools" class="tools-grid">
                 <div class="loading-spinner"></div>
             </div>
         </div>
@@ -143,39 +118,28 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">
-                        <span class="logo-icon">🤖</span>
-                        <span>AI Tools Hub</span>
+                        <span class="logo-icon">🚀</span>
+                        <span class="logo-text">FutureStack</span>
                     </div>
-                    <p class="footer-tagline">
-                        Your trusted source for discovering and comparing the best AI tools on the market.
-                    </p>
+                    <p class="footer-tagline">Curating the future of digital tools</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#pricing">Pricing</a>
-                        <a href="#reviews">Reviews</a>
-                        <a href="#roadmap">Roadmap</a>
+                        <h4>Resources</h4>
+                        <a href="#tools">All Tools</a>
+                        <a href="#featured">Featured</a>
+                        <a href="#categories">Categories</a>
                     </div>
                     <div class="footer-column">
                         <h4>Company</h4>
-                        <a href="#about">About Us</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#careers">Careers</a>
+                        <a href="#about">About</a>
                         <a href="#contact">Contact</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="#docs">Documentation</a>
-                        <a href="#api">API</a>
-                        <a href="#support">Support</a>
-                        <a href="#community">Community</a>
+                        <a href="#submit">Submit Tool</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 AI Tools Hub. All rights reserved.</p>
+                <p>&copy; 2024 FutureStack. All rights reserved.</p>
             </div>
         </div>
     </footer>
