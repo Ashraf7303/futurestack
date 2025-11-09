@@ -352,7 +352,6 @@ display: block;
 margin-bottom: 0.5rem;
 }
 
-/* EMAIL CAPTURE MODAL - NEW */
 .email-modal {
 display: none;
 position: fixed;
@@ -527,7 +526,6 @@ font-size: 0.9rem;
 color: var(--text);
 }
 
-/* CTA SECTION - ENHANCED */
 .cta-section {
 padding: 4rem 2rem;
 background: linear-gradient(135deg, #1a1438 0%, #0a0e27 100%);
@@ -633,7 +631,7 @@ Most Hosts <span class="highlight">Double Their Prices</span><br>
 After Year 1
 </h1>
 <p class="hero-subtitle">
-That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator to compare 10+ hosting providers and see how much you'll ACTUALLY pay over time.
+That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator to compare 12+ hosting providers and see how much you'll ACTUALLY pay over time.
 </p>
 </div>
 </section>
@@ -642,7 +640,7 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 <div class="container">
 <div class="section-header">
 <h2>🧮 True Cost Calculator</h2>
-<p class="hero-subtitle">Compare 10+ providers and calculate REAL hosting costs including hidden renewal fees</p>
+<p class="hero-subtitle">Compare 12+ providers and calculate REAL hosting costs including hidden renewal fees</p>
 </div>
 
 <div class="calculator-card">
@@ -693,6 +691,54 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 <span class="provider-logo">🟢</span>
 <span class="provider-name">GoDaddy</span>
 <span class="provider-year1">$2.99/mo</span>
+</label>
+</div>
+<div class="provider-option">
+<input type="radio" id="a2hosting" name="provider" value="a2hosting">
+<label for="a2hosting" class="provider-label">
+<span class="provider-logo">⚡</span>
+<span class="provider-name">A2 Hosting</span>
+<span class="provider-year1">$2.99/mo</span>
+</label>
+</div>
+<div class="provider-option">
+<input type="radio" id="dreamhost" name="provider" value="dreamhost">
+<label for="dreamhost" class="provider-label">
+<span class="provider-logo">💭</span>
+<span class="provider-name">DreamHost</span>
+<span class="provider-year1">$2.59/mo</span>
+</label>
+</div>
+<div class="provider-option">
+<input type="radio" id="inmotion" name="provider" value="inmotion">
+<label for="inmotion" class="provider-label">
+<span class="provider-logo">🔷</span>
+<span class="provider-name">InMotion</span>
+<span class="provider-year1">$2.99/mo</span>
+</label>
+</div>
+<div class="provider-option">
+<input type="radio" id="namecheap" name="provider" value="namecheap">
+<label for="namecheap" class="provider-label">
+<span class="provider-logo">🏷️</span>
+<span class="provider-name">Namecheap</span>
+<span class="provider-year1">$1.58/mo</span>
+</label>
+</div>
+<div class="provider-option">
+<input type="radio" id="ionos" name="provider" value="ionos">
+<label for="ionos" class="provider-label">
+<span class="provider-logo">🌟</span>
+<span class="provider-name">IONOS</span>
+<span class="provider-year1">$1.00/mo</span>
+</label>
+</div>
+<div class="provider-option">
+<input type="radio" id="ipage" name="provider" value="ipage">
+<label for="ipage" class="provider-label">
+<span class="provider-logo">📄</span>
+<span class="provider-name">iPage</span>
+<span class="provider-year1">$1.99/mo</span>
 </label>
 </div>
 </div>
@@ -758,7 +804,6 @@ Get My Free Migration Checklist + Price Lock Deal 🎁
 </div>
 </section>
 
-<!-- EMAIL CAPTURE MODAL -->
 <div class="email-modal" id="emailModal">
 <div class="email-modal-content">
 <button class="modal-close" onclick="closeEmailModal()">×</button>
@@ -792,7 +837,13 @@ bluehost: { name: 'Bluehost', year1: 35.40, renewal: 155.88 },
 hostgator: { name: 'HostGator', year1: 33.00, renewal: 143.40 },
 siteground: { name: 'SiteGround', year1: 35.88, renewal: 239.88 },
 hostinger: { name: 'Hostinger', year1: 35.88, renewal: 107.88 },
-godaddy: { name: 'GoDaddy', year1: 35.88, renewal: 215.88 }
+godaddy: { name: 'GoDaddy', year1: 35.88, renewal: 215.88 },
+a2hosting: { name: 'A2 Hosting', year1: 35.88, renewal: 179.88 },
+dreamhost: { name: 'DreamHost', year1: 31.08, renewal: 95.88 },
+inmotion: { name: 'InMotion', year1: 35.88, renewal: 119.88 },
+namecheap: { name: 'Namecheap', year1: 18.96, renewal: 58.88 },
+ionos: { name: 'IONOS', year1: 12.00, renewal: 96.00 },
+ipage: { name: 'iPage', year1: 23.88, renewal: 119.88 }
 };
 
 const yearSlider = document.getElementById('years');
@@ -836,9 +887,8 @@ total: totalCost,
 savings: savings > 0 ? savings : 0
 };
 
-// Auto-show email modal after 3 seconds of viewing results
 setTimeout(() => {
-if (!localStorage.getItem('emailCaptured')) {
+if (!sessionStorage.getItem('emailCaptured')) {
 openEmailModal();
 }
 }, 3000);
@@ -856,22 +906,18 @@ function submitEmail(event) {
 event.preventDefault();
 const email = document.getElementById('emailInput').value;
 
-// Store email (replace with your actual email service)
 console.log('Email captured:', email);
-localStorage.setItem('emailCaptured', 'true');
+sessionStorage.setItem('emailCaptured', 'true');
 
-// Redirect to InterServer affiliate link with email parameter
 window.location.href = `YOUR_INTERSERVER_AFFILIATE_LINK?email=${encodeURIComponent(email)}`;
 }
 
 function skipEmail() {
-localStorage.setItem('emailCaptured', 'true');
+sessionStorage.setItem('emailCaptured', 'true');
 closeEmailModal();
-// Show alternative CTA or redirect to affiliate link
 window.location.href = 'YOUR_INTERSERVER_AFFILIATE_LINK';
 }
 
-// Auto-calculate on load
 calculateCost();
 </script>
 </body>
