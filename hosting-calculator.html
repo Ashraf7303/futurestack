@@ -952,11 +952,15 @@ total: totalCost,
 savings: savings > 0 ? savings : 0
 };
 
+// Only show modal after they've calculated AND have significant savings
+// Wait 4 seconds to let the shock sink in
+if (selectedProvider !== 'interserver' && savings > 50) {
 setTimeout(() => {
 if (!sessionStorage.getItem('emailCaptured')) {
 openEmailModal();
 }
-}, 3000);
+}, 4000);
+}
 }
 
 function openEmailModal() {
