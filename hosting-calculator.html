@@ -909,16 +909,17 @@ const email = document.getElementById('emailInput').value;
 console.log('Email captured:', email);
 sessionStorage.setItem('emailCaptured', 'true');
 
-window.location.href = `YOUR_INTERSERVER_AFFILIATE_LINK?email=${encodeURIComponent(email)}`;
+window.location.href = `https://www.interserver.net/r/956050?email=${encodeURIComponent(email)}`;
 }
 
 function skipEmail() {
 sessionStorage.setItem('emailCaptured', 'true');
 closeEmailModal();
-window.location.href = 'YOUR_INTERSERVER_AFFILIATE_LINK';
+window.location.href = 'https://www.interserver.net/r/956050';
 }
 
 calculateCost();
 </script>
 </body>
 </html>
+
