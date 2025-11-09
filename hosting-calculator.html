@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Web Hosting Price Calculator - Stop Overpaying Today</title>
-<meta name="description" content="Calculate your TRUE web hosting costs over time. Compare renewal prices from 10+ providers and discover why most hosts charge 400% more after year 1.">
-
 <style>
 * {
 margin: 0;
@@ -18,14 +16,13 @@ box-sizing: border-box;
 --primary-dark: #00cc6a;
 --secondary: #ff2d55;
 --accent: #00d4ff;
---warning: #fbbf24;
---danger: #ef4444;
 --dark: #0a0e27;
 --darker: #050816;
 --card-bg: rgba(15, 23, 42, 0.95);
 --text: #ffffff;
 --text-dim: #cbd5e1;
 --success: #22c55e;
+--danger: #ef4444;
 }
 
 body {
@@ -97,8 +94,6 @@ line-height: 1.1;
 
 .highlight {
 color: var(--secondary);
-position: relative;
-display: inline-block;
 }
 
 .hero-subtitle {
@@ -106,18 +101,6 @@ font-size: clamp(1.1rem, 2.5vw, 1.5rem);
 color: var(--text-dim);
 max-width: 800px;
 margin: 0 auto 2rem;
-}
-
-.price-shock {
-display: inline-block;
-padding: 1rem 2rem;
-background: rgba(239, 68, 68, 0.1);
-border: 2px solid var(--danger);
-border-radius: 12px;
-font-size: 1.2rem;
-font-weight: 700;
-color: var(--danger);
-margin: 2rem 0;
 }
 
 .calculator-section {
@@ -177,10 +160,6 @@ border-radius: 10px;
 .provider-grid::-webkit-scrollbar-thumb {
 background: var(--primary);
 border-radius: 10px;
-}
-
-.provider-option {
-position: relative;
 }
 
 .provider-option input[type="radio"] {
@@ -257,22 +236,12 @@ outline: none;
 
 .input-wrapper input[type="range"]::-webkit-slider-thumb {
 -webkit-appearance: none;
-appearance: none;
 width: 24px;
 height: 24px;
 border-radius: 50%;
 background: var(--primary);
 cursor: pointer;
 box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
-
-.input-wrapper input[type="range"]::-moz-range-thumb {
-width: 24px;
-height: 24px;
-border-radius: 50%;
-background: var(--primary);
-cursor: pointer;
-border: none;
 }
 
 .year-display {
@@ -383,194 +352,22 @@ display: block;
 margin-bottom: 0.5rem;
 }
 
-.share-results-btn {
-width: 100%;
-padding: 1.25rem;
-background: linear-gradient(135deg, #ff2d55 0%, #ff6b95 100%);
-color: white;
-border: none;
-border-radius: 12px;
-font-size: 1.1rem;
-font-weight: 700;
-cursor: pointer;
-transition: all 0.3s ease;
-margin-top: 1.5rem;
-box-shadow: 0 8px 25px rgba(255, 45, 85, 0.3);
-}
-
-.share-results-btn:hover {
-transform: translateY(-3px);
-box-shadow: 0 12px 35px rgba(255, 45, 85, 0.5);
-}
-
-.comparison-section {
-padding: 4rem 2rem;
-background: var(--dark);
-}
-
-.comparison-table {
-max-width: 1200px;
-margin: 0 auto;
-overflow-x: auto;
-}
-
-table {
-width: 100%;
-border-collapse: collapse;
-background: var(--card-bg);
-border-radius: 16px;
-overflow: hidden;
-}
-
-thead {
-background: rgba(0, 255, 136, 0.1);
-}
-
-th, td {
-padding: 1.5rem;
-text-align: left;
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-th {
-font-weight: 700;
-color: var(--primary);
-text-transform: uppercase;
-font-size: 0.9rem;
-letter-spacing: 1px;
-}
-
-.provider-cell {
-display: flex;
-align-items: center;
-gap: 1rem;
-font-weight: 600;
-}
-
-.provider-icon {
-font-size: 2rem;
-}
-
-.price-cell {
-font-weight: 700;
-font-size: 1.1rem;
-}
-
-.price-increase {
-color: var(--danger);
-font-size: 0.85rem;
-display: block;
-margin-top: 0.25rem;
-}
-
-.checkmark {
-color: var(--success);
-font-size: 1.5rem;
-}
-
-.crossmark {
-color: var(--danger);
-font-size: 1.5rem;
-}
-
-.best-choice {
-background: rgba(0, 255, 136, 0.1);
-}
-
-.best-badge {
-display: inline-block;
-padding: 0.25rem 0.75rem;
-background: var(--primary);
-color: var(--darker);
-border-radius: 20px;
-font-size: 0.75rem;
-font-weight: 700;
-text-transform: uppercase;
-margin-left: 0.5rem;
-}
-
-.cta-section {
-padding: 6rem 2rem;
-background: linear-gradient(135deg, #1a1438 0%, #0a0e27 100%);
-text-align: center;
-position: relative;
-overflow: hidden;
-}
-
-.cta-content {
-position: relative;
-z-index: 2;
-max-width: 800px;
-margin: 0 auto;
-}
-
-.cta-title {
-font-size: clamp(2rem, 4vw, 3rem);
-margin-bottom: 1.5rem;
-}
-
-.cta-subtitle {
-font-size: 1.3rem;
-color: var(--text-dim);
-margin-bottom: 3rem;
-}
-
-.btn-primary {
-display: inline-flex;
-align-items: center;
-gap: 0.75rem;
-padding: 1.5rem 3rem;
-background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
-color: var(--darker);
-text-decoration: none;
-border-radius: 50px;
-font-size: 1.2rem;
-font-weight: 700;
-transition: all 0.3s ease;
-box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
-}
-
-.btn-primary:hover {
-transform: translateY(-3px);
-box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
-}
-
-.trust-indicators {
-display: flex;
-justify-content: center;
-gap: 3rem;
-margin-top: 3rem;
-flex-wrap: wrap;
-}
-
-.trust-item {
-display: flex;
-align-items: center;
-gap: 0.75rem;
-font-size: 0.95rem;
-color: var(--text-dim);
-}
-
-.trust-icon {
-font-size: 1.5rem;
-color: var(--primary);
-}
-
-.share-modal {
+/* EMAIL CAPTURE MODAL - NEW */
+.email-modal {
 display: none;
 position: fixed;
 top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background: rgba(0, 0, 0, 0.9);
-z-index: 2000;
+background: rgba(0, 0, 0, 0.95);
+z-index: 3000;
 align-items: center;
 justify-content: center;
 backdrop-filter: blur(10px);
 }
 
-.share-modal.active {
+.email-modal.active {
 display: flex;
 animation: fadeIn 0.3s ease-out;
 }
@@ -580,12 +377,12 @@ from { opacity: 0; }
 to { opacity: 1; }
 }
 
-.share-modal-content {
+.email-modal-content {
 background: var(--card-bg);
 border: 2px solid var(--primary);
 border-radius: 24px;
 padding: 3rem;
-max-width: 500px;
+max-width: 550px;
 width: 90%;
 position: relative;
 animation: modalSlideIn 0.4s ease-out;
@@ -625,158 +422,178 @@ background: rgba(255, 255, 255, 0.1);
 color: var(--text);
 }
 
-.share-modal h3 {
+.email-modal h3 {
 font-size: 2rem;
 margin-bottom: 1rem;
 text-align: center;
+color: var(--primary);
 }
 
-.share-modal p {
+.email-modal p {
 color: var(--text-dim);
 margin-bottom: 2rem;
 text-align: center;
+font-size: 1.1rem;
 }
 
-.share-buttons {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 1rem;
-margin-bottom: 2rem;
-}
-
-.share-btn {
-padding: 1rem;
-border: none;
-border-radius: 12px;
-cursor: pointer;
-font-weight: 600;
-font-size: 0.9rem;
-transition: all 0.3s ease;
+.email-form {
 display: flex;
 flex-direction: column;
-align-items: center;
-gap: 0.5rem;
+gap: 1rem;
 }
 
-.share-btn.facebook {
-background: #1877f2;
-color: white;
-}
-
-.share-btn.twitter {
-background: #1da1f2;
-color: white;
-}
-
-.share-btn.whatsapp {
-background: #25d366;
-color: white;
-}
-
-.share-btn:hover {
-transform: translateY(-3px);
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.share-btn-icon {
-font-size: 2rem;
-}
-
-.copy-link-section {
-display: flex;
-gap: 0.5rem;
-}
-
-.copy-link-input {
-flex: 1;
-padding: 1rem;
+.email-input {
+padding: 1.25rem;
 background: rgba(255, 255, 255, 0.05);
 border: 2px solid rgba(255, 255, 255, 0.1);
 border-radius: 12px;
 color: var(--text);
-font-size: 0.9rem;
-}
-
-.copy-btn {
-padding: 1rem 1.5rem;
-background: var(--primary);
-color: var(--darker);
-border: none;
-border-radius: 12px;
-cursor: pointer;
-font-weight: 700;
+font-size: 1rem;
 transition: all 0.3s ease;
 }
 
-.copy-btn:hover {
-background: var(--primary-dark);
+.email-input:focus {
+outline: none;
+border-color: var(--primary);
+background: rgba(255, 255, 255, 0.08);
 }
 
-.copy-btn.copied {
-background: var(--success);
-}
-
-.social-proof {
-position: fixed;
-bottom: 20px;
-left: 20px;
-background: var(--card-bg);
-border: 2px solid var(--primary);
+.email-submit-btn {
+padding: 1.5rem;
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+color: var(--darker);
+border: none;
 border-radius: 12px;
-padding: 1rem 1.5rem;
-min-width: 300px;
-box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-backdrop-filter: blur(20px);
-z-index: 999;
-display: none;
-}
-
-.social-proof.show {
-display: block;
-animation: slideInLeft 0.5s ease-out;
-}
-
-@keyframes slideInLeft {
-from {
-opacity: 0;
-transform: translateX(-100%);
-}
-to {
-opacity: 1;
-transform: translateX(0);
-}
-}
-
-.social-proof-content {
-display: flex;
-align-items: center;
-gap: 1rem;
-}
-
-.social-proof-avatar {
-width: 40px;
-height: 40px;
-border-radius: 50%;
-background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-display: flex;
-align-items: center;
-justify-content: center;
 font-size: 1.2rem;
-}
-
-.social-proof-text {
-flex: 1;
-}
-
-.social-proof-name {
 font-weight: 700;
-color: var(--primary);
-font-size: 0.95rem;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
 }
 
-.social-proof-action {
+.email-submit-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+}
+
+.bonus-list {
+background: rgba(0, 255, 136, 0.05);
+border: 1px solid rgba(0, 255, 136, 0.2);
+border-radius: 12px;
+padding: 1.5rem;
+margin: 1.5rem 0;
+}
+
+.bonus-list h4 {
+color: var(--primary);
+margin-bottom: 1rem;
+font-size: 1.1rem;
+}
+
+.bonus-list ul {
+list-style: none;
+}
+
+.bonus-list li {
+padding: 0.5rem 0;
+padding-left: 1.5rem;
+position: relative;
 color: var(--text-dim);
-font-size: 0.85rem;
+}
+
+.bonus-list li:before {
+content: '✓';
+position: absolute;
+left: 0;
+color: var(--primary);
+font-weight: 700;
+}
+
+.skip-link {
+text-align: center;
+margin-top: 1rem;
+}
+
+.skip-link button {
+background: none;
+border: none;
+color: var(--text-dim);
+text-decoration: underline;
+cursor: pointer;
+font-size: 0.9rem;
+}
+
+.skip-link button:hover {
+color: var(--text);
+}
+
+/* CTA SECTION - ENHANCED */
+.cta-section {
+padding: 4rem 2rem;
+background: linear-gradient(135deg, #1a1438 0%, #0a0e27 100%);
+text-align: center;
+position: relative;
+}
+
+.cta-content {
+position: relative;
+z-index: 2;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.cta-title {
+font-size: clamp(2rem, 4vw, 3rem);
+margin-bottom: 1.5rem;
+}
+
+.cta-subtitle {
+font-size: 1.3rem;
+color: var(--text-dim);
+margin-bottom: 2rem;
+}
+
+.btn-primary {
+display: inline-flex;
+align-items: center;
+gap: 0.75rem;
+padding: 1.5rem 3rem;
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+color: var(--darker);
+text-decoration: none;
+border-radius: 50px;
+font-size: 1.2rem;
+font-weight: 700;
+transition: all 0.3s ease;
+box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+border: none;
+cursor: pointer;
+}
+
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
+}
+
+.trust-indicators {
+display: flex;
+justify-content: center;
+gap: 3rem;
+margin-top: 2rem;
+flex-wrap: wrap;
+}
+
+.trust-item {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+font-size: 0.95rem;
+color: var(--text-dim);
+}
+
+.trust-icon {
+font-size: 1.5rem;
+color: var(--primary);
 }
 
 @media (max-width: 768px) {
@@ -798,31 +615,14 @@ flex-direction: column;
 text-align: center;
 }
 
-.year-display {
-font-size: 2.5rem;
-}
-
-table {
-font-size: 0.85rem;
-}
-
-th, td {
-padding: 1rem;
-}
-
-.share-buttons {
-grid-template-columns: 1fr;
-}
-
-.social-proof {
-left: 10px;
-right: 10px;
-min-width: auto;
+.email-modal-content {
+padding: 2rem 1.5rem;
 }
 }
 </style>
 </head>
 <body>
+
 <section class="hero">
 <div class="hero-content">
 <div class="alert-badge">
@@ -835,9 +635,6 @@ After Year 1
 <p class="hero-subtitle">
 That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator to compare 10+ hosting providers and see how much you'll ACTUALLY pay over time.
 </p>
-<div class="price-shock">
-💸 Average customer loses $500+ over 5 years
-</div>
 </div>
 </section>
 
@@ -875,14 +672,6 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 </label>
 </div>
 <div class="provider-option">
-<input type="radio" id="godaddy" name="provider" value="godaddy">
-<label for="godaddy" class="provider-label">
-<span class="provider-logo">🟢</span>
-<span class="provider-name">GoDaddy</span>
-<span class="provider-year1">$2.99/mo</span>
-</label>
-</div>
-<div class="provider-option">
 <input type="radio" id="siteground" name="provider" value="siteground">
 <label for="siteground" class="provider-label">
 <span class="provider-logo">🌐</span>
@@ -899,35 +688,11 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 </label>
 </div>
 <div class="provider-option">
-<input type="radio" id="dreamhost" name="provider" value="dreamhost">
-<label for="dreamhost" class="provider-label">
-<span class="provider-logo">☁️</span>
-<span class="provider-name">DreamHost</span>
-<span class="provider-year1">$2.95/mo</span>
-</label>
-</div>
-<div class="provider-option">
-<input type="radio" id="a2hosting" name="provider" value="a2hosting">
-<label for="a2hosting" class="provider-label">
-<span class="provider-logo">⚡</span>
-<span class="provider-name">A2 Hosting</span>
+<input type="radio" id="godaddy" name="provider" value="godaddy">
+<label for="godaddy" class="provider-label">
+<span class="provider-logo">🟢</span>
+<span class="provider-name">GoDaddy</span>
 <span class="provider-year1">$2.99/mo</span>
-</label>
-</div>
-<div class="provider-option">
-<input type="radio" id="inmotion" name="provider" value="inmotion">
-<label for="inmotion" class="provider-label">
-<span class="provider-logo">🏢</span>
-<span class="provider-name">InMotion</span>
-<span class="provider-year1">$2.29/mo</span>
-</label>
-</div>
-<div class="provider-option">
-<input type="radio" id="namecheap" name="provider" value="namecheap">
-<label for="namecheap" class="provider-label">
-<span class="provider-logo">💎</span>
-<span class="provider-name">Namecheap</span>
-<span class="provider-year1">$1.98/mo</span>
 </label>
 </div>
 </div>
@@ -961,179 +726,21 @@ Calculate True Cost 💰
 <div class="savings-highlight">
 <div style="font-size: 1.5rem; margin-bottom: 1rem;">🎉 You Could Save</div>
 <span class="savings-amount" id="savingsAmount">$0</span>
-<div style="color: var(--text-dim);">by switching to InterServer's locked pricing</div>
-</div>
-</div>
-<button class="share-results-btn" onclick="openShareModal()">
-🚀 Share This & Help Others Save Money
-</button>
+<div style="color: var(--text-dim);">by switching to price-locked hosting</div>
 </div>
 </div>
 </div>
-</section>
-
-<section class="comparison-section">
-<div class="container">
-<div class="section-header">
-<h2>📊 Full Provider Comparison</h2>
-<p class="hero-subtitle">See the shocking difference in renewal prices across all major hosts</p>
-</div>
-<div class="comparison-table">
-<table>
-<thead>
-<tr>
-<th>Provider</th>
-<th>Year 1</th>
-<th>Renewal</th>
-<th>Increase</th>
-<th>5-Year Total</th>
-<th>Lock</th>
-</tr>
-</thead>
-<tbody>
-<tr class="best-choice">
-<td>
-<div class="provider-cell">
-<span class="provider-icon">🔒</span>
-<span>InterServer<span class="best-badge">Best Value</span></span>
-</div>
-</td>
-<td class="price-cell">$30.00</td>
-<td class="price-cell" style="color: var(--success)">$30.00</td>
-<td style="color: var(--success); font-weight: 700;">0% ✨</td>
-<td class="price-cell">$150.00</td>
-<td><span class="checkmark">✓</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">💎</span>
-<span>Namecheap</span>
-</div>
-</td>
-<td class="price-cell">$23.76</td>
-<td class="price-cell">$52.68</td>
-<td><span class="price-increase">+122% 📈</span></td>
-<td class="price-cell">$234.48</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">🏢</span>
-<span>InMotion</span>
-</div>
-</td>
-<td class="price-cell">$27.48</td>
-<td class="price-cell">$119.88</td>
-<td><span class="price-increase">+336% 📈</span></td>
-<td class="price-cell">$507.00</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">🔵</span>
-<span>Bluehost</span>
-</div>
-</td>
-<td class="price-cell">$35.40</td>
-<td class="price-cell">$155.88</td>
-<td><span class="price-increase">+340% 📈</span></td>
-<td class="price-cell">$658.92</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">☁️</span>
-<span>DreamHost</span>
-</div>
-</td>
-<td class="price-cell">$35.40</td>
-<td class="price-cell">$155.40</td>
-<td><span class="price-increase">+339% 📈</span></td>
-<td class="price-cell">$657.00</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">🐊</span>
-<span>HostGator</span>
-</div>
-</td>
-<td class="price-cell">$33.00</td>
-<td class="price-cell">$143.40</td>
-<td><span class="price-increase">+335% 📈</span></td>
-<td class="price-cell">$606.60</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">⚡</span>
-<span>A2 Hosting</span>
-</div>
-</td>
-<td class="price-cell">$35.88</td>
-<td class="price-cell">$131.88</td>
-<td><span class="price-increase">+267% 📈</span></td>
-<td class="price-cell">$563.40</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">🚀</span>
-<span>Hostinger</span>
-</div>
-</td>
-<td class="price-cell">$35.88</td>
-<td class="price-cell">$107.88</td>
-<td><span class="price-increase">+201% 📈</span></td>
-<td class="price-cell">$467.40</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">🌐</span>
-<span>SiteGround</span>
-</div>
-</td>
-<td class="price-cell">$35.88</td>
-<td class="price-cell">$239.88</td>
-<td><span class="price-increase">+568% 📈</span></td>
-<td class="price-cell">$995.40</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-<tr>
-<td>
-<div class="provider-cell">
-<span class="provider-icon">🟢</span>
-<span>GoDaddy</span>
-</div>
-</td>
-<td class="price-cell">$35.88</td>
-<td class="price-cell">$215.88</td>
-<td><span class="price-increase">+502% 📈</span></td>
-<td class="price-cell">$899.40</td>
-<td><span class="crossmark">✗</span></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </section>
 
 <section class="cta-section">
 <div class="cta-content">
-<h2 class="cta-title">Ready to Stop Overpaying?</h2>
-<p class="cta-subtitle">Join thousands who switched to transparent, locked pricing</p>
-<a href="#" class="btn-primary">
-Get Started with InterServer 🚀
-</a>
+<h2 class="cta-title">Ready to Lock Your Price Forever?</h2>
+<p class="cta-subtitle">Join 50,000+ sites that never worry about renewal increases</p>
+<button class="btn-primary" onclick="openEmailModal()">
+Get My Free Migration Checklist + Price Lock Deal 🎁
+</button>
 <div class="trust-indicators">
 <div class="trust-item">
 <span class="trust-icon">✓</span>
@@ -1141,7 +748,7 @@ Get Started with InterServer 🚀
 </div>
 <div class="trust-item">
 <span class="trust-icon">✓</span>
-<span>24/7 Support</span>
+<span>Free Migration Help</span>
 </div>
 <div class="trust-item">
 <span class="trust-icon">✓</span>
@@ -1151,114 +758,41 @@ Get Started with InterServer 🚀
 </div>
 </section>
 
-<div class="share-modal" id="shareModal">
-<div class="share-modal-content">
-<button class="modal-close" onclick="closeShareModal()">×</button>
-<h3>📢 Share Your Savings!</h3>
-<p>Help your friends discover how much they're overpaying</p>
-<div class="share-buttons">
-<button class="share-btn facebook" onclick="shareToFacebook()">
-<span class="share-btn-icon">📘</span>
-<span>Facebook</span>
+<!-- EMAIL CAPTURE MODAL -->
+<div class="email-modal" id="emailModal">
+<div class="email-modal-content">
+<button class="modal-close" onclick="closeEmailModal()">×</button>
+<h3>🎁 Claim Your Free Resources</h3>
+<p>Get instant access to tools that'll save you $400+ on hosting</p>
+<div class="bonus-list">
+<h4>You'll Get:</h4>
+<ul>
+<li>Migration Checklist (Zero-downtime guaranteed)</li>
+<li>TTFB Speed Test Tool (Compare any host)</li>
+<li>3-Year Cost Comparison Sheet</li>
+<li>Exclusive InterServer Price Lock Deal</li>
+</ul>
+</div>
+<form class="email-form" onsubmit="submitEmail(event)">
+<input type="email" class="email-input" placeholder="Enter your email" required id="emailInput">
+<button type="submit" class="email-submit-btn">
+Send Me The Free Tools 🚀
 </button>
-<button class="share-btn twitter" onclick="shareToTwitter()">
-<span class="share-btn-icon">🐦</span>
-<span>Twitter</span>
-</button>
-<button class="share-btn whatsapp" onclick="shareToWhatsApp()">
-<span class="share-btn-icon">💬</span>
-<span>WhatsApp</span>
-</button>
-</div>
-<div class="copy-link-section">
-<input type="text" class="copy-link-input" id="shareLink" value="https://yoursite.com/hosting-calculator" readonly>
-<button class="copy-btn" id="copyBtn" onclick="copyLink()">Copy</button>
-</div>
-</div>
-</div>
-
-<div class="social-proof" id="socialProof">
-<div class="social-proof-content">
-<div class="social-proof-avatar">👤</div>
-<div class="social-proof-text">
-<div class="social-proof-name" id="proofName">Sarah M.</div>
-<div class="social-proof-action" id="proofAction">just saved $456 by switching hosts</div>
+</form>
+<div class="skip-link">
+<button onclick="skipEmail()">No thanks, I'll pay full price</button>
 </div>
 </div>
 </div>
 
 <script>
 const providers = {
-interserver: {
-name: 'InterServer',
-year1: 30.00,
-renewal: 30.00,
-monthly1: 2.50,
-monthlyRenewal: 2.50
-},
-bluehost: {
-name: 'Bluehost',
-year1: 35.40,
-renewal: 155.88,
-monthly1: 2.95,
-monthlyRenewal: 12.99
-},
-hostgator: {
-name: 'HostGator',
-year1: 33.00,
-renewal: 143.40,
-monthly1: 2.75,
-monthlyRenewal: 11.95
-},
-godaddy: {
-name: 'GoDaddy',
-year1: 35.88,
-renewal: 215.88,
-monthly1: 2.99,
-monthlyRenewal: 17.99
-},
-siteground: {
-name: 'SiteGround',
-year1: 35.88,
-renewal: 239.88,
-monthly1: 2.99,
-monthlyRenewal: 19.99
-},
-hostinger: {
-name: 'Hostinger',
-year1: 35.88,
-renewal: 107.88,
-monthly1: 2.99,
-monthlyRenewal: 8.99
-},
-dreamhost: {
-name: 'DreamHost',
-year1: 35.40,
-renewal: 155.40,
-monthly1: 2.95,
-monthlyRenewal: 12.95
-},
-a2hosting: {
-name: 'A2 Hosting',
-year1: 35.88,
-renewal: 131.88,
-monthly1: 2.99,
-monthlyRenewal: 10.99
-},
-inmotion: {
-name: 'InMotion',
-year1: 27.48,
-renewal: 119.88,
-monthly1: 2.29,
-monthlyRenewal: 9.99
-},
-namecheap: {
-name: 'Namecheap',
-year1: 23.76,
-renewal: 52.68,
-monthly1: 1.98,
-monthlyRenewal: 4.39
-}
+interserver: { name: 'InterServer', year1: 30.00, renewal: 30.00 },
+bluehost: { name: 'Bluehost', year1: 35.40, renewal: 155.88 },
+hostgator: { name: 'HostGator', year1: 33.00, renewal: 143.40 },
+siteground: { name: 'SiteGround', year1: 35.88, renewal: 239.88 },
+hostinger: { name: 'Hostinger', year1: 35.88, renewal: 107.88 },
+godaddy: { name: 'GoDaddy', year1: 35.88, renewal: 215.88 }
 };
 
 const yearSlider = document.getElementById('years');
@@ -1281,14 +815,14 @@ const totalCost = year1Cost + renewalCost;
 const interserverTotal = providers.interserver.year1 * years;
 const savings = totalCost - interserverTotal;
 
-document.getElementById('year1Cost').textContent = `${year1Cost.toFixed(2)}`;
-document.getElementById('renewalPrice').textContent = `${provider.renewal.toFixed(2)}/year`;
-document.getElementById('totalCost').textContent = `${totalCost.toFixed(2)}`;
+document.getElementById('year1Cost').textContent = `$${year1Cost.toFixed(2)}`;
+document.getElementById('renewalPrice').textContent = `$${provider.renewal.toFixed(2)}/year`;
+document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
 
 const savingsSection = document.getElementById('savingsSection');
 if (selectedProvider !== 'interserver' && savings > 0) {
 savingsSection.style.display = 'block';
-document.getElementById('savingsAmount').textContent = `${savings.toFixed(2)}`;
+document.getElementById('savingsAmount').textContent = `$${savings.toFixed(2)}`;
 } else {
 savingsSection.style.display = 'none';
 }
@@ -1301,74 +835,43 @@ years: years,
 total: totalCost,
 savings: savings > 0 ? savings : 0
 };
-}
 
-function openShareModal() {
-document.getElementById('shareModal').classList.add('active');
-}
-
-function closeShareModal() {
-document.getElementById('shareModal').classList.remove('active');
-}
-
-function shareToFacebook() {
-const calc = window.currentCalculation;
-const text = `💰 I just discovered I'm overpaying ${calc.savings.toFixed(0)}+ for web hosting! This calculator exposed the truth. Check yours now!`;
-const url = encodeURIComponent(window.location.href);
-window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${encodeURIComponent(text)}`, '_blank', 'width=600,height=400');
-}
-
-function shareToTwitter() {
-const calc = window.currentCalculation;
-const text = `💰 Just found out I'm overpaying ${calc.savings.toFixed(0)}+ on web hosting! Most hosts increase prices by 400% after year 1. Calculate your TRUE cost:`;
-const url = encodeURIComponent(window.location.href);
-window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${url}`, '_blank', 'width=600,height=400');
-}
-
-function shareToWhatsApp() {
-const calc = window.currentCalculation;
-const text = `💰 I just discovered I'm overpaying ${calc.savings.toFixed(0)}+ for web hosting! This calculator shows the hidden renewal fees. Check yours: ${window.location.href}`;
-window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-}
-
-function copyLink() {
-const input = document.getElementById('shareLink');
-input.select();
-document.execCommand('copy');
-const btn = document.getElementById('copyBtn');
-btn.textContent = 'Copied!';
-btn.classList.add('copied');
+// Auto-show email modal after 3 seconds of viewing results
 setTimeout(() => {
-btn.textContent = 'Copy';
-btn.classList.remove('copied');
-}, 2000);
+if (!localStorage.getItem('emailCaptured')) {
+openEmailModal();
+}
+}, 3000);
 }
 
-const socialProofData = [
-{name: 'Sarah M.', action: 'just saved $456 by switching hosts'},
-{name: 'Mike R.', action: 'calculated their true hosting cost'},
-{name: 'Jessica L.', action: 'discovered they\'re overpaying $389'},
-{name: 'David K.', action: 'switched to price-locked hosting'},
-{name: 'Emily T.', action: 'just saved $521 over 5 years'},
-{name: 'Chris P.', action: 'exposed hidden renewal fees'},
-{name: 'Amanda W.', action: 'compared 10 hosting providers'},
-{name: 'Brian S.', action: 'just saved $745 with InterServer'}
-];
-
-function showSocialProof() {
-const proof = socialProofData[Math.floor(Math.random() * socialProofData.length)];
-document.getElementById('proofName').textContent = proof.name;
-document.getElementById('proofAction').textContent = proof.action;
-const el = document.getElementById('socialProof');
-el.classList.add('show');
-setTimeout(() => {
-el.classList.remove('show');
-}, 5000);
+function openEmailModal() {
+document.getElementById('emailModal').classList.add('active');
 }
 
-setInterval(showSocialProof, 15000);
-setTimeout(showSocialProof, 3000);
+function closeEmailModal() {
+document.getElementById('emailModal').classList.remove('active');
+}
 
+function submitEmail(event) {
+event.preventDefault();
+const email = document.getElementById('emailInput').value;
+
+// Store email (replace with your actual email service)
+console.log('Email captured:', email);
+localStorage.setItem('emailCaptured', 'true');
+
+// Redirect to InterServer affiliate link with email parameter
+window.location.href = `YOUR_INTERSERVER_AFFILIATE_LINK?email=${encodeURIComponent(email)}`;
+}
+
+function skipEmail() {
+localStorage.setItem('emailCaptured', 'true');
+closeEmailModal();
+// Show alternative CTA or redirect to affiliate link
+window.location.href = 'YOUR_INTERSERVER_AFFILIATE_LINK';
+}
+
+// Auto-calculate on load
 calculateCost();
 </script>
 </body>
