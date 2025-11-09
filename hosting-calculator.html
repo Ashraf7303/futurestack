@@ -403,6 +403,8 @@ max-width: 550px;
 width: 90%;
 position: relative;
 animation: modalSlideIn 0.4s ease-out;
+max-height: 90vh;
+overflow-y: auto;
 }
 
 @keyframes modalSlideIn {
@@ -432,6 +434,7 @@ align-items: center;
 justify-content: center;
 border-radius: 50%;
 transition: all 0.3s ease;
+z-index: 1;
 }
 
 .modal-close:hover {
@@ -448,9 +451,84 @@ color: var(--primary);
 
 .email-modal p {
 color: var(--text-dim);
-margin-bottom: 2rem;
+margin-bottom: 1.5rem;
 text-align: center;
 font-size: 1.1rem;
+}
+
+.hot-buyer-section {
+background: rgba(0, 255, 136, 0.1);
+border: 2px solid var(--primary);
+border-radius: 12px;
+padding: 1.5rem;
+margin-bottom: 1.5rem;
+}
+
+.hot-buyer-section h4 {
+color: var(--primary);
+margin-bottom: 0.5rem;
+font-size: 1.2rem;
+}
+
+.hot-buyer-section p {
+font-size: 0.95rem;
+margin-bottom: 1rem;
+text-align: center;
+}
+
+.btn-primary {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.75rem;
+padding: 1.5rem 3rem;
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+color: var(--darker);
+text-decoration: none;
+border-radius: 12px;
+font-size: 1.2rem;
+font-weight: 700;
+transition: all 0.3s ease;
+box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+border: none;
+cursor: pointer;
+width: 100%;
+}
+
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
+}
+
+.divider {
+text-align: center;
+margin: 1.5rem 0;
+position: relative;
+}
+
+.divider::before,
+.divider::after {
+content: '';
+position: absolute;
+top: 50%;
+width: 40%;
+height: 1px;
+background: rgba(255, 255, 255, 0.1);
+}
+
+.divider::before {
+left: 0;
+}
+
+.divider::after {
+right: 0;
+}
+
+.divider p {
+display: inline-block;
+padding: 0 1rem;
+font-size: 0.9rem;
+margin: 0;
 }
 
 .email-form {
@@ -476,35 +554,35 @@ background: rgba(255, 255, 255, 0.08);
 }
 
 .email-submit-btn {
-padding: 1.5rem;
-background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
-color: var(--darker);
-border: none;
+padding: 1.25rem;
+background: rgba(255, 255, 255, 0.05);
+color: var(--text);
+border: 2px solid rgba(0, 255, 136, 0.3);
 border-radius: 12px;
-font-size: 1.2rem;
-font-weight: 700;
+font-size: 1rem;
+font-weight: 600;
 cursor: pointer;
 transition: all 0.3s ease;
-box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
 }
 
 .email-submit-btn:hover {
-transform: translateY(-3px);
-box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+background: rgba(0, 255, 136, 0.1);
+border-color: var(--primary);
 }
 
 .bonus-list {
-background: rgba(0, 255, 136, 0.05);
+background: rgba(0, 0, 0, 0.2);
 border: 1px solid rgba(0, 255, 136, 0.2);
 border-radius: 12px;
 padding: 1.5rem;
-margin: 1.5rem 0;
+margin: 1rem 0;
 }
 
 .bonus-list h4 {
 color: var(--primary);
 margin-bottom: 1rem;
-font-size: 1.1rem;
+font-size: 1rem;
+text-align: left;
 }
 
 .bonus-list ul {
@@ -516,6 +594,8 @@ padding: 0.5rem 0;
 padding-left: 1.5rem;
 position: relative;
 color: var(--text-dim);
+font-size: 0.9rem;
+text-align: left;
 }
 
 .bonus-list li:before {
@@ -524,24 +604,6 @@ position: absolute;
 left: 0;
 color: var(--primary);
 font-weight: 700;
-}
-
-.skip-link {
-text-align: center;
-margin-top: 1rem;
-}
-
-.skip-link button {
-background: none;
-border: none;
-color: var(--text-dim);
-text-decoration: underline;
-cursor: pointer;
-font-size: 0.9rem;
-}
-
-.skip-link button:hover {
-color: var(--text);
 }
 
 .cta-section {
@@ -567,28 +629,6 @@ margin-bottom: 1.5rem;
 font-size: 1.3rem;
 color: var(--text-dim);
 margin-bottom: 2rem;
-}
-
-.btn-primary {
-display: inline-flex;
-align-items: center;
-gap: 0.75rem;
-padding: 1.5rem 3rem;
-background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
-color: var(--darker);
-text-decoration: none;
-border-radius: 50px;
-font-size: 1.2rem;
-font-weight: 700;
-transition: all 0.3s ease;
-box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
-border: none;
-cursor: pointer;
-}
-
-.btn-primary:hover {
-transform: translateY(-3px);
-box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
 }
 
 .trust-indicators {
@@ -633,6 +673,15 @@ text-align: center;
 
 .email-modal-content {
 padding: 2rem 1.5rem;
+}
+
+.hot-buyer-section {
+padding: 1.25rem;
+}
+
+.btn-primary {
+padding: 1.25rem 2rem;
+font-size: 1rem;
 }
 }
 </style>
@@ -809,25 +858,41 @@ Get My Free Migration Checklist + Price Lock Deal 🎁
 <div class="email-modal" id="emailModal">
 <div class="email-modal-content">
 <button class="modal-close" onclick="closeEmailModal()">×</button>
-<h3>🎁 Claim Your Free Resources</h3>
-<p>Get instant access to tools that'll save you $400+ on hosting</p>
+<h3>🎁 Choose Your Path</h3>
+<p style="margin-bottom: 1.5rem;">Lock in your price or get free tools first</p>
+    
+<!-- Hot Buyer Section -->
+<div class="hot-buyer-section">
+<h4>🔥 Ready to Lock Your Price Now?</h4>
+<p>Get instant access to InterServer's price-lock guarantee</p>
+<a href="https://www.interserver.net/r/956050" class="btn-primary">
+Sign Up Now (Price Locked Forever) →
+</a>
+</div>
+
+<!-- Divider -->
+<div class="divider">
+<p style="color: var(--text-dim);">OR</p>
+</div>
+
+<!-- Cold Prospect Section -->
+<div style="margin-top: 1.5rem;">
+<p style="font-size: 1rem; margin-bottom: 1rem;">Want free migration tools first?</p>
 <div class="bonus-list">
-<h4>You'll Get:</h4>
+<h4>Get These Free:</h4>
 <ul>
-<li>Migration Checklist (Zero-downtime guaranteed)</li>
-<li>TTFB Speed Test Tool (Compare any host)</li>
+<li>Zero-downtime Migration Checklist</li>
+<li>TTFB Speed Test Tool</li>
 <li>3-Year Cost Comparison Sheet</li>
-<li>Exclusive InterServer Price Lock Deal</li>
+<li>Exclusive Price Lock Deal Link</li>
 </ul>
 </div>
 <form class="email-form" onsubmit="submitEmail(event)">
 <input type="email" class="email-input" placeholder="Enter your email" required id="emailInput">
 <button type="submit" class="email-submit-btn">
-Send Me The Free Tools 🚀
+Send Free Tools + Sign Up Link 📧
 </button>
 </form>
-<div class="skip-link">
-<button onclick="skipEmail()">No thanks, I'll pay full price</button>
 </div>
 </div>
 </div>
@@ -873,7 +938,7 @@ document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
 const savingsSection = document.getElementById('savingsSection');
 if (selectedProvider !== 'interserver' && savings > 0) {
 savingsSection.style.display = 'block';
-document.getElementById('savingsAmount').textContent = `$${savings.toFixed(2)}`;
+document.getElementById('savingsAmount').textContent = `${savings.toFixed(2)}`;
 } else {
 savingsSection.style.display = 'none';
 }
@@ -912,14 +977,7 @@ sessionStorage.setItem('emailCaptured', 'true');
 window.location.href = `https://www.interserver.net/r/956050?email=${encodeURIComponent(email)}`;
 }
 
-function skipEmail() {
-sessionStorage.setItem('emailCaptured', 'true');
-closeEmailModal();
-window.location.href = 'https://www.interserver.net/r/956050';
-}
-
 calculateCost();
 </script>
 </body>
 </html>
-
