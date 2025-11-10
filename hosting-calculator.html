@@ -11,10 +11,24 @@ padding: 0;
 box-sizing: border-box;
 }
 
+:root {
+--primary: #00ff88;
+--primary-dark: #00cc6a;
+--secondary: #ff2d55;
+--accent: #00d4ff;
+--dark: #0a0e27;
+--darker: #050816;
+--card-bg: rgba(15, 23, 42, 0.95);
+--text: #ffffff;
+--text-dim: #cbd5e1;
+--success: #22c55e;
+--danger: #ef4444;
+}
+
 body {
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-color: #ffffff;
-background: #050816;
+color: var(--text);
+background: var(--darker);
 line-height: 1.6;
 }
 
@@ -31,10 +45,7 @@ padding: 4rem 2rem;
 .hero::before {
 content: '';
 position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
+inset: 0;
 background-image:
 linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
 linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
@@ -61,9 +72,9 @@ align-items: center;
 gap: 0.75rem;
 padding: 0.75rem 1.5rem;
 background: rgba(255, 45, 85, 0.15);
-border: 2px solid #ff2d55;
+border: 2px solid var(--secondary);
 border-radius: 50px;
-color: #ff2d55;
+color: var(--secondary);
 font-weight: 700;
 margin-bottom: 2rem;
 animation: pulse 2s ease-in-out infinite;
@@ -75,26 +86,26 @@ animation: pulse 2s ease-in-out infinite;
 }
 
 h1 {
-font-size: 2.5rem;
+font-size: clamp(2.5rem, 6vw, 4.5rem);
 font-weight: 900;
 margin-bottom: 1.5rem;
 line-height: 1.1;
 }
 
 .highlight {
-color: #ff2d55;
+color: var(--secondary);
 }
 
 .hero-subtitle {
-font-size: 1.1rem;
-color: #cbd5e1;
+font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+color: var(--text-dim);
 max-width: 800px;
 margin: 0 auto 2rem;
 }
 
 .calculator-section {
 padding: 4rem 2rem;
-background: linear-gradient(180deg, #050816 0%, #0a0e27 100%);
+background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
 }
 
 .container {
@@ -108,9 +119,9 @@ margin-bottom: 3rem;
 }
 
 .section-header h2 {
-font-size: 2rem;
+font-size: clamp(2rem, 4vw, 3rem);
 margin-bottom: 1rem;
-background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
@@ -119,16 +130,23 @@ background-clip: text;
 .savings-emphasis {
 font-weight: 900;
 font-size: 1.15em;
-background: linear-gradient(135deg, #00ff88 0%, #00ffaa 100%);
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
+text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
 letter-spacing: 0.5px;
 display: inline-block;
+animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+0%, 100% { filter: brightness(1); }
+50% { filter: brightness(1.3); }
 }
 
 .calculator-card {
-background: rgba(15, 23, 42, 0.95);
+background: var(--card-bg);
 backdrop-filter: blur(20px);
 border: 2px solid rgba(0, 255, 136, 0.2);
 border-radius: 24px;
@@ -158,7 +176,7 @@ border-radius: 10px;
 }
 
 .provider-grid::-webkit-scrollbar-thumb {
-background: #00ff88;
+background: var(--primary);
 border-radius: 10px;
 }
 
@@ -183,7 +201,7 @@ min-height: 120px;
 
 .provider-option input[type="radio"]:checked + .provider-label {
 background: rgba(0, 255, 136, 0.1);
-border-color: #00ff88;
+border-color: var(--primary);
 transform: scale(1.05);
 }
 
@@ -200,7 +218,7 @@ font-size: 0.9rem;
 
 .provider-year1 {
 font-size: 0.8rem;
-color: #22c55e;
+color: var(--success);
 font-weight: 600;
 }
 
@@ -239,25 +257,15 @@ outline: none;
 width: 24px;
 height: 24px;
 border-radius: 50%;
-background: #00ff88;
+background: var(--primary);
 cursor: pointer;
 box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
-
-.input-wrapper input[type="range"]::-moz-range-thumb {
-width: 24px;
-height: 24px;
-border-radius: 50%;
-background: #00ff88;
-cursor: pointer;
-box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-border: none;
 }
 
 .year-display {
 font-size: 2rem;
 font-weight: 900;
-color: #00ff88;
+color: var(--primary);
 min-width: 80px;
 text-align: center;
 }
@@ -265,8 +273,8 @@ text-align: center;
 .calculate-btn {
 width: 100%;
 padding: 1.5rem;
-background: linear-gradient(135deg, #00ff88 0%, #00ffaa 100%);
-color: #050816;
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+color: var(--darker);
 border: none;
 border-radius: 12px;
 font-size: 1.3rem;
@@ -319,14 +327,14 @@ border-left: 4px solid transparent;
 
 .result-row.total {
 background: rgba(0, 255, 136, 0.1);
-border-left-color: #00ff88;
+border-left-color: var(--primary);
 font-size: 1.2rem;
 font-weight: 700;
 }
 
 .result-row.warning {
 background: rgba(239, 68, 68, 0.1);
-border-left-color: #ef4444;
+border-left-color: var(--danger);
 }
 
 .result-label {
@@ -339,11 +347,11 @@ gap: 0.5rem;
 .result-value {
 font-size: 1.5rem;
 font-weight: 900;
-color: #00ff88;
+color: var(--primary);
 }
 
 .result-value.danger {
-color: #ef4444;
+color: var(--danger);
 }
 
 .savings-highlight {
@@ -357,32 +365,9 @@ margin-top: 2rem;
 .savings-amount {
 font-size: 3rem;
 font-weight: 900;
-color: #00ff88;
+color: var(--primary);
 display: block;
 margin-bottom: 0.5rem;
-}
-
-.btn-primary {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 0.75rem;
-padding: 1.25rem 2.5rem;
-background: linear-gradient(135deg, #00ff88 0%, #00ffaa 100%);
-color: #050816;
-text-decoration: none;
-border-radius: 12px;
-font-size: 1.2rem;
-font-weight: 700;
-transition: all 0.3s ease;
-box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
-border: none;
-cursor: pointer;
-}
-
-.btn-primary:hover {
-transform: translateY(-3px);
-box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
 }
 
 .email-modal {
@@ -410,8 +395,8 @@ to { opacity: 1; }
 }
 
 .email-modal-content {
-background: rgba(15, 23, 42, 0.95);
-border: 2px solid #00ff88;
+background: var(--card-bg);
+border: 2px solid var(--primary);
 border-radius: 24px;
 padding: 3rem;
 max-width: 550px;
@@ -439,7 +424,7 @@ top: 1rem;
 right: 1rem;
 background: none;
 border: none;
-color: #cbd5e1;
+color: var(--text-dim);
 font-size: 2rem;
 cursor: pointer;
 width: 40px;
@@ -454,18 +439,18 @@ z-index: 1;
 
 .modal-close:hover {
 background: rgba(255, 255, 255, 0.1);
-color: #ffffff;
+color: var(--text);
 }
 
 .email-modal h3 {
 font-size: 2rem;
 margin-bottom: 1rem;
 text-align: center;
-color: #00ff88;
+color: var(--primary);
 }
 
 .email-modal p {
-color: #cbd5e1;
+color: var(--text-dim);
 margin-bottom: 1.5rem;
 text-align: center;
 font-size: 1.1rem;
@@ -473,14 +458,14 @@ font-size: 1.1rem;
 
 .hot-buyer-section {
 background: rgba(0, 255, 136, 0.1);
-border: 2px solid #00ff88;
+border: 2px solid var(--primary);
 border-radius: 12px;
 padding: 1.5rem;
 margin-bottom: 1.5rem;
 }
 
 .hot-buyer-section h4 {
-color: #00ff88;
+color: var(--primary);
 margin-bottom: 0.5rem;
 font-size: 1.2rem;
 }
@@ -489,6 +474,30 @@ font-size: 1.2rem;
 font-size: 0.95rem;
 margin-bottom: 1rem;
 text-align: center;
+}
+
+.btn-primary {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.75rem;
+padding: 1.5rem 3rem;
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+color: var(--darker);
+text-decoration: none;
+border-radius: 12px;
+font-size: 1.2rem;
+font-weight: 700;
+transition: all 0.3s ease;
+box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+border: none;
+cursor: pointer;
+width: 100%;
+}
+
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
 }
 
 .divider {
@@ -533,21 +542,21 @@ padding: 1.25rem;
 background: rgba(255, 255, 255, 0.05);
 border: 2px solid rgba(255, 255, 255, 0.1);
 border-radius: 12px;
-color: #ffffff;
+color: var(--text);
 font-size: 1rem;
 transition: all 0.3s ease;
 }
 
 .email-input:focus {
 outline: none;
-border-color: #00ff88;
+border-color: var(--primary);
 background: rgba(255, 255, 255, 0.08);
 }
 
 .email-submit-btn {
 padding: 1.25rem;
 background: rgba(255, 255, 255, 0.05);
-color: #ffffff;
+color: var(--text);
 border: 2px solid rgba(0, 255, 136, 0.3);
 border-radius: 12px;
 font-size: 1rem;
@@ -558,7 +567,7 @@ transition: all 0.3s ease;
 
 .email-submit-btn:hover {
 background: rgba(0, 255, 136, 0.1);
-border-color: #00ff88;
+border-color: var(--primary);
 }
 
 .bonus-list {
@@ -570,7 +579,7 @@ margin: 1rem 0;
 }
 
 .bonus-list h4 {
-color: #00ff88;
+color: var(--primary);
 margin-bottom: 1rem;
 font-size: 1rem;
 text-align: left;
@@ -584,7 +593,7 @@ list-style: none;
 padding: 0.5rem 0;
 padding-left: 1.5rem;
 position: relative;
-color: #cbd5e1;
+color: var(--text-dim);
 font-size: 0.9rem;
 text-align: left;
 }
@@ -593,7 +602,7 @@ text-align: left;
 content: '✓';
 position: absolute;
 left: 0;
-color: #00ff88;
+color: var(--primary);
 font-weight: 700;
 }
 
@@ -612,13 +621,13 @@ margin: 0 auto;
 }
 
 .cta-title {
-font-size: 2rem;
+font-size: clamp(2rem, 4vw, 3rem);
 margin-bottom: 1.5rem;
 }
 
 .cta-subtitle {
 font-size: 1.3rem;
-color: #cbd5e1;
+color: var(--text-dim);
 margin-bottom: 2rem;
 }
 
@@ -635,19 +644,15 @@ display: flex;
 align-items: center;
 gap: 0.75rem;
 font-size: 0.95rem;
-color: #cbd5e1;
+color: var(--text-dim);
 }
 
 .trust-icon {
 font-size: 1.5rem;
-color: #00ff88;
+color: var(--primary);
 }
 
 @media (max-width: 768px) {
-h1 {
-font-size: 2rem;
-}
-
 .hero {
 padding: 3rem 1.5rem;
 }
@@ -678,14 +683,6 @@ padding: 1.25rem;
 padding: 1.25rem 2rem;
 font-size: 1rem;
 }
-
-.section-header h2 {
-font-size: 1.8rem;
-}
-
-.cta-title {
-font-size: 1.8rem;
-}
 }
 </style>
 </head>
@@ -700,7 +697,7 @@ font-size: 1.8rem;
 Most Hosts <span class="highlight">Double Their Prices</span><br>
 After Year 1
 </h1>
-<p class="hero-subtitle">
+        <p class="hero-subtitle">
 That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator to compare 10+ hosting providers and see how much you'll ACTUALLY pay over time.
 </p>
 </div>
@@ -709,7 +706,7 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 <section class="calculator-section">
 <div class="container">
 <div class="section-header">
-<h2>🧮 True Cost Calculator</h2>
+        <h2>🧮 True Cost Calculator</h2>
 <p class="hero-subtitle">Compare 10+ providers and save <span class="savings-emphasis">HUNDREDS</span> on hidden renewal fees over 5 years</p>
 </div>
 
@@ -787,7 +784,7 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 <span class="provider-year1">$2.99/mo</span>
 </label>
 </div>
-<div class="provider-option">
+          <div class="provider-option">
 <input type="radio" id="greengeeks" name="provider" value="greengeeks">
 <label for="greengeeks" class="provider-label">
 <span class="provider-logo">🌱</span>
@@ -805,7 +802,7 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 </div>
 </div>
 
-<button class="calculate-btn" id="calculateBtn">
+<button class="calculate-btn" onclick="calculateCost()">
 Calculate True Cost 💰
 </button>
 
@@ -826,15 +823,7 @@ Calculate True Cost 💰
 <div class="savings-highlight">
 <div style="font-size: 1.5rem; margin-bottom: 1rem;">🎉 You Could Save</div>
 <span class="savings-amount" id="savingsAmount">$0</span>
-<div style="color: #cbd5e1; margin-bottom: 1.5rem;">by switching to price-locked hosting</div>
-<a href="https://www.interserver.net/r/956050" class="btn-primary" id="ctaButton" style="display: inline-flex; width: auto; font-size: 1.2rem; padding: 1.25rem 2.5rem; margin-top: 1rem;">
-🔒 Lock My Price with InterServer Now →
-</a>
-<div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-<button id="emailToolsBtn" style="background: none; border: none; color: #cbd5e1; text-decoration: underline; cursor: pointer; font-size: 0.9rem;">
-Or send me free migration tools first
-</button>
-</div>
+<div style="color: var(--text-dim);">by switching to price-locked hosting</div>
 </div>
 </div>
 </div>
@@ -846,7 +835,7 @@ Or send me free migration tools first
 <div class="cta-content">
 <h2 class="cta-title">Ready to Lock Your Price Forever?</h2>
 <p class="cta-subtitle">Join 50,000+ sites that never worry about renewal increases</p>
-<button class="btn-primary" id="mainCtaBtn">
+<button class="btn-primary" onclick="openEmailModal()">
 Get My Free Migration Checklist + Price Lock Deal 🎁
 </button>
 <div class="trust-indicators">
@@ -868,26 +857,29 @@ Get My Free Migration Checklist + Price Lock Deal 🎁
 
 <div class="email-modal" id="emailModal">
 <div class="email-modal-content">
-<button class="modal-close" id="modalCloseBtn">×</button>
-<h3>⚠️ Wait! Before You Go...</h3>
-<p style="margin-bottom: 1.5rem;">You're about to lose <strong style="color: #ff2d55;" id="modalSavings">$0</strong> in savings!</p>
+<button class="modal-close" onclick="closeEmailModal()">×</button>
+<h3>🎁 Choose Your Path</h3>
+<p style="margin-bottom: 1.5rem;">Lock in your price or get free tools first</p>
     
+<!-- Hot Buyer Section -->
 <div class="hot-buyer-section">
-<h4>🔥 Lock Your Price Right Now</h4>
-<p>Join 50,000+ sites that locked their hosting price forever</p>
-<a href="https://www.interserver.net/r/956050" class="btn-primary" id="modalSignupBtn">
-Get Price Lock Guarantee (30-Day Money Back) →
+<h4>🔥 Ready to Lock Your Price Now?</h4>
+<p>Get instant access to InterServer's price-lock guarantee</p>
+<a href="https://www.interserver.net/r/956050" class="btn-primary">
+Sign Up Now (Price Locked Forever) →
 </a>
 </div>
 
+<!-- Divider -->
 <div class="divider">
-<p style="color: #cbd5e1;">OR</p>
+<p style="color: var(--text-dim);">OR</p>
 </div>
 
+<!-- Cold Prospect Section -->
 <div style="margin-top: 1.5rem;">
-<p style="font-size: 1rem; margin-bottom: 1rem;">Not ready? Get free tools to help you switch:</p>
+<p style="font-size: 1rem; margin-bottom: 1rem;">Want free migration tools first?</p>
 <div class="bonus-list">
-<h4>We'll Send You:</h4>
+<h4>Get These Free:</h4>
 <ul>
 <li>Zero-downtime Migration Checklist</li>
 <li>TTFB Speed Test Tool</li>
@@ -895,10 +887,10 @@ Get Price Lock Guarantee (30-Day Money Back) →
 <li>Exclusive Price Lock Deal Link</li>
 </ul>
 </div>
-<form class="email-form" id="emailForm">
+<form class="email-form" onsubmit="submitEmail(event)">
 <input type="email" class="email-input" placeholder="Enter your email" required id="emailInput">
 <button type="submit" class="email-submit-btn">
-Send Free Tools 📧
+Send Free Tools + Sign Up Link 📧
 </button>
 </form>
 </div>
@@ -906,8 +898,7 @@ Send Free Tools 📧
 </div>
 
 <script>
-(function() {
-var providers = {
+const providers = {
 interserver: { name: 'InterServer', year1: 30.00, renewal: 30.00 },
 bluehost: { name: 'Bluehost', year1: 35.40, renewal: 155.88 },
 hostgator: { name: 'HostGator', year1: 33.00, renewal: 143.40 },
@@ -920,45 +911,34 @@ inmotion: { name: 'InMotion', year1: 35.88, renewal: 119.88 },
 greengeeks: { name: 'GreenGeeks', year1: 35.40, renewal: 143.88 }
 };
 
-var yearSlider = document.getElementById('years');
-var yearValue = document.getElementById('yearValue');
-var calculateBtn = document.getElementById('calculateBtn');
-var ctaButton = document.getElementById('ctaButton');
-var emailToolsBtn = document.getElementById('emailToolsBtn');
-var mainCtaBtn = document.getElementById('mainCtaBtn');
-var modalCloseBtn = document.getElementById('modalCloseBtn');
-var modalSignupBtn = document.getElementById('modalSignupBtn');
-var emailForm = document.getElementById('emailForm');
-var emailModal = document.getElementById('emailModal');
-
-var exitIntentShown = false;
+const yearSlider = document.getElementById('years');
+const yearValue = document.getElementById('yearValue');
 
 yearSlider.addEventListener('input', function() {
 yearValue.textContent = this.value;
 });
 
 function calculateCost() {
-var selectedProvider = document.querySelector('input[name="provider"]:checked').value;
-var years = parseInt(yearSlider.value);
-var provider = providers[selectedProvider];
+const selectedProvider = document.querySelector('input[name="provider"]:checked').value;
+const years = parseInt(yearSlider.value);
+const provider = providers[selectedProvider];
 
-var year1Cost = provider.year1;
-var renewalYears = years - 1;
-var renewalCost = provider.renewal * renewalYears;
-var totalCost = year1Cost + renewalCost;
+const year1Cost = provider.year1;
+const renewalYears = years - 1;
+const renewalCost = provider.renewal * renewalYears;
+const totalCost = year1Cost + renewalCost;
 
-var interserverTotal = providers.interserver.year1 * years;
-var savings = totalCost - interserverTotal;
+const interserverTotal = providers.interserver.year1 * years;
+const savings = totalCost - interserverTotal;
 
-document.getElementById('year1Cost').textContent = ' + year1Cost.toFixed(2);
-document.getElementById('renewalPrice').textContent = ' + provider.renewal.toFixed(2) + '/year';
-document.getElementById('totalCost').textContent = ' + totalCost.toFixed(2);
+document.getElementById('year1Cost').textContent = `$${year1Cost.toFixed(2)}`;
+document.getElementById('renewalPrice').textContent = `$${provider.renewal.toFixed(2)}/year`;
+document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
 
-var savingsSection = document.getElementById('savingsSection');
-
+const savingsSection = document.getElementById('savingsSection');
 if (selectedProvider !== 'interserver' && savings > 0) {
 savingsSection.style.display = 'block';
-document.getElementById('savingsAmount').textContent = ' + savings.toFixed(2);
+document.getElementById('savingsAmount').textContent = `${savings.toFixed(2)}`;
 } else {
 savingsSection.style.display = 'none';
 }
@@ -971,91 +951,38 @@ years: years,
 total: totalCost,
 savings: savings > 0 ? savings : 0
 };
+
+// Only show modal after they've calculated AND have significant savings
+// Wait 4 seconds to let the shock sink in
+if (selectedProvider !== 'interserver' && savings > 50) {
+setTimeout(() => {
+if (!sessionStorage.getItem('emailCaptured')) {
+openEmailModal();
+}
+}, 4000);
+}
 }
 
 function openEmailModal() {
-if (window.currentCalculation && window.currentCalculation.savings > 0) {
-var modalSavings = document.getElementById('modalSavings');
-if (modalSavings) {
-modalSavings.textContent = ' + window.currentCalculation.savings.toFixed(2);
-}
-}
-emailModal.classList.add('active');
-if (typeof sessionStorage !== 'undefined') {
-sessionStorage.setItem('exitIntentShown', 'true');
-}
+document.getElementById('emailModal').classList.add('active');
 }
 
 function closeEmailModal() {
-emailModal.classList.remove('active');
+document.getElementById('emailModal').classList.remove('active');
 }
 
 function submitEmail(event) {
 event.preventDefault();
-var email = document.getElementById('emailInput').value;
+const email = document.getElementById('emailInput').value;
 
-if (typeof sessionStorage !== 'undefined') {
+console.log('Email captured:', email);
 sessionStorage.setItem('emailCaptured', 'true');
+
+window.location.href = `https://www.interserver.net/r/956050?email=${encodeURIComponent(email)}`;
 }
-
-window.location.href = 'https://www.interserver.net/r/956050?email=' + encodeURIComponent(email);
-}
-
-calculateBtn.addEventListener('click', calculateCost);
-
-ctaButton.addEventListener('click', function() {
-if (typeof sessionStorage !== 'undefined') {
-sessionStorage.setItem('ctaClicked', 'true');
-}
-});
-
-emailToolsBtn.addEventListener('click', function() {
-if (typeof sessionStorage !== 'undefined') {
-sessionStorage.setItem('ctaClicked', 'true');
-}
-openEmailModal();
-});
-
-mainCtaBtn.addEventListener('click', function() {
-openEmailModal();
-});
-
-modalCloseBtn.addEventListener('click', closeEmailModal);
-
-modalSignupBtn.addEventListener('click', function() {
-if (typeof sessionStorage !== 'undefined') {
-sessionStorage.setItem('emailCaptured', 'true');
-}
-});
-
-emailForm.addEventListener('submit', submitEmail);
-
-document.addEventListener('mouseleave', function(e) {
-var ctaClicked = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('ctaClicked') : null;
-var emailCaptured = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('emailCaptured') : null;
-  
-if (e.clientY < 10 && !exitIntentShown && !ctaClicked && !emailCaptured) {
-if (window.currentCalculation && window.currentCalculation.savings > 50) {
-openEmailModal();
-exitIntentShown = true;
-}
-}
-});
-
-document.addEventListener('keydown', function(e) {
-var ctaClicked = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('ctaClicked') : null;
-var emailCaptured = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('emailCaptured') : null;
-  
-if (e.key === 'Escape' && !exitIntentShown && !ctaClicked && !emailCaptured) {
-if (window.currentCalculation && window.currentCalculation.savings > 50) {
-openEmailModal();
-exitIntentShown = true;
-}
-}
-});
 
 calculateCost();
-})();
 </script>
 </body>
 </html>
+
