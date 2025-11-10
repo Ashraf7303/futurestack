@@ -314,6 +314,201 @@ transform: translateY(0);
 }
 }
 
+.comparison-header {
+text-align: center;
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 2rem;
+padding-bottom: 1rem;
+border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.comparison-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2rem;
+margin-bottom: 2rem;
+}
+
+.comparison-card {
+padding: 2rem;
+border-radius: 16px;
+border: 2px solid;
+position: relative;
+}
+
+.comparison-card.competitor {
+background: rgba(239, 68, 68, 0.05);
+border-color: var(--danger);
+}
+
+.comparison-card.interserver {
+background: rgba(0, 255, 136, 0.05);
+border-color: var(--primary);
+}
+
+.comparison-badge {
+position: absolute;
+top: -12px;
+left: 50%;
+transform: translateX(-50%);
+padding: 0.5rem 1.5rem;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: 700;
+white-space: nowrap;
+}
+
+.comparison-badge.danger {
+background: var(--danger);
+color: white;
+}
+
+.comparison-badge.success {
+background: var(--primary);
+color: var(--darker);
+}
+
+.provider-comparison-name {
+font-size: 1.3rem;
+font-weight: 700;
+margin-bottom: 1.5rem;
+text-align: center;
+}
+
+.price-row {
+display: flex;
+justify-content: space-between;
+padding: 1rem 0;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-row:last-child {
+border-bottom: none;
+}
+
+.price-label {
+color: var(--text-dim);
+font-size: 0.9rem;
+}
+
+.price-value {
+font-weight: 700;
+font-size: 1.1rem;
+}
+
+.price-value.danger {
+color: var(--danger);
+}
+
+.price-value.success {
+color: var(--primary);
+}
+
+.total-comparison {
+margin-top: 1rem;
+padding-top: 1rem;
+border-top: 2px solid rgba(255, 255, 255, 0.2);
+font-size: 1.3rem;
+font-weight: 900;
+}
+
+.shock-cta {
+background: linear-gradient(135deg, rgba(255, 45, 85, 0.2) 0%, rgba(239, 68, 68, 0.2) 100%);
+border: 3px solid var(--secondary);
+border-radius: 20px;
+padding: 2.5rem;
+margin: 2rem 0;
+text-align: center;
+animation: ctaPulse 2s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+0%, 100% { 
+box-shadow: 0 0 0 0 rgba(255, 45, 85, 0.4);
+transform: scale(1);
+}
+50% { 
+box-shadow: 0 0 0 15px rgba(255, 45, 85, 0);
+transform: scale(1.02);
+}
+}
+
+.shock-headline {
+font-size: 2rem;
+font-weight: 900;
+margin-bottom: 1rem;
+color: var(--secondary);
+line-height: 1.2;
+}
+
+.shock-subtext {
+font-size: 1.2rem;
+color: var(--text-dim);
+margin-bottom: 2rem;
+}
+
+.savings-amount-big {
+font-size: 3.5rem;
+font-weight: 900;
+color: var(--primary);
+display: block;
+margin: 1rem 0;
+text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.cta-button-primary {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.75rem;
+padding: 1.75rem 3rem;
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+color: var(--darker);
+text-decoration: none;
+border-radius: 16px;
+font-size: 1.4rem;
+font-weight: 900;
+transition: all 0.3s ease;
+box-shadow: 0 15px 50px rgba(0, 255, 136, 0.5);
+border: none;
+cursor: pointer;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+
+.cta-button-primary:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 20px 60px rgba(0, 255, 136, 0.7);
+}
+
+.trust-row {
+display: flex;
+justify-content: center;
+gap: 2rem;
+margin-top: 1.5rem;
+flex-wrap: wrap;
+font-size: 0.9rem;
+color: var(--text-dim);
+}
+
+.trust-item {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.social-proof {
+background: rgba(0, 255, 136, 0.05);
+border: 1px solid rgba(0, 255, 136, 0.2);
+border-radius: 12px;
+padding: 1rem 1.5rem;
+margin-top: 1rem;
+text-align: center;
+font-size: 0.95rem;
+color: var(--text-dim);
+}
+
 .result-row {
 display: flex;
 justify-content: space-between;
@@ -325,285 +520,75 @@ border-radius: 12px;
 border-left: 4px solid transparent;
 }
 
-.result-row.total {
-background: rgba(0, 255, 136, 0.1);
-border-left-color: var(--primary);
-font-size: 1.2rem;
-font-weight: 700;
-}
-
-.result-row.warning {
-background: rgba(239, 68, 68, 0.1);
-border-left-color: var(--danger);
-}
-
-.result-label {
-font-weight: 600;
-display: flex;
-align-items: center;
-gap: 0.5rem;
-}
-
-.result-value {
-font-size: 1.5rem;
-font-weight: 900;
-color: var(--primary);
-}
-
-.result-value.danger {
-color: var(--danger);
-}
-
-.savings-highlight {
-text-align: center;
-padding: 2rem;
-background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
-border-radius: 16px;
-margin-top: 2rem;
-}
-
-.savings-amount {
-font-size: 3rem;
-font-weight: 900;
-color: var(--primary);
-display: block;
-margin-bottom: 0.5rem;
-}
-
-.email-modal {
-display: none;
+.sticky-cta {
 position: fixed;
-top: 0;
+bottom: 0;
 left: 0;
 right: 0;
-bottom: 0;
-background: rgba(0, 0, 0, 0.95);
-z-index: 3000;
-align-items: center;
-justify-content: center;
-backdrop-filter: blur(10px);
-}
-
-.email-modal.active {
-display: flex;
-animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-
-.email-modal-content {
 background: var(--card-bg);
-border: 2px solid var(--primary);
-border-radius: 24px;
-padding: 3rem;
-max-width: 550px;
-width: 90%;
-position: relative;
-animation: modalSlideIn 0.4s ease-out;
-max-height: 90vh;
-overflow-y: auto;
+backdrop-filter: blur(20px);
+border-top: 2px solid var(--primary);
+padding: 1.5rem;
+z-index: 1000;
+display: none;
+animation: slideUp 0.4s ease-out;
+box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes modalSlideIn {
+.sticky-cta.show {
+display: block;
+}
+
+@keyframes slideUp {
 from {
-opacity: 0;
-transform: translateY(-50px) scale(0.9);
+transform: translateY(100%);
 }
 to {
-opacity: 1;
-transform: translateY(0) scale(1);
+transform: translateY(0);
 }
 }
 
-.modal-close {
-position: absolute;
-top: 1rem;
-right: 1rem;
-background: none;
-border: none;
-color: var(--text-dim);
-font-size: 2rem;
-cursor: pointer;
-width: 40px;
-height: 40px;
+.sticky-cta-content {
+max-width: 1200px;
+margin: 0 auto;
 display: flex;
+justify-content: space-between;
 align-items: center;
-justify-content: center;
-border-radius: 50%;
-transition: all 0.3s ease;
-z-index: 1;
+gap: 2rem;
 }
 
-.modal-close:hover {
-background: rgba(255, 255, 255, 0.1);
-color: var(--text);
+.sticky-cta-text {
+flex: 1;
 }
 
-.email-modal h3 {
-font-size: 2rem;
-margin-bottom: 1rem;
-text-align: center;
-color: var(--primary);
+.sticky-cta-headline {
+font-size: 1.3rem;
+font-weight: 900;
+margin-bottom: 0.25rem;
 }
 
-.email-modal p {
+.sticky-cta-subtext {
 color: var(--text-dim);
-margin-bottom: 1.5rem;
-text-align: center;
-font-size: 1.1rem;
+font-size: 0.9rem;
 }
 
-.hot-buyer-section {
-background: rgba(0, 255, 136, 0.1);
-border: 2px solid var(--primary);
-border-radius: 12px;
-padding: 1.5rem;
-margin-bottom: 1.5rem;
-}
-
-.hot-buyer-section h4 {
-color: var(--primary);
-margin-bottom: 0.5rem;
-font-size: 1.2rem;
-}
-
-.hot-buyer-section p {
-font-size: 0.95rem;
-margin-bottom: 1rem;
-text-align: center;
-}
-
-.btn-primary {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 0.75rem;
-padding: 1.5rem 3rem;
+.sticky-cta-button {
+padding: 1.25rem 2.5rem;
 background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
 color: var(--darker);
 text-decoration: none;
 border-radius: 12px;
 font-size: 1.2rem;
 font-weight: 700;
+white-space: nowrap;
 transition: all 0.3s ease;
-box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
 border: none;
 cursor: pointer;
-width: 100%;
 }
 
-.btn-primary:hover {
+.sticky-cta-button:hover {
 transform: translateY(-3px);
-box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
-}
-
-.divider {
-text-align: center;
-margin: 1.5rem 0;
-position: relative;
-}
-
-.divider::before,
-.divider::after {
-content: '';
-position: absolute;
-top: 50%;
-width: 40%;
-height: 1px;
-background: rgba(255, 255, 255, 0.1);
-}
-
-.divider::before {
-left: 0;
-}
-
-.divider::after {
-right: 0;
-}
-
-.divider p {
-display: inline-block;
-padding: 0 1rem;
-font-size: 0.9rem;
-margin: 0;
-}
-
-.email-form {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-}
-
-.email-input {
-padding: 1.25rem;
-background: rgba(255, 255, 255, 0.05);
-border: 2px solid rgba(255, 255, 255, 0.1);
-border-radius: 12px;
-color: var(--text);
-font-size: 1rem;
-transition: all 0.3s ease;
-}
-
-.email-input:focus {
-outline: none;
-border-color: var(--primary);
-background: rgba(255, 255, 255, 0.08);
-}
-
-.email-submit-btn {
-padding: 1.25rem;
-background: rgba(255, 255, 255, 0.05);
-color: var(--text);
-border: 2px solid rgba(0, 255, 136, 0.3);
-border-radius: 12px;
-font-size: 1rem;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.3s ease;
-}
-
-.email-submit-btn:hover {
-background: rgba(0, 255, 136, 0.1);
-border-color: var(--primary);
-}
-
-.bonus-list {
-background: rgba(0, 0, 0, 0.2);
-border: 1px solid rgba(0, 255, 136, 0.2);
-border-radius: 12px;
-padding: 1.5rem;
-margin: 1rem 0;
-}
-
-.bonus-list h4 {
-color: var(--primary);
-margin-bottom: 1rem;
-font-size: 1rem;
-text-align: left;
-}
-
-.bonus-list ul {
-list-style: none;
-}
-
-.bonus-list li {
-padding: 0.5rem 0;
-padding-left: 1.5rem;
-position: relative;
-color: var(--text-dim);
-font-size: 0.9rem;
-text-align: left;
-}
-
-.bonus-list li:before {
-content: '✓';
-position: absolute;
-left: 0;
-color: var(--primary);
-font-weight: 700;
+box-shadow: 0 10px 30px rgba(0, 255, 136, 0.5);
 }
 
 .cta-section {
@@ -639,17 +624,26 @@ margin-top: 2rem;
 flex-wrap: wrap;
 }
 
-.trust-item {
-display: flex;
-align-items: center;
-gap: 0.75rem;
-font-size: 0.95rem;
-color: var(--text-dim);
-}
-
 .trust-icon {
 font-size: 1.5rem;
 color: var(--primary);
+}
+
+@media (max-width: 968px) {
+.comparison-grid {
+grid-template-columns: 1fr;
+gap: 1.5rem;
+}
+
+.sticky-cta-content {
+flex-direction: column;
+text-align: center;
+gap: 1rem;
+}
+
+.sticky-cta-button {
+width: 100%;
+}
 }
 
 @media (max-width: 768px) {
@@ -671,17 +665,26 @@ flex-direction: column;
 text-align: center;
 }
 
-.email-modal-content {
+.shock-cta {
 padding: 2rem 1.5rem;
 }
 
-.hot-buyer-section {
-padding: 1.25rem;
+.shock-headline {
+font-size: 1.5rem;
 }
 
-.btn-primary {
-padding: 1.25rem 2rem;
-font-size: 1rem;
+.savings-amount-big {
+font-size: 2.5rem;
+}
+
+.cta-button-primary {
+padding: 1.5rem 2rem;
+font-size: 1.1rem;
+width: 100%;
+}
+
+.trust-row {
+gap: 1rem;
 }
 }
 </style>
@@ -697,7 +700,7 @@ font-size: 1rem;
 Most Hosts <span class="highlight">Double Their Prices</span><br>
 After Year 1
 </h1>
-        <p class="hero-subtitle">
+<p class="hero-subtitle">
 That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator to compare 10+ hosting providers and see how much you'll ACTUALLY pay over time.
 </p>
 </div>
@@ -706,14 +709,14 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 <section class="calculator-section">
 <div class="container">
 <div class="section-header">
-        <h2>🧮 True Cost Calculator</h2>
+<h2>🧮 True Cost Calculator</h2>
 <p class="hero-subtitle">Compare 10+ providers and save <span class="savings-emphasis">HUNDREDS</span> on hidden renewal fees over 5 years</p>
 </div>
 
 <div class="calculator-card">
 <div class="provider-grid">
 <div class="provider-option">
-<input type="radio" id="interserver" name="provider" value="interserver" checked>
+<input type="radio" id="interserver" name="provider" value="interserver">
 <label for="interserver" class="provider-label">
 <span class="provider-logo">🔒</span>
 <span class="provider-name">InterServer</span>
@@ -721,7 +724,7 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 </label>
 </div>
 <div class="provider-option">
-<input type="radio" id="bluehost" name="provider" value="bluehost">
+<input type="radio" id="bluehost" name="provider" value="bluehost" checked>
 <label for="bluehost" class="provider-label">
 <span class="provider-logo">🔵</span>
 <span class="provider-name">Bluehost</span>
@@ -784,7 +787,7 @@ That "$2.99/month" deal? It becomes $12.99/month on renewal. Use our calculator 
 <span class="provider-year1">$2.99/mo</span>
 </label>
 </div>
-          <div class="provider-option">
+<div class="provider-option">
 <input type="radio" id="greengeeks" name="provider" value="greengeeks">
 <label for="greengeeks" class="provider-label">
 <span class="provider-logo">🌱</span>
@@ -807,23 +810,70 @@ Calculate True Cost 💰
 </button>
 
 <div id="results" class="results">
-<div class="result-row">
-<div class="result-label">📅 Year 1 Cost</div>
-<div class="result-value" id="year1Cost">$0.00</div>
+<div class="comparison-header">
+<span id="comparisonTitle">Your Calculation Results</span>
 </div>
-<div class="result-row warning">
-<div class="result-label">⚠️ Renewal Price (Years 2+)</div>
-<div class="result-value danger" id="renewalPrice">$0.00</div>
+
+<div class="comparison-grid">
+<div class="comparison-card competitor">
+<div class="comparison-badge danger">❌ PRICE INCREASES</div>
+<div class="provider-comparison-name" id="competitorName">Provider</div>
+<div class="price-row">
+<span class="price-label">Year 1 Price</span>
+<span class="price-value success" id="compYear1">$0.00</span>
 </div>
-<div class="result-row total">
-<div class="result-label">💰 TOTAL COST</div>
-<div class="result-value" id="totalCost">$0.00</div>
+<div class="price-row">
+<span class="price-label">Renewal Price</span>
+<span class="price-value danger" id="compRenewal">$0.00/year</span>
 </div>
+<div class="price-row">
+<span class="price-label">Price Increase</span>
+<span class="price-value danger" id="compIncrease">+0%</span>
+</div>
+<div class="price-row total-comparison">
+<span class="price-label">Total Cost</span>
+<span class="price-value danger" id="compTotal">$0.00</span>
+</div>
+</div>
+
+<div class="comparison-card interserver">
+<div class="comparison-badge success">✓ PRICE LOCKED</div>
+<div class="provider-comparison-name">InterServer</div>
+<div class="price-row">
+<span class="price-label">Year 1 Price</span>
+<span class="price-value success">$30.00</span>
+</div>
+<div class="price-row">
+<span class="price-label">Renewal Price</span>
+<span class="price-value success">$30.00/year</span>
+</div>
+<div class="price-row">
+<span class="price-label">Price Increase</span>
+<span class="price-value success">+0% FOREVER</span>
+</div>
+<div class="price-row total-comparison">
+<span class="price-label">Total Cost</span>
+<span class="price-value success" id="interTotal">$0.00</span>
+</div>
+</div>
+</div>
+
 <div id="savingsSection" style="display: none;">
-<div class="savings-highlight">
-<div style="font-size: 1.5rem; margin-bottom: 1rem;">🎉 You Could Save</div>
-<span class="savings-amount" id="savingsAmount">$0</span>
-<div style="color: var(--text-dim);">by switching to price-locked hosting</div>
+<div class="shock-cta">
+<div class="shock-headline">🚨 You're About To Overpay By</div>
+<span class="savings-amount-big" id="savingsAmount">$0</span>
+<div class="shock-subtext">Don't let <span id="providerNameShock">them</span> steal your money with hidden renewal fees!</div>
+<a href="https://www.interserver.net/r/956050" class="cta-button-primary" onclick="trackConversion('primary_cta')">
+🔒 Lock My Price at $30/Year Forever →
+</a>
+<div class="trust-row">
+<div class="trust-item">✓ Free Migration</div>
+<div class="trust-item">✓ 30-Day Guarantee</div>
+<div class="trust-item">✓ Price Never Increases</div>
+</div>
+<div class="social-proof">
+⚡ <strong>287 people</strong> locked their price this week
+</div>
 </div>
 </div>
 </div>
@@ -831,13 +881,26 @@ Calculate True Cost 💰
 </div>
 </section>
 
+<!-- Sticky CTA Bar -->
+<div id="stickyCta" class="sticky-cta">
+<div class="sticky-cta-content">
+<div class="sticky-cta-text">
+<div class="sticky-cta-headline">💰 Save <span id="stickySavings">$0</span> with Price Lock</div>
+<div class="sticky-cta-subtext">Stop overpaying. Lock your rate forever.</div>
+</div>
+<a href="https://www.interserver.net/r/956050" class="sticky-cta-button" onclick="trackConversion('sticky_cta')">
+Get Started Now →
+</a>
+</div>
+</div>
+
 <section class="cta-section">
 <div class="cta-content">
-<h2 class="cta-title">Ready to Lock Your Price Forever?</h2>
-<p class="cta-subtitle">Join 50,000+ sites that never worry about renewal increases</p>
-<button class="btn-primary" onclick="openEmailModal()">
-Get My Free Migration Checklist + Price Lock Deal 🎁
-</button>
+<h2 class="cta-title">Still Thinking About It?</h2>
+<p class="cta-subtitle">Every day you wait costs you money in renewal fees</p>
+<a href="https://www.interserver.net/r/956050" class="cta-button-primary" onclick="trackConversion('footer_cta')">
+🔒 Lock Your Price Forever (Risk-Free)
+</a>
 <div class="trust-indicators">
 <div class="trust-item">
 <span class="trust-icon">✓</span>
@@ -855,48 +918,6 @@ Get My Free Migration Checklist + Price Lock Deal 🎁
 </div>
 </section>
 
-<div class="email-modal" id="emailModal">
-<div class="email-modal-content">
-<button class="modal-close" onclick="closeEmailModal()">×</button>
-<h3>🎁 Choose Your Path</h3>
-<p style="margin-bottom: 1.5rem;">Lock in your price or get free tools first</p>
-    
-<!-- Hot Buyer Section -->
-<div class="hot-buyer-section">
-<h4>🔥 Ready to Lock Your Price Now?</h4>
-<p>Get instant access to InterServer's price-lock guarantee</p>
-<a href="https://www.interserver.net/r/956050" class="btn-primary">
-Sign Up Now (Price Locked Forever) →
-</a>
-</div>
-
-<!-- Divider -->
-<div class="divider">
-<p style="color: var(--text-dim);">OR</p>
-</div>
-
-<!-- Cold Prospect Section -->
-<div style="margin-top: 1.5rem;">
-<p style="font-size: 1rem; margin-bottom: 1rem;">Want free migration tools first?</p>
-<div class="bonus-list">
-<h4>Get These Free:</h4>
-<ul>
-<li>Zero-downtime Migration Checklist</li>
-<li>TTFB Speed Test Tool</li>
-<li>3-Year Cost Comparison Sheet</li>
-<li>Exclusive Price Lock Deal Link</li>
-</ul>
-</div>
-<form class="email-form" onsubmit="submitEmail(event)">
-<input type="email" class="email-input" placeholder="Enter your email" required id="emailInput">
-<button type="submit" class="email-submit-btn">
-Send Free Tools + Sign Up Link 📧
-</button>
-</form>
-</div>
-</div>
-</div>
-
 <script>
 const providers = {
 interserver: { name: 'InterServer', year1: 30.00, renewal: 30.00 },
@@ -913,9 +934,24 @@ greengeeks: { name: 'GreenGeeks', year1: 35.40, renewal: 143.88 }
 
 const yearSlider = document.getElementById('years');
 const yearValue = document.getElementById('yearValue');
+const stickyCta = document.getElementById('stickyCta');
 
 yearSlider.addEventListener('input', function() {
 yearValue.textContent = this.value;
+});
+
+// Show sticky CTA when user scrolls past results
+let hasCalculated = false;
+window.addEventListener('scroll', function() {
+if (hasCalculated) {
+const resultsSection = document.getElementById('results');
+const resultsBottom = resultsSection.offsetTop + resultsSection.offsetHeight;
+if (window.scrollY > resultsBottom - window.innerHeight) {
+stickyCta.classList.add('show');
+} else {
+stickyCta.classList.remove('show');
+}
+}
 });
 
 function calculateCost() {
@@ -930,59 +966,47 @@ const totalCost = year1Cost + renewalCost;
 
 const interserverTotal = providers.interserver.year1 * years;
 const savings = totalCost - interserverTotal;
+const priceIncrease = ((provider.renewal - provider.year1) / provider.year1 * 100).toFixed(0);
 
-document.getElementById('year1Cost').textContent = `$${year1Cost.toFixed(2)}`;
-document.getElementById('renewalPrice').textContent = `$${provider.renewal.toFixed(2)}/year`;
-document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
+// Update comparison cards
+document.getElementById('competitorName').textContent = provider.name;
+document.getElementById('compYear1').textContent = `${year1Cost.toFixed(2)}`;
+document.getElementById('compRenewal').textContent = `${provider.renewal.toFixed(2)}/year`;
+document.getElementById('compIncrease').textContent = `+${priceIncrease}%`;
+document.getElementById('compTotal').textContent = `${totalCost.toFixed(2)}`;
+document.getElementById('interTotal').textContent = `${interserverTotal.toFixed(2)}`;
 
+// Update savings section
 const savingsSection = document.getElementById('savingsSection');
 if (selectedProvider !== 'interserver' && savings > 0) {
 savingsSection.style.display = 'block';
 document.getElementById('savingsAmount').textContent = `${savings.toFixed(2)}`;
+document.getElementById('stickySavings').textContent = `${savings.toFixed(2)}`;
+document.getElementById('providerNameShock').textContent = provider.name;
 } else {
 savingsSection.style.display = 'none';
 }
 
 document.getElementById('results').classList.add('show');
+hasCalculated = true;
 
-window.currentCalculation = {
-provider: provider.name,
-years: years,
-total: totalCost,
-savings: savings > 0 ? savings : 0
-};
-
-// Only show modal after they've calculated AND have significant savings
-// Wait 4 seconds to let the shock sink in
-if (selectedProvider !== 'interserver' && savings > 50) {
+// Scroll to results smoothly
 setTimeout(() => {
-if (!sessionStorage.getItem('emailCaptured')) {
-openEmailModal();
-}
-}, 4000);
-}
-}
-
-function openEmailModal() {
-document.getElementById('emailModal').classList.add('active');
+document.getElementById('results').scrollIntoView({ 
+behavior: 'smooth', 
+block: 'nearest' 
+});
+}, 300);
 }
 
-function closeEmailModal() {
-document.getElementById('emailModal').classList.remove('active');
+function trackConversion(source) {
+console.log('Conversion clicked from:', source);
+// Add your analytics tracking here
+// gtag('event', 'click', { 'event_category': 'CTA', 'event_label': source });
 }
 
-function submitEmail(event) {
-event.preventDefault();
-const email = document.getElementById('emailInput').value;
-
-console.log('Email captured:', email);
-sessionStorage.setItem('emailCaptured', 'true');
-
-window.location.href = `https://www.interserver.net/r/956050?email=${encodeURIComponent(email)}`;
-}
-
+// Calculate on page load to show default comparison
 calculateCost();
 </script>
 </body>
 </html>
-
