@@ -1146,20 +1146,10 @@ const yearSlider = document.getElementById('years');
 const yearValue = document.getElementById('yearValue');
 const stickyCta = document.getElementById('stickyCta');
 const exitModal = document.getElementById('exitModal');
-const stickyCtaBtn = document.getElementById('stickyCtaBtn');
 
 let hasCalculated = false;
 let exitIntentShown = false;
 let mouseLeaveTimeout = null;
-
-// Add click event to sticky CTA button
-if (stickyCtaBtn) {
-    stickyCtaBtn.addEventListener('click', function() {
-        exitModal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-        trackConversion('sticky_cta_email_popup');
-    });
-}
 
 yearSlider.addEventListener('input', function() {
     yearValue.textContent = this.value;
@@ -1214,6 +1204,12 @@ function showExitModal() {
     exitModal.classList.add('show');
     document.body.style.overflow = 'hidden';
     trackConversion('exit_intent_shown');
+}
+
+function openExitModalFromSticky() {
+    exitModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    trackConversion('sticky_cta_email_popup');
 }
 
 function closeExitModal() {
