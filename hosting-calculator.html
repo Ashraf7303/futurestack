@@ -262,6 +262,16 @@ cursor: pointer;
 box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
 }
 
+.input-wrapper input[type="range"]::-moz-range-thumb {
+width: 24px;
+height: 24px;
+border-radius: 50%;
+background: var(--primary);
+cursor: pointer;
+box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+border: none;
+}
+
 .year-display {
 font-size: 2rem;
 font-weight: 900;
@@ -509,17 +519,6 @@ font-size: 0.95rem;
 color: var(--text-dim);
 }
 
-.result-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem;
-margin-bottom: 1rem;
-background: rgba(255, 255, 255, 0.03);
-border-radius: 12px;
-border-left: 4px solid transparent;
-}
-
 .sticky-cta {
 position: fixed;
 bottom: 0;
@@ -629,6 +628,231 @@ font-size: 1.5rem;
 color: var(--primary);
 }
 
+.exit-modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.9);
+backdrop-filter: blur(10px);
+z-index: 10000;
+display: none;
+align-items: center;
+justify-content: center;
+animation: fadeIn 0.3s ease-out;
+}
+
+.exit-modal-overlay.show {
+display: flex;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+.exit-modal {
+background: linear-gradient(135deg, var(--card-bg) 0%, rgba(26, 20, 56, 0.98) 100%);
+border: 3px solid var(--primary);
+border-radius: 24px;
+max-width: 600px;
+width: 90%;
+padding: 3rem;
+position: relative;
+box-shadow: 0 30px 80px rgba(0, 255, 136, 0.3);
+animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+from {
+transform: translateY(-50px) scale(0.9);
+opacity: 0;
+}
+to {
+transform: translateY(0) scale(1);
+opacity: 1;
+}
+}
+
+.exit-modal-close {
+position: absolute;
+top: 1.5rem;
+right: 1.5rem;
+background: rgba(255, 255, 255, 0.1);
+border: 2px solid rgba(255, 255, 255, 0.2);
+color: var(--text);
+font-size: 1.5rem;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s ease;
+}
+
+.exit-modal-close:hover {
+background: var(--danger);
+border-color: var(--danger);
+transform: rotate(90deg);
+}
+
+.exit-modal-icon {
+font-size: 4rem;
+text-align: center;
+margin-bottom: 1.5rem;
+animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+
+.exit-modal-title {
+font-size: 2.5rem;
+font-weight: 900;
+text-align: center;
+margin-bottom: 1rem;
+line-height: 1.2;
+background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.exit-modal-subtitle {
+font-size: 1.2rem;
+text-align: center;
+color: var(--text-dim);
+margin-bottom: 2rem;
+}
+
+.exit-modal-benefits {
+background: rgba(0, 255, 136, 0.05);
+border: 2px solid rgba(0, 255, 136, 0.2);
+border-radius: 16px;
+padding: 1.5rem;
+margin-bottom: 2rem;
+}
+
+.exit-modal-benefits h3 {
+font-size: 1.1rem;
+font-weight: 700;
+margin-bottom: 1rem;
+color: var(--primary);
+text-align: center;
+}
+
+.benefit-list {
+display: grid;
+gap: 0.75rem;
+}
+
+.benefit-item {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+font-size: 0.95rem;
+color: var(--text-dim);
+}
+
+.benefit-icon {
+color: var(--primary);
+font-size: 1.2rem;
+flex-shrink: 0;
+}
+
+.exit-modal-form {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.exit-modal-input {
+padding: 1.25rem;
+background: rgba(255, 255, 255, 0.05);
+border: 2px solid rgba(255, 255, 255, 0.1);
+border-radius: 12px;
+color: var(--text);
+font-size: 1rem;
+transition: all 0.3s ease;
+}
+
+.exit-modal-input:focus {
+outline: none;
+border-color: var(--primary);
+background: rgba(255, 255, 255, 0.08);
+box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.exit-modal-input::placeholder {
+color: rgba(203, 213, 225, 0.5);
+}
+
+.exit-modal-submit {
+padding: 1.5rem;
+background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+color: var(--darker);
+border: none;
+border-radius: 12px;
+font-size: 1.2rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+
+.exit-modal-submit:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+}
+
+.exit-modal-footer {
+margin-top: 1.5rem;
+text-align: center;
+font-size: 0.85rem;
+color: var(--text-dim);
+}
+
+.exit-modal-footer span {
+color: var(--primary);
+font-weight: 600;
+}
+
+.success-message {
+display: none;
+text-align: center;
+padding: 2rem;
+}
+
+.success-message.show {
+display: block;
+animation: fadeIn 0.5s ease-out;
+}
+
+.success-icon {
+font-size: 5rem;
+margin-bottom: 1rem;
+}
+
+.success-title {
+font-size: 2rem;
+font-weight: 900;
+color: var(--primary);
+margin-bottom: 1rem;
+}
+
+.success-text {
+font-size: 1.1rem;
+color: var(--text-dim);
+margin-bottom: 2rem;
+}
+
 @media (max-width: 968px) {
 .comparison-grid {
 grid-template-columns: 1fr;
@@ -685,6 +909,18 @@ width: 100%;
 
 .trust-row {
 gap: 1rem;
+}
+
+.exit-modal {
+padding: 2rem 1.5rem;
+}
+
+.exit-modal-title {
+font-size: 1.8rem;
+}
+
+.exit-modal-subtitle {
+font-size: 1rem;
 }
 }
 </style>
@@ -881,16 +1117,15 @@ Calculate True Cost 💰
 </div>
 </section>
 
-<!-- Sticky CTA Bar -->
 <div id="stickyCta" class="sticky-cta">
 <div class="sticky-cta-content">
 <div class="sticky-cta-text">
 <div class="sticky-cta-headline">💰 Save <span id="stickySavings">$0</span> with Price Lock</div>
-<div class="sticky-cta-subtext">Stop overpaying. Lock your rate forever.</div>
+<div class="sticky-cta-subtext">Get FREE tools + migration guide before you switch</div>
 </div>
-<a href="https://www.interserver.net/r/956050" class="sticky-cta-button" onclick="trackConversion('sticky_cta')">
-Get Started Now →
-</a>
+<button class="sticky-cta-button" id="stickyCtaBtn">
+Get Free Tools & Save Money →
+</button>
 </div>
 </div>
 
@@ -918,6 +1153,81 @@ Get Started Now →
 </div>
 </section>
 
+<div id="exitModal" class="exit-modal-overlay">
+<div class="exit-modal">
+<button class="exit-modal-close" onclick="closeExitModal()">×</button>
+
+<div id="modalForm">
+<div class="exit-modal-icon">⚠️</div>
+<h2 class="exit-modal-title">Before You Go...</h2>
+<p class="exit-modal-subtitle">Get Our FREE Website Optimization Toolkit (Worth $297)</p>
+
+<div class="exit-modal-benefits">
+<h3>📦 Instant Access to Premium Tools & Guides:</h3>
+<div class="benefit-list">
+<div class="benefit-item">
+<span class="benefit-icon">⚡</span>
+<span><strong>FREE Site Speed Testing Tool</strong> - Professional performance analyzer (saves $97)</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">🔄</span>
+<span><strong>FREE Migration Guide PDF</strong> - Zero-downtime host switching blueprint (saves $47)</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">💰</span>
+<span><strong>Hosting Cost Calculator Spreadsheet</strong> - Never overpay again (saves $29)</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">🛡️</span>
+<span><strong>Website Security Checklist</strong> - Protect against hackers (saves $67)</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">📈</span>
+<span><strong>Performance Boost Guide</strong> - Double your site speed (saves $57)</span>
+</div>
+</div>
+</div>
+
+<div class="exit-modal-form">
+<input 
+type="text" 
+id="exitName" 
+class="exit-modal-input" 
+placeholder="Your First Name"
+required
+>
+<input 
+type="email" 
+id="exitEmail" 
+class="exit-modal-input" 
+placeholder="Your Best Email Address"
+required
+>
+<button class="exit-modal-submit" onclick="submitExitForm()">
+✅ YES! Send Me The FREE Tools & Guides
+</button>
+</div>
+
+<div class="exit-modal-footer">
+🔒 We respect your privacy. Unsubscribe anytime. Join <span>12,847+ smart website owners</span>
+</div>
+</div>
+
+<div id="successMessage" class="success-message">
+<div class="success-icon">✅</div>
+<h3 class="success-title">Check Your Email!</h3>
+<p class="success-text">We've sent your FREE tools, guides, and exclusive hosting discount to your inbox. Check your email now!</p>
+<p class="success-text" style="margin-top: 1rem; font-size: 1rem;">
+<strong>Want to lock your price NOW?</strong><br>
+Click below to get started with price-lock hosting:
+</p>
+<a href="https://www.interserver.net/r/956050" class="cta-button-primary" onclick="trackConversion('exit_intent_affiliate'); closeExitModal();" style="margin-top: 1rem;">
+🔒 Lock My Price Forever →
+</a>
+</div>
+</div>
+</div>
+
 <script>
 const providers = {
 interserver: { name: 'InterServer', year1: 30.00, renewal: 30.00 },
@@ -935,13 +1245,25 @@ greengeeks: { name: 'GreenGeeks', year1: 35.40, renewal: 143.88 }
 const yearSlider = document.getElementById('years');
 const yearValue = document.getElementById('yearValue');
 const stickyCta = document.getElementById('stickyCta');
+const exitModal = document.getElementById('exitModal');
+const stickyCtaBtn = document.getElementById('stickyCtaBtn');
+
+let hasCalculated = false;
+let exitIntentShown = false;
+let mouseLeaveTimeout = null;
+
+if (stickyCtaBtn) {
+stickyCtaBtn.addEventListener('click', function() {
+exitModal.classList.add('show');
+document.body.style.overflow = 'hidden';
+trackConversion('sticky_cta_email_popup');
+});
+}
 
 yearSlider.addEventListener('input', function() {
 yearValue.textContent = this.value;
 });
 
-// Show sticky CTA when user scrolls past results
-let hasCalculated = false;
 window.addEventListener('scroll', function() {
 if (hasCalculated) {
 const resultsSection = document.getElementById('results');
@@ -954,10 +1276,99 @@ stickyCta.classList.remove('show');
 }
 });
 
+document.addEventListener('mouseleave', function(e) {
+if (e.clientY <= 0 && !exitIntentShown && hasCalculated) {
+clearTimeout(mouseLeaveTimeout);
+mouseLeaveTimeout = setTimeout(() => {
+showExitModal();
+}, 300);
+}
+});
+
+let lastScrollTop = 0;
+let scrollUpCount = 0;
+window.addEventListener('scroll', function() {
+if (!exitIntentShown && hasCalculated) {
+const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+if (scrollTop < lastScrollTop) {
+scrollUpCount++;
+if (scrollUpCount > 3 && scrollTop < 200) {
+showExitModal();
+}
+} else {
+scrollUpCount = 0;
+}
+
+lastScrollTop = scrollTop;
+}
+});
+
+function showExitModal() {
+exitIntentShown = true;
+exitModal.classList.add('show');
+document.body.style.overflow = 'hidden';
+trackConversion('exit_intent_shown');
+}
+
+function closeExitModal() {
+exitModal.classList.remove('show');
+document.body.style.overflow = 'auto';
+
+document.getElementById('modalForm').style.display = 'block';
+document.getElementById('successMessage').classList.remove('show');
+document.getElementById('exitName').value = '';
+document.getElementById('exitEmail').value = '';
+}
+
+exitModal.addEventListener('click', function(e) {
+if (e.target === exitModal) {
+closeExitModal();
+}
+});
+
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape' && exitIntentShown) {
+closeExitModal();
+}
+});
+
+function submitExitForm() {
+const name = document.getElementById('exitName').value.trim();
+const email = document.getElementById('exitEmail').value.trim();
+
+if (!name || !email) {
+alert('Please fill in all fields');
+return;
+}
+
+if (!email.includes('@') || !email.includes('.')) {
+alert('Please enter a valid email address');
+return;
+}
+
+console.log('Exit Intent Form Submitted:', { name, email });
+
+trackConversion('exit_intent_email_submitted');
+
+document.getElementById('modalForm').style.display = 'none';
+document.getElementById('successMessage').classList.add('show');
+}
+
 function calculateCost() {
-const selectedProvider = document.querySelector('input[name="provider"]:checked').value;
+const selectedProviderElement = document.querySelector('input[name="provider"]:checked');
+if (!selectedProviderElement) {
+console.error('No provider selected');
+return;
+}
+const selectedProvider = selectedProviderElement.value;
 const years = parseInt(yearSlider.value);
 const provider = providers[selectedProvider];
+
+if (!provider) {
+console.error('Provider not found:', selectedProvider);
+return;
+}
 
 const year1Cost = provider.year1;
 const renewalYears = years - 1;
@@ -968,7 +1379,6 @@ const interserverTotal = providers.interserver.year1 * years;
 const savings = totalCost - interserverTotal;
 const priceIncrease = ((provider.renewal - provider.year1) / provider.year1 * 100).toFixed(0);
 
-// Update comparison cards
 document.getElementById('competitorName').textContent = provider.name;
 document.getElementById('compYear1').textContent = `${year1Cost.toFixed(2)}`;
 document.getElementById('compRenewal').textContent = `${provider.renewal.toFixed(2)}/year`;
@@ -976,7 +1386,6 @@ document.getElementById('compIncrease').textContent = `+${priceIncrease}%`;
 document.getElementById('compTotal').textContent = `${totalCost.toFixed(2)}`;
 document.getElementById('interTotal').textContent = `${interserverTotal.toFixed(2)}`;
 
-// Update savings section
 const savingsSection = document.getElementById('savingsSection');
 if (selectedProvider !== 'interserver' && savings > 0) {
 savingsSection.style.display = 'block';
@@ -990,7 +1399,6 @@ savingsSection.style.display = 'none';
 document.getElementById('results').classList.add('show');
 hasCalculated = true;
 
-// Scroll to results smoothly
 setTimeout(() => {
 document.getElementById('results').scrollIntoView({ 
 behavior: 'smooth', 
@@ -1001,12 +1409,18 @@ block: 'nearest'
 
 function trackConversion(source) {
 console.log('Conversion clicked from:', source);
-// Add your analytics tracking here
-// gtag('event', 'click', { 'event_category': 'CTA', 'event_label': source });
 }
 
-// Calculate on page load to show default comparison
+window.addEventListener('DOMContentLoaded', function() {
+const defaultProvider = document.getElementById('bluehost');
+if (defaultProvider && !document.querySelector('input[name="provider"]:checked')) {
+defaultProvider.checked = true;
+}
+
+setTimeout(() => {
 calculateCost();
+}, 200);
+});
 </script>
 </body>
 </html>
