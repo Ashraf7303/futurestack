@@ -1415,6 +1415,79 @@ body {
         </div>
     </section>
 
+    <!-- Email Capture Section (NEW - Above Featured) -->
+    <section class="section" style="padding: 80px 0; background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 212, 255, 0.05) 100%);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; background: var(--card-bg); border: 3px solid var(--primary); border-radius: 24px; padding: 3rem; text-align: center; box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🎁</div>
+                <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Get FREE Hosting Tools Worth $297
+                </h2>
+                <p style="font-size: 1.2rem; color: var(--text-dim); margin-bottom: 2rem;">
+                    Speed test tool, migration checklist, cost calculator + exclusive price-lock deal
+                </p>
+                
+                <div style="background: rgba(0, 255, 136, 0.1); border: 2px solid rgba(0, 255, 136, 0.3); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <span style="color: var(--primary); font-size: 1.5rem;">⚡</span>
+                            <span style="font-size: 0.95rem;">Website Speed Test Tool</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <span style="color: var(--primary); font-size: 1.5rem;">🔄</span>
+                            <span style="font-size: 0.95rem;">Migration Checklist PDF</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <span style="color: var(--primary); font-size: 1.5rem;">💰</span>
+                            <span style="font-size: 0.95rem;">5-Year Cost Calculator</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <span style="color: var(--primary); font-size: 1.5rem;">🔒</span>
+                            <span style="font-size: 0.95rem;">Exclusive Price Lock Deal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="emailCaptureForm" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 0 auto;">
+                    <input 
+                        type="text" 
+                        id="mainName" 
+                        placeholder="Your First Name" 
+                        required
+                        style="padding: 1.25rem; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: var(--text); font-size: 1rem;"
+                    >
+                    <input 
+                        type="email" 
+                        id="mainEmail" 
+                        placeholder="Your Best Email" 
+                        required
+                        style="padding: 1.25rem; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: var(--text); font-size: 1rem;"
+                    >
+                    <button 
+                        type="submit"
+                        class="btn btn-primary" 
+                        style="width: 100%; font-size: 1.2rem; padding: 1.5rem; justify-content: center;"
+                    >
+                        ✅ Send Me The FREE Tools
+                    </button>
+                </form>
+                
+                <div id="emailSuccessMessage" style="display: none; padding: 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+                    <h3 style="font-size: 2rem; font-weight: 900; color: var(--primary); margin-bottom: 1rem;">Check Your Email!</h3>
+                    <p style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 2rem;">We've sent your FREE tools and exclusive discount. Check your inbox now!</p>
+                    <a href="hosting-calculator.html" class="btn btn-primary">
+                        💰 Calculate My Savings Now
+                    </a>
+                </div>
+                
+                <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                    🔒 100% Privacy. Unsubscribe anytime. Join 2,847+ smart site owners
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Featured Tools Section -->
     <section id="featured" class="section featured-section">
         <div class="container">
@@ -1748,6 +1821,78 @@ body {
                 link: AFFILIATE_LINK + "?utm_source=futurestack&utm_medium=website&utm_campaign=featured_tools",
                 featured: true,
                 special: false
+            },
+            {
+                name: "Hostinger",
+                category: "Web Hosting",
+                rating: 4.9,
+                price: "$2.99/mo",
+                description: "Lightning-fast web hosting with 99.9% uptime guarantee. Perfect for creators and small businesses.",
+                logo: "🚀",
+                pros: ["99.9% uptime", "24/7 support", "Free SSL", "Easy WordPress install"],
+                cons: ["Renewal price higher ($8.99/mo)", "Limited storage on basic plan"],
+                link: "#",
+                featured: true
+            },
+            {
+                name: "NordVPN",
+                category: "VPN & Security",
+                rating: 4.8,
+                price: "$3.49/mo",
+                description: "Military-grade encryption to protect your privacy online. 5000+ servers in 60 countries.",
+                logo: "🔒",
+                pros: ["No-log policy", "Fast speeds", "Kill switch", "6 devices"],
+                cons: ["Desktop app can be slow", "Some servers crowded"],
+                link: "#",
+                featured: true
+            },
+            {
+                name: "Notion",
+                category: "SaaS Platforms",
+                rating: 4.7,
+                price: "Free",
+                description: "All-in-one workspace for notes, tasks, wikis, and databases. Collaborate with your team.",
+                logo: "⚡",
+                pros: ["Highly customizable", "Great templates", "Free plan", "Cross-platform"],
+                cons: ["Learning curve", "Offline mode limited"],
+                link: "#",
+                featured: true
+            },
+            {
+                name: "Canva Pro",
+                category: "Digital Tools",
+                rating: 4.9,
+                price: "$12.99/mo",
+                description: "Professional design made simple. Create stunning graphics, presentations, and social media content.",
+                logo: "🎨",
+                pros: ["Huge template library", "Easy to use", "Brand kit", "Cloud storage"],
+                cons: ["Can get expensive", "Some features limited"],
+                link: "#",
+                featured: true
+            },
+            {
+                name: "Grammarly",
+                category: "Digital Tools",
+                rating: 4.6,
+                price: "$12/mo",
+                description: "AI-powered writing assistant that helps you write clearly and mistake-free across all platforms.",
+                logo: "✍️",
+                pros: ["Real-time checking", "Tone detector", "Plagiarism checker", "Browser extension"],
+                cons: ["Premium required for best features", "Can be intrusive"],
+                link: "#",
+                featured: false
+            },
+            {
+                name: "Mailchimp",
+                category: "SaaS Platforms",
+                rating: 4.5,
+                price: "Free",
+                description: "Email marketing platform with automation, analytics, and beautiful templates for your campaigns.",
+                logo: "📧",
+                pros: ["Free tier available", "Easy automation", "Good analytics", "Templates"],
+                cons: ["Expensive as you scale", "Limited customization"],
+                link: "#",
+                featured: false
             }
         ];
 
