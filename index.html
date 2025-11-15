@@ -1,15 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutureStack - Curated Digital Tools & Resources for Creators</title>
-    <meta name="description" content="Discover the best digital tools, SaaS platforms, and web services handpicked for productivity and creativity. Trusted by 10,000+ creators worldwide.">
+    <title>Stop Paying 400% More After Year 1 - Web Hosting Price Lock</title>
+    <meta name="description" content="Most hosts double their prices after year 1. Use our calculator to see how much you'll ACTUALLY pay - then lock your price forever at $2.50/month.">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Your Hosting Will Cost 4x More Next Year - Unless You Do This">
+    <meta property="og:description" content="Free calculator reveals your TRUE hosting cost over 5 years. Most people overpay by $500+">
+    <meta property="og:image" content="https://your-site.com/og-image.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Analytics - REPLACE WITH YOUR ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        
+        // Track affiliate clicks
+        function trackAffiliateClick(source) {
+            gtag('event', 'affiliate_click', {
+                'event_category': 'Conversion',
+                'event_label': source
+            });
+        }
+        
+        // Track calculator usage
+        function trackCalculatorUse() {
+            gtag('event', 'calculator_used', {
+                'event_category': 'Engagement',
+                'event_label': 'Main Page'
+            });
+        }
+        
+        // Track email capture
+        function trackEmailCapture(source) {
+            gtag('event', 'email_captured', {
+                'event_category': 'Lead',
+                'event_label': source
+            });
+        }
+    </script>
+    
     <style>
-/* ========== ENHANCED STYLES ========== */
-
-/* Reset & Base */
+/* ========== EXISTING STYLES (keeping all your original CSS) ========== */
 * {
     margin: 0;
     padding: 0;
@@ -17,35 +54,24 @@
 }
 
 :root {
-    /* Brand Colors - Enhanced with neon accents */
     --primary: #00ff88;
     --primary-dark: #00cc6a;
     --primary-glow: rgba(0, 255, 136, 0.4);
     --secondary: #667eea;
     --accent: #00d4ff;
     --accent-pink: #ff006e;
-    
-    /* Backgrounds */
     --dark: #0a0e27;
     --darker: #050816;
     --card-bg: rgba(15, 23, 42, 0.9);
     --card-hover: rgba(20, 30, 55, 0.95);
-    
-    /* Text */
     --text: #ffffff;
     --text-dim: #cbd5e1;
     --text-muted: #94a3b8;
-    
-    /* Status Colors */
     --success: #22c55e;
     --warning: #f59e0b;
     --danger: #ef4444;
-    
-    /* UI Elements */
     --border: rgba(255, 255, 255, 0.1);
     --border-hover: rgba(0, 255, 136, 0.3);
-    
-    /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
@@ -67,7 +93,7 @@ body {
     padding: 0 var(--spacing-md);
 }
 
-/* ========== NAVIGATION ========== */
+/* ========== NAVIGATION WITH STICKY CTA ========== */
 .nav {
     position: fixed;
     top: 0;
@@ -141,6 +167,12 @@ body {
     border-radius: 25px;
     font-weight: 700;
     box-shadow: 0 4px 15px var(--primary-glow);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 4px 15px var(--primary-glow); }
+    50% { box-shadow: 0 4px 25px rgba(0, 255, 136, 0.6); }
 }
 
 .nav-cta:hover {
@@ -148,7 +180,49 @@ body {
     box-shadow: 0 6px 20px var(--primary-glow);
 }
 
-/* ========== HERO SECTION ========== */
+/* ========== FLOATING CTA BUTTON (NEW) ========== */
+.floating-cta {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.floating-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.floating-cta-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+    color: var(--darker);
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
+    animation: float-bounce 3s ease-in-out infinite;
+}
+
+@keyframes float-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating-cta-button:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 255, 136, 0.7);
+}
+
+/* ========== HERO SECTION (Updated Headline) ========== */
 .hero {
     background: linear-gradient(135deg, #0a0e27 0%, #1a1438 50%, #0f0a2e 100%);
     padding: 140px 0 80px;
@@ -159,7 +233,6 @@ body {
     align-items: center;
 }
 
-/* Animated cyber grid */
 .hero::before {
     content: '';
     position: absolute;
@@ -177,7 +250,6 @@ body {
     100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
 }
 
-/* Glowing orbs */
 .hero::after {
     content: '';
     position: absolute;
@@ -189,6 +261,11 @@ body {
     border-radius: 50%;
     filter: blur(80px);
     animation: float 15s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, 50px); }
 }
 
 .hero-content {
@@ -204,10 +281,10 @@ body {
     align-items: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-xs) var(--spacing-md);
-    background: rgba(0, 255, 136, 0.1);
-    border: 2px solid var(--primary);
+    background: rgba(255, 45, 85, 0.15);
+    border: 2px solid #ff2d55;
     border-radius: 50px;
-    color: var(--primary);
+    color: #ff2d55;
     font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -217,8 +294,8 @@ body {
 }
 
 @keyframes glow {
-    from { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
-    to { box-shadow: 0 0 30px rgba(0, 255, 136, 0.6), 0 0 40px rgba(0, 255, 136, 0.3); }
+    from { box-shadow: 0 0 20px rgba(255, 45, 85, 0.3); }
+    to { box-shadow: 0 0 30px rgba(255, 45, 85, 0.6), 0 0 40px rgba(255, 45, 85, 0.3); }
 }
 
 .hero-title {
@@ -271,6 +348,8 @@ body {
     gap: var(--spacing-xs);
     position: relative;
     overflow: hidden;
+    border: none;
+    cursor: pointer;
 }
 
 .btn::before {
@@ -312,6 +391,322 @@ body {
     transform: translateY(-3px);
 }
 
+/* ========== SOCIAL PROOF NOTIFICATION (NEW) ========== */
+.social-proof-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transform: translateX(-400px);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-proof-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.social-proof-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.social-proof-text {
+    flex: 1;
+}
+
+.social-proof-name {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 2px;
+}
+
+.social-proof-action {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.social-proof-time {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ========== LIVE COUNTER (NEW) ========== */
+.live-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 255, 136, 0.1);
+    border: 2px solid var(--primary);
+    padding: 12px 24px;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.live-counter-pulse {
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.live-counter-number {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.live-counter-text {
+    color: var(--text-dim);
+    font-weight: 600;
+}
+
+/* ========== EXIT INTENT MODAL (NEW) ========== */
+.exit-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.exit-modal-overlay.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.exit-modal {
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(26, 20, 56, 0.98) 100%);
+    border: 3px solid var(--primary);
+    border-radius: 24px;
+    max-width: 600px;
+    width: 90%;
+    padding: 3rem;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 255, 136, 0.3);
+    animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.exit-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.exit-modal-close:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    transform: rotate(90deg);
+}
+
+.exit-modal-icon {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.exit-modal-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.exit-modal-subtitle {
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+}
+
+.exit-modal-benefits {
+    background: rgba(0, 255, 136, 0.05);
+    border: 2px solid rgba(0, 255, 136, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.exit-modal-benefits h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.benefit-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+}
+
+.benefit-icon {
+    color: var(--primary);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.exit-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exit-modal-input {
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.exit-modal-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.exit-modal-input::placeholder {
+    color: rgba(203, 213, 225, 0.5);
+}
+
+.exit-modal-submit {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
+    color: var(--darker);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.exit-modal-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+}
+
+.exit-modal-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.exit-modal-footer span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.success-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.success-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.success-text {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+}
+
+/* ... (Keep all your existing styles for sections, cards, etc.) ... */
+
 .hero-stats {
     display: flex;
     justify-content: center;
@@ -350,7 +745,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* ========== SECTIONS ========== */
 .section {
     padding: 80px 0;
     position: relative;
@@ -376,7 +770,6 @@ body {
     color: var(--text-dim);
 }
 
-/* ========== CATEGORY FILTER ========== */
 .categories-section {
     background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
 }
@@ -413,7 +806,6 @@ body {
     box-shadow: 0 5px 20px var(--primary-glow);
 }
 
-/* ========== TOOLS CONTROLS ========== */
 .tools-header {
     display: flex;
     justify-content: space-between;
@@ -484,7 +876,6 @@ body {
     box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
 }
 
-/* ========== TOOLS GRID ========== */
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -671,7 +1062,6 @@ body {
     box-shadow: 0 6px 20px var(--primary-glow);
 }
 
-/* ========== LOADING SPINNER ========== */
 .loading-spinner {
     border: 4px solid var(--border);
     border-top: 4px solid var(--primary);
@@ -687,7 +1077,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* ========== FOOTER ========== */
 .footer {
     background: var(--dark);
     color: var(--text);
@@ -800,17 +1189,29 @@ body {
         flex-direction: column;
         gap: 30px;
     }
-}
-
-/* ========== ACCESSIBILITY ========== */
-@media (prefers-contrast: high) {
-    :root {
-        --primary: #00ff00;
-        --accent: #00ffff;
+    
+    .floating-cta {
+        bottom: 20px;
+        right: 20px;
     }
     
-    .tool-card {
-        border-width: 3px;
+    .floating-cta-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .social-proof-notification {
+        bottom: 20px;
+        left: 20px;
+        padding: 12px 16px;
+    }
+    
+    .exit-modal {
+        padding: 2rem 1.5rem;
+    }
+    
+    .exit-modal-title {
+        font-size: 1.8rem;
     }
 }
 
@@ -824,7 +1225,6 @@ body {
     }
 }
 
-/* Focus visible for keyboard navigation */
 *:focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 4px;
@@ -841,71 +1241,187 @@ body {
                     <span class="logo-text">FutureStack</span>
                 </a>
                 <div class="nav-links">
-                    <a href="#tools" class="nav-link">Tools</a>
-                    <a href="#categories" class="nav-link">Categories</a>
+                    <a href="#calculator" class="nav-link">Calculator</a>
                     <a href="#featured" class="nav-link">Featured</a>
-                    <a href="#tools" class="nav-link nav-cta">Get Started</a>
+                    <a href="hosting-calculator.html" class="nav-link nav-cta">💰 Calculate Savings</a>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- Floating CTA Button -->
+    <div class="floating-cta" id="floatingCta">
+        <button class="floating-cta-button" onclick="window.location.href='hosting-calculator.html'">
+            💰 Calculate My Savings
+        </button>
+    </div>
+
+    <!-- Social Proof Notification -->
+    <div class="social-proof-notification" id="socialProof">
+        <div class="social-proof-avatar">👤</div>
+        <div class="social-proof-text">
+            <div class="social-proof-name" id="proofName">Sarah M.</div>
+            <div class="social-proof-action">Just locked their price at $2.50/mo</div>
+            <div class="social-proof-time" id="proofTime">2 minutes ago</div>
+        </div>
+    </div>
+
+    <!-- Exit Intent Modal -->
+    <div id="exitModal" class="exit-modal-overlay">
+        <div class="exit-modal">
+            <button class="exit-modal-close" onclick="closeExitModal()">×</button>
+
+            <div id="modalForm">
+                <div class="exit-modal-icon">⚠️</div>
+                <h2 class="exit-modal-title">Wait! Don't Overpay for Hosting</h2>
+                <p class="exit-modal-subtitle">Get Our FREE Tools & Stop Wasting Money</p>
+
+                <div class="exit-modal-benefits">
+                    <h3>📦 Instant Access to Premium Resources:</h3>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">⚡</span>
+                            <span><strong>FREE Website Speed Test Tool</strong> - Find out if your host is slow</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🔄</span>
+                            <span><strong>Zero-Downtime Migration Checklist</strong> - Step-by-step PDF guide</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">💰</span>
+                            <span><strong>5-Year Cost Calculator</strong> - See what you'll REALLY pay</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🎯</span>
+                            <span><strong>Exclusive Price-Lock Deal</strong> - $2.50/month forever</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exit-modal-form">
+                    <input 
+                        type="text" 
+                        id="exitName" 
+                        class="exit-modal-input" 
+                        placeholder="Your First Name"
+                        required
+                    >
+                    <input 
+                        type="email" 
+                        id="exitEmail" 
+                        class="exit-modal-input" 
+                        placeholder="Your Best Email"
+                        required
+                    >
+                    <button class="exit-modal-submit" onclick="submitExitForm()">
+                        ✅ Send Me The FREE Tools
+                    </button>
+                </div>
+
+                <div class="exit-modal-footer">
+                    🔒 100% Privacy. Unsubscribe anytime. Join <span>2,847+ smart site owners</span>
+                </div>
+            </div>
+
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">✅</div>
+                <h3 class="success-title">Check Your Email!</h3>
+                <p class="success-text">We've sent your FREE tools and exclusive discount link. Check your inbox now!</p>
+                <a href="hosting-calculator.html" class="btn btn-primary" onclick="closeExitModal()">
+                    💰 Calculate My Savings Now
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    🔥 Trusted by 10,000+ Creators
+                    🚨 WARNING: Price Trap Alert
                 </div>
                 
                 <h1 class="hero-title">
-                    Discover the Best
-                    <span class="gradient-text">Digital Tools</span>
+                    Stop Paying <span class="gradient-text">400% More</span><br>
+                    After Year 1
                 </h1>
                 
                 <p class="hero-subtitle">
-                    Curated collection of powerful SaaS platforms, productivity tools, and web services to supercharge your workflow and boost your success
+                    That "$2.99/month" hosting becomes $12.99 on renewal. Use our FREE calculator to see what you'll ACTUALLY pay over 5 years - then lock your price forever.
                 </p>
                 
                 <div class="hero-buttons">
-                    <a href="#tools" class="btn btn-primary">
-                        <span>Explore Tools</span>
+                    <a href="hosting-calculator.html" class="btn btn-primary" onclick="trackCalculatorUse()">
+                        <span>💰 Calculate True Cost</span>
                         <span>→</span>
                     </a>
-                    <a href="#featured" class="btn btn-secondary">
-                        <span>Featured Picks</span>
-                        <span>⭐</span>
+                    <a href="isyourtoolslow.html" class="btn btn-secondary">
+                        <span>⚡ Test My Site Speed</span>
                     </a>
+                </div>
+                
+                <div class="live-counter">
+                    <div class="live-counter-pulse"></div>
+                    <div class="live-counter-number" id="liveCounter">287</div>
+                    <div class="live-counter-text">people locked their price this week</div>
                 </div>
                 
                 <div class="hero-stats">
                     <div class="stat">
-                        <div class="stat-icon">🚀</div>
-                        <div class="stat-number" id="toolCount">50+</div>
-                        <div class="stat-label">Premium Tools</div>
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-number">$509</div>
+                        <div class="stat-label">Avg. Savings (3 Years)</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-icon">📁</div>
-                        <div class="stat-number" id="categoryCount">12</div>
-                        <div class="stat-label">Categories</div>
+                        <div class="stat-icon">🔒</div>
+                        <div class="stat-number">$2.50</div>
+                        <div class="stat-label">Price Locked Forever</div>
                     </div>
                     <div class="stat">
                         <div class="stat-icon">⭐</div>
-                        <div class="stat-number">5.0</div>
-                        <div class="stat-label">Avg Rating</div>
+                        <div class="stat-number">2,847</div>
+                        <div class="stat-label">Happy Customers</div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Calculator Quick Access Section -->
+    <section id="calculator" class="section" style="padding: 60px 0; background: var(--darker);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🧮 See Your TRUE Hosting Cost</h2>
+                <p class="section-subtitle">Most people are shocked when they see the numbers</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: var(--card-bg); border: 2px solid var(--primary); border-radius: 24px; padding: 3rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Compare 10+ Hosting Providers</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 2rem; font-size: 1.1rem;">
+                        Find out how much you'll ACTUALLY pay after renewal price hikes kick in
+                    </p>
+                    <a href="hosting-calculator.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;" onclick="trackCalculatorUse()">
+                        Launch Calculator →
+                    </a>
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.9rem; color: var(--text-dim);">
+                        <div>✓ 100% Free</div>
+                        <div>✓ No Email Required</div>
+                        <div>✓ Instant Results</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Featured Tools Section -->
     <section id="featured" class="section featured-section">
         <div class="container">
             <!-- InterServer Special Feature Box -->
             <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 212, 255, 0.15) 100%); border: 2px solid var(--primary); border-radius: 24px; padding: 3rem; margin-bottom: 4rem; position: relative; overflow: hidden;">
-              <div style="position: absolute; top: -10px; right: 20px; background: var(--secondary); color: white; padding: 0.5rem 1.5rem; border-radius: 0 0 12px 12px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 45, 85, 0.4);">
-                🔥 Featured Deal
+              <div style="position: absolute; top: -10px; right: 20px; background: #ff2d55; color: white; padding: 0.5rem 1.5rem; border-radius: 0 0 12px 12px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 45, 85, 0.4);">
+                🔥 Best Deal
               </div>
               
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
@@ -943,12 +1459,14 @@ body {
                   </ul>
                   
                   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#" class="btn-primary" style="text-decoration: none;">
-                      Get Started Now
-                      <span>→</span>
+                    <a href="https://www.interserver.net/r/956050?utm_source=futurestack&utm_medium=website&utm_campaign=main_hero" 
+                       class="btn btn-primary" 
+                       onclick="trackAffiliateClick('main_interserver_box')"
+                       style="text-decoration: none;">
+                      Get Started Now →
                     </a>
-                    <a href="hosting-calculator.html" class="btn-secondary" style="text-decoration: none;">
-                      <span>💰 Calculate Your Savings</span>
+                    <a href="hosting-calculator.html" class="btn btn-secondary" style="text-decoration: none;">
+                      💰 Calculate Savings
                     </a>
                   </div>
                 </div>
@@ -956,7 +1474,7 @@ body {
                 <div style="background: rgba(0, 0, 0, 0.3); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.1);">
                   <div style="text-align: center; margin-bottom: 1.5rem;">
                     <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">🎯 5-Year Cost Comparison</div>
-                    <div style="font-size: 0.9rem; color: var(--text-dim);">See why 10,000+ creators chose InterServer</div>
+                    <div style="font-size: 0.9rem; color: var(--text-dim);">See why 2,847+ switched to InterServer</div>
                   </div>
                   
                   <div style="display: grid; gap: 1rem;">
@@ -1002,122 +1520,13 @@ body {
             </div>
             
             <div class="section-header">
-                <h2 class="section-title">⭐ Featured Tools</h2>
-                <p class="section-subtitle">Hand-picked essentials for maximum productivity</p>
+                <h2 class="section-title">⚡ Free Tools & Resources</h2>
+                <p class="section-subtitle">Everything you need to make the smart hosting choice</p>
             </div>
             <div id="featuredTools" class="tools-grid">
-                <div class="loading-spinner"></div>
+                <!-- Tools will be rendered by JavaScript -->
             </div>
         </div>
-    </section>
-
-    <!-- Categories Filter -->
-    <section id="categories" class="section categories-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Browse by Category</h2>
-            </div>
-            <div id="categoryFilter" class="category-filter">
-                <button class="category-btn active" data-category="all">All Tools</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- All Tools Section -->
-    <section id="tools" class="section tools-section">
-        <div class="container">
-            <div class="tools-header">
-                <h2 class="section-title">All Tools</h2>
-                <div class="tools-controls">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
-                        <span class="search-icon">🔍</span>
-                    </div>
-                    <select id="sortSelect" class="sort-select">
-                        <option value="name">Name (A-Z)</option>
-                        <option value="rating">Highest Rated</option>
-                        <option value="price-low">Price (Low to High)</option>
-                        <option value="price-high">Price (High to Low)</option>
-                    </select>
-                </div>
-            </div>
-            <div id="allTools" class="tools-grid">
-                <div class="loading-spinner"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Special InterServer CTA Section -->
-    <section style="padding: 6rem 2rem; background: linear-gradient(135deg, #0a0e27 0%, #1a1438 100%); position: relative; overflow: hidden;">
-      <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.5;"></div>
-      
-      <div class="container" style="position: relative; z-index: 2;">
-        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-          <div style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem; background: rgba(255, 45, 85, 0.15); border: 2px solid var(--secondary); border-radius: 50px; color: var(--secondary); font-weight: 700; margin-bottom: 2rem; animation: pulse 2s ease-in-out infinite;">
-            ⚠️ ALERT: Are You Being Overcharged?
-          </div>
-          
-          <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 1.5rem; line-height: 1.1;">
-            Stop Paying <span style="color: var(--secondary);">400% More</span><br>
-            After Year 1
-          </h2>
-          
-          <p style="font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-dim); margin-bottom: 3rem; line-height: 1.7;">
-            Most web hosts lure you in with low prices, then hit you with massive renewal fees. InterServer is different - your price is <strong style="color: var(--primary);">locked forever</strong>.
-          </p>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <div style="background: rgba(239, 68, 68, 0.1); border: 2px solid var(--danger); border-radius: 16px; padding: 1.5rem;">
-              <div style="font-size: 2.5rem; font-weight: 900; color: var(--danger); margin-bottom: 0.5rem;">$659</div>
-              <div style="font-size: 0.9rem; color: var(--text-dim);">Bluehost (5 years)</div>
-              <div style="font-size: 0.85rem; color: var(--danger); font-weight: 700; margin-top: 0.25rem;">+340% increase ❌</div>
-            </div>
-            
-            <div style="background: rgba(0, 255, 136, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 1.5rem;">
-              <div style="font-size: 2.5rem; font-weight: 900; color: var(--primary); margin-bottom: 0.5rem;">$150</div>
-              <div style="font-size: 0.9rem; color: var(--text-dim);">InterServer (5 years)</div>
-              <div style="font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-top: 0.25rem;">0% increase ✓</div>
-            </div>
-            
-            <div style="background: rgba(0, 255, 136, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 1.5rem;">
-              <div style="font-size: 2.5rem; font-weight: 900; color: var(--primary); margin-bottom: 0.5rem;">$509</div>
-              <div style="font-size: 0.9rem; color: var(--text-dim);">You Save!</div>
-              <div style="font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-top: 0.25rem;">with InterServer 🎉</div>
-            </div>
-          </div>
-          
-          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="hosting-calculator.html" class="btn-primary" style="text-decoration: none; font-size: 1.2rem; padding: 1.5rem 3rem;">
-              💰 Calculate Your True Cost
-              <span>→</span>
-            </a>
-            <a href="#" class="btn-secondary" style="text-decoration: none; font-size: 1.2rem; padding: 1.5rem 3rem;">
-              🔒 Get InterServer Now
-            </a>
-          </div>
-          
-          <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
-            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.95rem; color: var(--text-dim);">
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-                <span>30-Day Money Back</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-                <span>Free Migration</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-                <span>Price Lock Guarantee</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-                <span>24/7 Expert Support</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Footer -->
@@ -1129,20 +1538,20 @@ body {
                         <span class="logo-icon">🚀</span>
                         <span class="logo-text">FutureStack</span>
                     </div>
-                    <p class="footer-tagline">Curating the future of digital tools for creators, entrepreneurs, and innovators worldwide.</p>
+                    <p class="footer-tagline">Helping entrepreneurs and creators avoid the hosting price trap since 2024. Our mission: transparent pricing, honest reviews, zero BS.</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Resources</h4>
-                        <a href="#tools">All Tools</a>
-                        <a href="#featured">Featured</a>
-                        <a href="#categories">Categories</a>
+                        <a href="hosting-calculator.html">Cost Calculator</a>
+                        <a href="isyourtoolslow.html">Speed Test Tool</a>
+                        <a href="Migration Checklist - Zero Downtime Guide.html">Migration Guide</a>
                     </div>
                     <div class="footer-column">
                         <h4>Company</h4>
                         <a href="#about">About</a>
                         <a href="#contact">Contact</a>
-                        <a href="#submit">Submit Tool</a>
+                        <a href="#disclosure">Affiliate Disclosure</a>
                     </div>
                 </div>
             </div>
@@ -1153,6 +1562,117 @@ body {
     </footer>
 
     <script>
+        // ========== CONFIGURATION ========== 
+        const AFFILIATE_LINK = 'https://www.interserver.net/r/956050';
+        
+        // ========== EXIT INTENT LOGIC ==========
+        let exitIntentShown = false;
+        let mouseLeaveTimeout = null;
+        
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 && !exitIntentShown) {
+                clearTimeout(mouseLeaveTimeout);
+                mouseLeaveTimeout = setTimeout(() => {
+                    showExitModal();
+                }, 500);
+            }
+        });
+        
+        function showExitModal() {
+            exitIntentShown = true;
+            document.getElementById('exitModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+            gtag('event', 'exit_intent_shown', {
+                'event_category': 'Engagement'
+            });
+        }
+        
+        function closeExitModal() {
+            document.getElementById('exitModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+            document.getElementById('modalForm').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('show');
+        }
+        
+        document.getElementById('exitModal').addEventListener('click', function(e) {
+            if (e.target === this) closeExitModal();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeExitModal();
+        });
+        
+        function submitExitForm() {
+            const name = document.getElementById('exitName').value.trim();
+            const email = document.getElementById('exitEmail').value.trim();
+            
+            if (!name || !email) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Please enter a valid email');
+                return;
+            }
+            
+            // TODO: Send to your email service (Mailchimp, ConvertKit, etc.)
+            console.log('Email captured:', { name, email });
+            trackEmailCapture('exit_intent');
+            
+            document.getElementById('modalForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+        }
+        
+        // ========== FLOATING CTA ==========
+        window.addEventListener('scroll', function() {
+            const floatingCta = document.getElementById('floatingCta');
+            if (window.scrollY > 800) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
+        });
+        
+        // ========== SOCIAL PROOF NOTIFICATIONS ==========
+        const names = [
+            'Sarah M.', 'John D.', 'Emily R.', 'Michael T.', 'Jessica L.', 
+            'David K.', 'Amanda S.', 'Chris P.', 'Laura W.', 'Ryan B.'
+        ];
+        
+        function showSocialProof() {
+            const notification = document.getElementById('socialProof');
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomMinutes = Math.floor(Math.random() * 45) + 2;
+            
+            document.getElementById('proofName').textContent = randomName;
+            document.getElementById('proofTime').textContent = `${randomMinutes} minutes ago`;
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 6000);
+        }
+        
+        // Show first notification after 8 seconds
+        setTimeout(showSocialProof, 8000);
+        
+        // Show random notifications every 20-40 seconds
+        setInterval(() => {
+            const randomDelay = Math.random() * 20000 + 20000;
+            setTimeout(showSocialProof, randomDelay);
+        }, 40000);
+        
+        // ========== LIVE COUNTER ==========
+        let counter = 287;
+        setInterval(() => {
+            if (Math.random() > 0.7) { // 30% chance every interval
+                counter++;
+                document.getElementById('liveCounter').textContent = counter;
+            }
+        }, 300000); // Every 5 minutes
+        
         // ========== NAVIGATION SCROLL EFFECT ==========
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -1177,8 +1697,45 @@ body {
             });
         });
 
-        // ========== MOCK DATA (Replace with your Notion API integration) ==========
+        // ========== MOCK DATA ==========
         const mockTools = [
+            {
+                name: "Hosting Cost Calculator",
+                category: "Free Tools",
+                rating: 5.0,
+                price: "Free",
+                description: "Compare 10+ hosting providers and see your TRUE cost over 5 years. Find out how much you're overpaying with renewal price hikes.",
+                logo: "🧮",
+                pros: ["100% Free to use", "No email required", "Instant results", "Compare 10+ providers"],
+                cons: [],
+                link: "hosting-calculator.html",
+                featured: true,
+                special: true
+            },
+            {
+                name: "Website Speed Test",
+                category: "Free Tools",
+                rating: 5.0,
+                price: "Free",
+                description: "Find out if your hosting is slowing you down. Our 5-point diagnostic reveals if you're being robbed of speed.",
+                logo: "⚡",
+                pros: ["Free diagnostic tool", "5-point speed check", "Personalized recommendations", "Takes 2 minutes"],
+                cons: [],
+                link: "isyourtoolslow.html",
+                featured: true
+            },
+            {
+                name: "Zero-Downtime Migration Guide",
+                category: "Free Resources",
+                rating: 5.0,
+                price: "Free",
+                description: "Step-by-step checklist to migrate your website with zero downtime. Used by 1,000+ successful migrations.",
+                logo: "📋",
+                pros: ["Complete checklist", "Zero downtime method", "Beginner-friendly", "Printable PDF"],
+                cons: [],
+                link: "Migration Checklist - Zero Downtime Guide.html",
+                featured: true
+            },
             {
                 name: "InterServer",
                 category: "Web Hosting",
@@ -1187,108 +1744,23 @@ body {
                 description: "The ONLY web host with a price lock guarantee. Your rate never increases - $2.50/month forever. No bait-and-switch tactics.",
                 logo: "🔒",
                 pros: ["Price locked forever - no increases!", "Save $500-800 vs competitors", "99.9% uptime guarantee", "Free migration service", "Unlimited storage & bandwidth", "24/7 expert support"],
-                cons: ["Interface less modern than some competitors", "No drag-and-drop builder included"],
-                link: "hosting-calculator.html",
+                cons: ["Interface less modern than some competitors"],
+                link: AFFILIATE_LINK + "?utm_source=futurestack&utm_medium=website&utm_campaign=featured_tools",
                 featured: true,
-                special: true
-            },
-            {
-                name: "Hostinger",
-                category: "Web Hosting",
-                rating: 4.9,
-                price: "$2.99/mo",
-                description: "Lightning-fast web hosting with 99.9% uptime guarantee. Perfect for creators and small businesses.",
-                logo: "🚀",
-                pros: ["99.9% uptime", "24/7 support", "Free SSL", "Easy WordPress install"],
-                cons: ["Renewal price higher ($8.99/mo)", "Limited storage on basic plan"],
-                link: "#",
-                featured: true
-            },
-            {
-                name: "NordVPN",
-                category: "VPN & Security",
-                rating: 4.8,
-                price: "$3.49/mo",
-                description: "Military-grade encryption to protect your privacy online. 5000+ servers in 60 countries.",
-                logo: "🔒",
-                pros: ["No-log policy", "Fast speeds", "Kill switch", "6 devices"],
-                cons: ["Desktop app can be slow", "Some servers crowded"],
-                link: "#",
-                featured: true
-            },
-            {
-                name: "Notion",
-                category: "SaaS Platforms",
-                rating: 4.7,
-                price: "Free",
-                description: "All-in-one workspace for notes, tasks, wikis, and databases. Collaborate with your team.",
-                logo: "⚡",
-                pros: ["Highly customizable", "Great templates", "Free plan", "Cross-platform"],
-                cons: ["Learning curve", "Offline mode limited"],
-                link: "#",
-                featured: true
-            },
-            {
-                name: "Canva Pro",
-                category: "Digital Tools",
-                rating: 4.9,
-                price: "$12.99/mo",
-                description: "Professional design made simple. Create stunning graphics, presentations, and social media content.",
-                logo: "🎨",
-                pros: ["Huge template library", "Easy to use", "Brand kit", "Cloud storage"],
-                cons: ["Can get expensive", "Some features limited"],
-                link: "#",
-                featured: true
-            },
-            {
-                name: "Grammarly",
-                category: "Digital Tools",
-                rating: 4.6,
-                price: "$12/mo",
-                description: "AI-powered writing assistant that helps you write clearly and mistake-free across all platforms.",
-                logo: "✍️",
-                pros: ["Real-time checking", "Tone detector", "Plagiarism checker", "Browser extension"],
-                cons: ["Premium required for best features", "Can be intrusive"],
-                link: "#",
-                featured: false
-            },
-            {
-                name: "Mailchimp",
-                category: "SaaS Platforms",
-                rating: 4.5,
-                price: "Free",
-                description: "Email marketing platform with automation, analytics, and beautiful templates for your campaigns.",
-                logo: "📧",
-                pros: ["Free tier available", "Easy automation", "Good analytics", "Templates"],
-                cons: ["Expensive as you scale", "Limited customization"],
-                link: "#",
-                featured: false
+                special: false
             }
         ];
 
-        // ========== GET UNIQUE CATEGORIES ==========
-        const categories = [...new Set(mockTools.map(tool => tool.category))];
-
-        // ========== UPDATE STATS ==========
-        document.getElementById('toolCount').textContent = mockTools.length + '+';
-        document.getElementById('categoryCount').textContent = categories.length;
-
-        // ========== RENDER CATEGORY FILTER ==========
-        const categoryFilter = document.getElementById('categoryFilter');
-        categories.forEach(category => {
-            const btn = document.createElement('button');
-            btn.className = 'category-btn';
-            btn.setAttribute('data-category', category);
-            btn.textContent = category;
-            btn.addEventListener('click', () => filterByCategory(category));
-            categoryFilter.appendChild(btn);
-        });
-
         // ========== RENDER TOOL CARD ==========
         function createToolCard(tool) {
-            const specialBadge = tool.special ? '<div style="position: absolute; top: -10px; right: 10px; background: linear-gradient(135deg, var(--secondary) 0%, #ff6b95 100%); color: white; padding: 0.35rem 1rem; border-radius: 20px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 45, 85, 0.4); z-index: 10;">🔥 BEST VALUE</div>' : '';
+            const specialBadge = tool.special ? '<div style="position: absolute; top: -10px; right: 10px; background: linear-gradient(135deg, #ff2d55 0%, #ff6b95 100%); color: white; padding: 0.35rem 1rem; border-radius: 20px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 45, 85, 0.4); z-index: 10;">🔥 MOST POPULAR</div>' : '';
             
             const specialHighlight = tool.special ? 'style="border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);"' : '';
+            
+            // Add UTM parameters to link
+            const linkWithUTM = tool.link.includes('?') 
+                ? tool.link 
+                : tool.link + (tool.link.includes('interserver') ? '?utm_source=futurestack&utm_medium=website&utm_campaign=tool_card' : '');
             
             return `
                 <div class="tool-card" data-category="${tool.category}" ${specialHighlight}>
@@ -1308,18 +1780,18 @@ body {
                     <p class="tool-description">${tool.description}</p>
                     
                     <div class="tool-features">
-                        ${tool.pros ? `
+                        ${tool.pros && tool.pros.length > 0 ? `
                             <div class="feature-section">
-                                <div class="feature-title">Pros</div>
+                                <div class="feature-title">Why Use This</div>
                                 <ul class="feature-list pros">
                                     ${tool.pros.map(pro => `<li>${pro}</li>`).join('')}
                                 </ul>
                             </div>
                         ` : ''}
                         
-                        ${tool.cons ? `
+                        ${tool.cons && tool.cons.length > 0 ? `
                             <div class="feature-section">
-                                <div class="feature-title">Cons</div>
+                                <div class="feature-title">Considerations</div>
                                 <ul class="feature-list cons">
                                     ${tool.cons.map(con => `<li>${con}</li>`).join('')}
                                 </ul>
@@ -1329,8 +1801,10 @@ body {
                     
                     <div class="tool-footer">
                         <div class="tool-price">${tool.price}</div>
-                        <a href="${tool.link}" class="tool-link" target="_blank" rel="noopener noreferrer">
-                            View Deal
+                        <a href="${linkWithUTM}" 
+                           class="tool-link" 
+                           ${tool.link.includes('interserver') ? 'target="_blank" rel="noopener noreferrer" onclick="trackAffiliateClick(\'tool_card_' + tool.name.replace(/\s/g, '_').toLowerCase() + '\')"' : ''}>
+                            ${tool.link.includes('interserver') ? 'Get Deal' : 'Try Free'}
                             <span>→</span>
                         </a>
                     </div>
@@ -1350,65 +1824,6 @@ body {
 
         // ========== INITIAL RENDER ==========
         renderTools(mockTools.filter(t => t.featured), 'featuredTools');
-        renderTools(mockTools, 'allTools');
-
-        // ========== FILTER BY CATEGORY ==========
-        function filterByCategory(category) {
-            // Update active button
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-category') === category || (category === 'all' && btn.getAttribute('data-category') === 'all')) {
-                    btn.classList.add('active');
-                }
-            });
-
-            // Filter tools
-            const filtered = category === 'all' ? mockTools : mockTools.filter(t => t.category === category);
-            renderTools(filtered, 'allTools');
-        }
-
-        // ========== SEARCH FUNCTIONALITY ==========
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const filtered = mockTools.filter(tool => 
-                tool.name.toLowerCase().includes(query) ||
-                tool.description.toLowerCase().includes(query) ||
-                tool.category.toLowerCase().includes(query)
-            );
-            renderTools(filtered, 'allTools');
-        });
-
-        // ========== SORT FUNCTIONALITY ==========
-        const sortSelect = document.getElementById('sortSelect');
-        sortSelect.addEventListener('change', (e) => {
-            let sorted = [...mockTools];
-            
-            switch(e.target.value) {
-                case 'name':
-                    sorted.sort((a, b) => a.name.localeCompare(b.name));
-                    break;
-                case 'rating':
-                    sorted.sort((a, b) => b.rating - a.rating);
-                    break;
-                case 'price-low':
-                    sorted.sort((a, b) => {
-                        const priceA = parseFloat(a.price.replace(/[^0-9.]/g, '')) || 0;
-                        const priceB = parseFloat(b.price.replace(/[^0-9.]/g, '')) || 0;
-                        return priceA - priceB;
-                    });
-                    break;
-                case 'price-high':
-                    sorted.sort((a, b) => {
-                        const priceA = parseFloat(a.price.replace(/[^0-9.]/g, '')) || 0;
-                        const priceB = parseFloat(b.price.replace(/[^0-9.]/g, '')) || 0;
-                        return priceB - priceA;
-                    });
-                    break;
-            }
-            
-            renderTools(sorted, 'allTools');
-        });
 
         // ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
         const observerOptions = {
@@ -1425,7 +1840,6 @@ body {
             });
         }, observerOptions);
 
-        // Observe tool cards when they're rendered
         function observeCards() {
             document.querySelectorAll('.tool-card').forEach(card => {
                 card.style.opacity = '0';
@@ -1435,40 +1849,25 @@ body {
             });
         }
 
-        // Initial observation
         setTimeout(observeCards, 100);
-
-        // Re-observe after filtering/sorting
-        searchInput.addEventListener('input', () => setTimeout(observeCards, 100));
-        sortSelect.addEventListener('change', () => setTimeout(observeCards, 100));
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', () => setTimeout(observeCards, 100));
+        
+        // ========== SCROLL TO TOP ON BACK NAVIGATION ==========
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted || performance.navigation.type === 2) {
+                window.scrollTo(0, 0);
+            }
         });
-
-        // ========== PERFORMANCE: DEBOUNCE SEARCH ==========
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Apply debounce to search
-        searchInput.addEventListener('input', debounce((e) => {
-            const query = e.target.value.toLowerCase();
-            const filtered = mockTools.filter(tool => 
-                tool.name.toLowerCase().includes(query) ||
-                tool.description.toLowerCase().includes(query) ||
-                tool.category.toLowerCase().includes(query)
-            );
-            renderTools(filtered, 'allTools');
-            setTimeout(observeCards, 100);
-        }, 300));
+        
+        // ========== PREVENT DOUBLE-CLICK ON AFFILIATE LINKS ==========
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a[href*="interserver"]');
+            if (link) {
+                link.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    link.style.pointerEvents = 'auto';
+                }, 2000);
+            }
+        });
     </script>
 </body>
 </html>
